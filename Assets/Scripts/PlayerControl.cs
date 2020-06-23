@@ -10,19 +10,11 @@ public class PlayerControl : MonoBehaviour
 
     void Update() {
         Move();
-        faceMouse();
     }
     void Move() {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical"); 
+        //CHANGE THIS TO VELOCITY
         rb.MovePosition(rb.position + movement * movementSpeed * Time.fixedDeltaTime);
-    }
-    void faceMouse() {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
-
-        transform.up = direction;
     }
 }
