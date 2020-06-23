@@ -252,7 +252,7 @@ TilemapRenderer:
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
-  m_Mode: 0
+  m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!1839735485 &795381707
@@ -438,6 +438,22 @@ CompositeCollider2D:
         Y: -29375000
       - X: 30000000
         Y: -29375000
+    - - X: 38125100
+        Y: -49375041
+      - X: 38125100
+        Y: -41874959
+      - X: 38125041
+        Y: -41874900
+      - X: 31249959
+        Y: -41874900
+      - X: 31249900
+        Y: -41874959
+      - X: 31249900
+        Y: -49375041
+      - X: 31249959
+        Y: -49375100
+      - X: 38125041
+        Y: -49375100
     - - X: 20000000
         Y: -41875000
       - X: 0
@@ -446,28 +462,20 @@ CompositeCollider2D:
         Y: -49375000
       - X: 20000000
         Y: -49375000
-    - - X: 37500000
-        Y: -44375000
-      - X: 31875000
-        Y: -44375000
-      - X: 31875000
-        Y: -48750000
-      - X: 37500000
-        Y: -48750000
   m_CompositePaths:
     m_Paths:
     - - {x: 2.999971, y: -2.9375}
       - {x: 2.999971, y: -2.1875}
       - {x: 2, y: -2.1875293}
       - {x: 2.0000293, y: -2.9375}
+    - - {x: 3.8124747, y: -4.93751}
+      - {x: 3.8124747, y: -4.18749}
+      - {x: 3.12499, y: -4.1875253}
+      - {x: 3.1250253, y: -4.93751}
     - - {x: 1.9999708, y: -4.9375}
       - {x: 1.9999708, y: -4.1875}
       - {x: 0, y: -4.187529}
       - {x: 0.000029300001, y: -4.9375}
-    - - {x: 3.749971, y: -4.875}
-      - {x: 3.749971, y: -4.4375}
-      - {x: 3.1875, y: -4.437529}
-      - {x: 3.1875293, y: -4.875}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!1 &1077292593
@@ -549,7 +557,7 @@ TilemapRenderer:
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
-  m_Mode: 0
+  m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!1839735485 &1077292596
@@ -2984,6 +2992,31 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1336641822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 666348601886616642, guid: 9394faa1200dfcb49a1ee6dab77dd3dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 666348601715660733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1336641823
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336641822}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5daa08061b9a4e643b98b7ef00531d76, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1553158091
 GameObject:
   m_ObjectHideFlags: 0
@@ -3092,6 +3125,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 666348601886616508, guid: 9394faa1200dfcb49a1ee6dab77dd3dd,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1336641823}
     - target: {fileID: 666348601886616642, guid: 9394faa1200dfcb49a1ee6dab77dd3dd,
         type: 3}
       propertyPath: m_Name
