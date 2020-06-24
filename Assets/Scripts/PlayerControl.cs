@@ -23,17 +23,12 @@ public class PlayerControl : MonoBehaviour
     
     void Move() {
         rb.velocity = movement * movementSpeed;
-        if (movement.x != 0 || movement.y != 0) {
-            animator.SetBool("isMoving", true);
-        }
-        else {
-            animator.SetBool("isMoving", false);
-        }
-        if (movement.x > 0) {
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (movement.x < 0) {
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }
+        animator.SetBool("horizontal", (movement.x != 0 && movement.y == 0) ? true : false);
+        animator.SetBool("up", (movement.y > 0) ? true : false);
+        animator.SetBool("down", (movement.y < 0) ? true : false);
+
+        if (movement.x != 0) transform.localRotation = (movement.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0,0,0);
+        
+        
     }
 }
