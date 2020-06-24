@@ -1,0 +1,5 @@
+You need Mirror from asset store and Dark Mirror (use google)
+Follow the instructions for them
+Need a NetworkManager object in the scene with Telepathy Transport script, Network Manager HUD, Dark Refelective Mirror Transport, Dark Mirror Direct Connect Module
+Network Gameobjects (like players and projectiles) need to import Mirror ("using Mirror;" at the top) and replace MonoBehaviour with NetworkBehaviour. 
+Look at Pong and Tank game examples.
