@@ -1,22 +1,55 @@
 fileFormatVersion: 2
-guid: 2b3c62ee1fa1f2f45b5c414842db33d9
+guid: 9593f9bc0b9c1e74cba92ee3e4011f0d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7913641848581352110
-    second: swordSwing_0
+      213: 5115162677263872842
+    second: forwardTest_0
   - first:
-      213: -8033774608419880799
-    second: swordSwing_1
+      213: -8505416902060163432
+    second: forwardTest_1
   - first:
-      213: -3063058901734695225
-    second: swordSwing_2
+      213: 3443480471210992134
+    second: forwardTest_2
   - first:
-      213: -5317656446588428140
-    second: swordSwing_3
+      213: 3671064183322077768
+    second: forwardTest_3
   - first:
-      213: 4296138478607100758
-    second: swordSwing_4
+      213: 2289059920952982359
+    second: forwardTest_4
+  - first:
+      213: 3036550078680976704
+    second: forwardTest_5
+  - first:
+      213: -1269990786264750644
+    second: forwardTest_6
+  - first:
+      213: 5093899374862188871
+    second: forwardTest_7
+  - first:
+      213: 8539138027669573809
+    second: forwardTest_8
+  - first:
+      213: 8638316544147350407
+    second: forwardTest_9
+  - first:
+      213: 4574570215956874238
+    second: forwardTest_10
+  - first:
+      213: 4832615116345795078
+    second: forwardTest_11
+  - first:
+      213: 72537013138115783
+    second: forwardTest_12
+  - first:
+      213: -4371169164022554157
+    second: forwardTest_13
+  - first:
+      213: -1407036165005545324
+    second: forwardTest_14
+  - first:
+      213: -7265121353637105538
+    second: forwardTest_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -60,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,106 +147,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: swordSwing_0
+      name: forwardTest_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.15628506, y: 0.46843433}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eaa6b504557e2dd60800000000000000
-      internalID: 7913641848581352110
+      spriteID: a4336aa8a55bcf640800000000000000
+      internalID: 5115162677263872842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swordSwing_1
+      name: forwardTest_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89eb9162460b6f980800000000000000
+      internalID: -8505416902060163432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: forwardTest_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.46875, y: 0.15625}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a08493fe8c428090800000000000000
-      internalID: -8033774608419880799
+      spriteID: 602a6858e33b9cf20800000000000000
+      internalID: 3443480471210992134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swordSwing_2
+      name: forwardTest_3
       rect:
         serializedVersion: 2
-        x: 128
+        x: 96
         y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.34375, y: 0.28125}
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ce510c5824dd75d0800000000000000
-      internalID: -3063058901734695225
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: swordSwing_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.15625, y: 0.46875}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 490e78fc2a3e336b0800000000000000
-      internalID: -5317656446588428140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: swordSwing_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.15625, y: 0.46875}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65b63433f23fe9b30800000000000000
-      internalID: 4296138478607100758
+      spriteID: 84a6292bc6d32f230800000000000000
+      internalID: 3671064183322077768
       vertices: []
       indices: 
       edges: []
