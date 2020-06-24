@@ -21,7 +21,10 @@ public class PlayerControl : NetworkBehaviour
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical"); 
     }
-    
+    public override void OnStartLocalPlayer()
+     {
+         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
+     }
     void Move() {
         if (isLocalPlayer)
         {
