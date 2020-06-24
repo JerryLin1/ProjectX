@@ -1,55 +1,19 @@
 fileFormatVersion: 2
-guid: 9593f9bc0b9c1e74cba92ee3e4011f0d
+guid: 7d63d054b26a3204086eb1e51d00adb0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5115162677263872842
-    second: forwardTest_0
+      213: -7032856239996607412
+    second: Forward_Gif_Work_0
   - first:
-      213: -8505416902060163432
-    second: forwardTest_1
+      213: -5437375370748109886
+    second: Forward_Gif_Work_1
   - first:
-      213: 3443480471210992134
-    second: forwardTest_2
+      213: -2580943789382575441
+    second: Forward_Gif_Work_2
   - first:
-      213: 3671064183322077768
-    second: forwardTest_3
-  - first:
-      213: 2289059920952982359
-    second: forwardTest_4
-  - first:
-      213: 3036550078680976704
-    second: forwardTest_5
-  - first:
-      213: -1269990786264750644
-    second: forwardTest_6
-  - first:
-      213: 5093899374862188871
-    second: forwardTest_7
-  - first:
-      213: 8539138027669573809
-    second: forwardTest_8
-  - first:
-      213: 8638316544147350407
-    second: forwardTest_9
-  - first:
-      213: 4574570215956874238
-    second: forwardTest_10
-  - first:
-      213: 4832615116345795078
-    second: forwardTest_11
-  - first:
-      213: 72537013138115783
-    second: forwardTest_12
-  - first:
-      213: -4371169164022554157
-    second: forwardTest_13
-  - first:
-      213: -1407036165005545324
-    second: forwardTest_14
-  - first:
-      213: -7265121353637105538
-    second: forwardTest_15
+      213: 4200386788215915025
+    second: Forward_Gif_Work_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -147,7 +111,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: forwardTest_0
+      name: Forward_Gif_Work_0
       rect:
         serializedVersion: 2
         x: 0
@@ -161,14 +125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4336aa8a55bcf640800000000000000
-      internalID: 5115162677263872842
+      spriteID: c44ec9ae286466e90800000000000000
+      internalID: -7032856239996607412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: forwardTest_1
+      name: Forward_Gif_Work_1
       rect:
         serializedVersion: 2
         x: 32
@@ -182,14 +146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89eb9162460b6f980800000000000000
-      internalID: -8505416902060163432
+      spriteID: 2cbd914a8ef8a84b0800000000000000
+      internalID: -5437375370748109886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: forwardTest_2
+      name: Forward_Gif_Work_2
       rect:
         serializedVersion: 2
         x: 64
@@ -203,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 602a6858e33b9cf20800000000000000
-      internalID: 3443480471210992134
+      spriteID: faad9984c45ae2cd0800000000000000
+      internalID: -2580943789382575441
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: forwardTest_3
+      name: Forward_Gif_Work_3
       rect:
         serializedVersion: 2
         x: 96
@@ -224,8 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84a6292bc6d32f230800000000000000
-      internalID: 3671064183322077768
+      spriteID: 1128ade7785ca4a30800000000000000
+      internalID: 4200386788215915025
       vertices: []
       indices: 
       edges: []
