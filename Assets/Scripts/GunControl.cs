@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class GunControl : MonoBehaviour
+public class GunControl : NetworkBehaviour
 {
     public GameObject bulletPrefab;
     private Vector3 mousePosition;
@@ -25,6 +26,7 @@ public class GunControl : MonoBehaviour
     void shoot() {
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            NetworkServer.Spawn(bullet);
             bullet.GetComponent<Rigidbody2D>().velocity = direction * 20f;
             Destroy(bullet, 1f);
         }
