@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControl : NetworkBehaviour
 {
     private float movementSpeed = 5f;
     public Rigidbody2D rb;
@@ -22,18 +23,21 @@ public class PlayerControl : MonoBehaviour
     }
     
     void Move() {
-        rb.velocity = movement * movementSpeed;
-        if (movement.x != 0 || movement.y != 0) {
-            animator.SetBool("isMoving", true);
-        }
-        else {
-            animator.SetBool("isMoving", false);
-        }
-        if (movement.x > 0) {
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (movement.x < 0) {
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        if (isLocalPlayer)
+        {
+            rb.velocity = movement * movementSpeed;
+            if (movement.x != 0 || movement.y != 0) {
+                animator.SetBool("isMoving", true);
+            }
+            else {
+                animator.SetBool("isMoving", false);
+            }
+            if (movement.x > 0) {
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (movement.x < 0) {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
         }
     }
 }
