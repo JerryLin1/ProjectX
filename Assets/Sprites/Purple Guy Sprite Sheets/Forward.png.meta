@@ -3,17 +3,17 @@ guid: 7d63d054b26a3204086eb1e51d00adb0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7032856239996607412
-    second: Forward_Gif_Work_0
+      213: 6337757556742298555
+    second: Forward_0
   - first:
-      213: -5437375370748109886
-    second: Forward_Gif_Work_1
+      213: 3729328573027383400
+    second: Forward_1
   - first:
-      213: -2580943789382575441
-    second: Forward_Gif_Work_2
+      213: -3533969994375903138
+    second: Forward_2
   - first:
-      213: 4200386788215915025
-    second: Forward_Gif_Work_3
+      213: 3771788192115348113
+    second: Forward_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,7 +111,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Forward_Gif_Work_0
+      name: Forward_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,14 +125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c44ec9ae286466e90800000000000000
-      internalID: -7032856239996607412
+      spriteID: bbb1c224bec34f750800000000000000
+      internalID: 6337757556742298555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forward_Gif_Work_1
+      name: Forward_1
       rect:
         serializedVersion: 2
         x: 32
@@ -146,14 +146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cbd914a8ef8a84b0800000000000000
-      internalID: -5437375370748109886
+      spriteID: 868f20e049c31c330800000000000000
+      internalID: 3729328573027383400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forward_Gif_Work_2
+      name: Forward_2
       rect:
         serializedVersion: 2
         x: 64
@@ -167,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: faad9984c45ae2cd0800000000000000
-      internalID: -2580943789382575441
+      spriteID: e58c55e8301d4fec0800000000000000
+      internalID: -3533969994375903138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Forward_Gif_Work_3
+      name: Forward_3
       rect:
         serializedVersion: 2
         x: 96
@@ -188,8 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1128ade7785ca4a30800000000000000
-      internalID: 4200386788215915025
+      spriteID: 1925c0f7065185430800000000000000
+      internalID: 3771788192115348113
       vertices: []
       indices: 
       edges: []
