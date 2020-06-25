@@ -7,9 +7,8 @@ public class PlayerControl : MonoBehaviour
     private float movementSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
+    public GameObject bullet;
     Vector2 movement;
-
-    KeyCode lastKeyHit;
 
     void Update() {
         checkInput();
@@ -22,7 +21,6 @@ public class PlayerControl : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical"); 
     }
-    
     void Move() {
         rb.velocity = movement * movementSpeed;
         animator.SetBool("horizontal", (movement.x != 0 && movement.y == 0) ? true : false);
@@ -34,4 +32,5 @@ public class PlayerControl : MonoBehaviour
 
         if (movement.x != 0) transform.localRotation = (movement.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0,0,0);
     }
+    
 }
