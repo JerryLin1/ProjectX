@@ -9,7 +9,10 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
     public Rigidbody2D rb;
     public Animator animator;
     public PhotonView pv;
+    public GameObject bulletPrefab;
+    Vector2 direction;
     Vector2 movement;
+    Vector3 mousePos;
     bool isAttacking = false;
 
     void Start()
@@ -22,6 +25,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
     void Update()
     {
         checkInput();
+        Shoot();
     }
 
     void FixedUpdate()
@@ -34,13 +38,11 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
         movement.y = Input.GetAxis("Vertical");
 
         // If the player is basic attacking:
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (pv.IsMine && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            animator.SetBool("attacking", true);
-            isAttacking = true;
-            transform.localRotation = (mousePos.x >= transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
+            direction.Normalize();
         }
     }
 
@@ -73,6 +75,22 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
             }
         }
         if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+    }
+    void Shoot()
+    {
+        // If the player is basic attacking:
+        if (pv.IsMine && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+
+            GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, transform.position, Quaternion.identity);
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * 20f;
+            Destroy(bullet, 1f);
+
+            animator.SetBool("attacking", true);
+            isAttacking = true;
+            transform.localRotation = (mousePos.x >= transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+
+        }
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

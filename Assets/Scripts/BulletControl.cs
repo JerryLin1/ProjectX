@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class BulletControl : MonoBehaviour
+public class BulletControl : MonoBehaviourPun, IPunObservable
 {
-
+    public Rigidbody2D rb;
     void Update()
     {
         Physics2D.IgnoreLayerCollision(9,8);
@@ -15,5 +16,16 @@ public class BulletControl : MonoBehaviour
        
         Destroy(gameObject);
         
+    }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(rb.velocity);
+        }
+        else if (stream.IsReading)
+        {
+            rb.velocity = (Vector2)stream.ReceiveNext();
+        }
     }
 }
