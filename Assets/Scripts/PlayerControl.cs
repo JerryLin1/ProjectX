@@ -21,6 +21,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
         {
             Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
         }
+        PhotonNetwork.OfflineMode = true;
     }
     void Update()
     {
@@ -81,8 +82,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
         // If the player is basic attacking:
         if (pv.IsMine && Input.GetKeyDown(KeyCode.Mouse0))
         {
-
-            GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, transform.position, Quaternion.identity);
+            
+            GameObject bullet = (PhotonNetwork.OfflineMode) ? Instantiate(bulletPrefab, transform.position, Quaternion.identity) : PhotonNetwork.Instantiate(bulletPrefab.name, transform.position, Quaternion.identity);
             bullet.GetComponent<Rigidbody2D>().velocity = direction * 20f;
             Destroy(bullet, 1f);
 
