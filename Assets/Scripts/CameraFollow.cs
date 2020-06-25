@@ -8,6 +8,11 @@ public class CameraFollow : MonoBehaviour
     public Transform leader;
     void FixedUpdate()
     {
+        if (leader != null)
         transform.position = new Vector3(leader.position.x, leader.position.y, transform.position.z);
     }
+    public void setTarget(Transform target)
+     {
+         leader = target;
+     }
 }
