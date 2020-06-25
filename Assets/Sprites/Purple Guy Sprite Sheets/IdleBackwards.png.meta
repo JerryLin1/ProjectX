@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 33be40848a660e042816b7b9c7ee80fa
+guid: 720af8093d4efc0448585bd3bc528807
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4723107735738678597
-    second: Idle_0
+      213: -852296360917824151
+    second: IdleBackwards_0
   - first:
-      213: -7385789195546760866
-    second: Idle_1
+      213: -2853541260494863281
+    second: IdleBackwards_1
   - first:
-      213: 3234629978573100161
-    second: Idle_2
+      213: -1450342462869307746
+    second: IdleBackwards_2
   - first:
-      213: 6373048116405451881
-    second: Idle_3
+      213: -1490445175127316270
+    second: IdleBackwards_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,7 +111,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: IdleBackwards_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,14 +125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54d7a982679db8140800000000000000
-      internalID: 4723107735738678597
+      spriteID: 96d8224b9f80c24f0800000000000000
+      internalID: -852296360917824151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
+      name: IdleBackwards_1
       rect:
         serializedVersion: 2
         x: 32
@@ -146,14 +146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e596485bbd7608990800000000000000
-      internalID: -7385789195546760866
+      spriteID: f448840a75f2668d0800000000000000
+      internalID: -2853541260494863281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_2
+      name: IdleBackwards_2
       rect:
         serializedVersion: 2
         x: 64
@@ -167,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 184dda4e3d6b3ec20800000000000000
-      internalID: 3234629978573100161
+      spriteID: e9e720ad6395fdbe0800000000000000
+      internalID: -1450342462869307746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_3
+      name: IdleBackwards_3
       rect:
         serializedVersion: 2
         x: 96
@@ -188,8 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96cb1dafe7d917850800000000000000
-      internalID: 6373048116405451881
+      spriteID: 2d8675b8200e05be0800000000000000
+      internalID: -1490445175127316270
       vertices: []
       indices: 
       edges: []
