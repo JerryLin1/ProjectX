@@ -13,7 +13,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
 
     void Start()
     {
-        if (!pv.IsMine) {
+        if (pv.IsMine)
+        {
             Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
         }
     }
@@ -34,7 +35,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
 
     void Move()
     {
-        if (!pv.IsMine)
+        if (pv.IsMine)
         {
             rb.velocity = movement * movementSpeed;
             if (movement.x != 0 || movement.y != 0)
@@ -45,21 +46,20 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
             {
                 animator.SetBool("isMoving", false);
             }
-            if (movement.x > 0)
-            {
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-            }
-            else if (movement.x < 0)
-            {
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
-            }
+        }
+        if (rb.velocity.x > 0)
+        {
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (rb.velocity.x < 0)
+        {
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
-            //stream.SendNext(transform.position);
             stream.SendNext(rb.velocity);
         }
         else if (stream.IsReading)

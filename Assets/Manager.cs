@@ -10,10 +10,11 @@ public class Manager : MonoBehaviour
     private int spawnIndex = 0;
     void Start()
     {
-        
+        SpawnPlayer();
     }
 
     void SpawnPlayer() {
         PhotonNetwork.Instantiate(playerPrefab.name, playerSpawns[spawnIndex].position, playerPrefab.transform.rotation);
+        spawnIndex++;
     }
 }
