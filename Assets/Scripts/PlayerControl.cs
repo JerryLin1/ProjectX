@@ -1,46 +1,70 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using Photon.Pun;
 
-public class PlayerControl : NetworkBehaviour
+public class PlayerControl : MonoBehaviourPun, IPunObservable
 {
     private float movementSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
+    public PhotonView pv;
     Vector2 movement;
 
-    void Update() {
+    void Start()
+    {
+        if (!pv.IsMine) {
+            Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
+        }
+    }
+    void Update()
+    {
         checkInput();
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         Move();
     }
-    void checkInput() {
+    void checkInput()
+    {
         movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical"); 
+        movement.y = Input.GetAxis("Vertical");
     }
-    public override void OnStartLocalPlayer()
-     {
-         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
-     }
-    void Move() {
-        if (isLocalPlayer)
+
+    void Move()
+    {
+        if (!pv.IsMine)
         {
             rb.velocity = movement * movementSpeed;
-            if (movement.x != 0 || movement.y != 0) {
+            if (movement.x != 0 || movement.y != 0)
+            {
                 animator.SetBool("isMoving", true);
             }
-            else {
+            else
+            {
                 animator.SetBool("isMoving", false);
             }
-            if (movement.x > 0) {
+            if (movement.x > 0)
+            {
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
-            else if (movement.x < 0) {
+            else if (movement.x < 0)
+            {
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
             }
+        }
+    }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            //stream.SendNext(transform.position);
+            stream.SendNext(rb.velocity);
+        }
+        else if (stream.IsReading)
+        {
+            rb.velocity = (Vector2)stream.ReceiveNext();
         }
     }
 }
