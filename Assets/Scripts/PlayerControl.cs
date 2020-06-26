@@ -14,6 +14,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
     Vector2 movement;
     Vector3 mousePos;
     bool isAttacking = false;
+    float timer = 0f;
+    float waitTime = 1.25f;
 
     void Start()
     {
@@ -21,7 +23,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
         {
             Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
         }
-        PhotonNetwork.OfflineMode = true;
+
+        PhotonNetwork.OfflineMode = true; // false;
     }
     void Update()
     {
@@ -38,8 +41,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 
-        // If the player is basic attacking:
-        if (pv.IsMine && Input.GetKeyDown(KeyCode.Mouse0))
+        // If the player is basic attacking, set projectiles to travel to mouse location
+        if (pv.IsMine && Input.GetMouseButton(0))
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
@@ -47,6 +50,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
         }
     }
 
+    // Method called on last frame of attack animation
     void finishAttacking()
     {
         animator.SetBool("attacking", false);
@@ -57,6 +61,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
     {
         if (pv.IsMine)
         {
+            // The player can move while they're not attacking
+            // Otherwise, they're forced to stay in position
             if (!isAttacking)
             {
                 rb.velocity = movement * movementSpeed;
@@ -79,21 +85,26 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
     }
     void Shoot()
     {
-        // If the player is basic attacking:
-        if (pv.IsMine && Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            
-            GameObject bullet = (PhotonNetwork.OfflineMode) ? Instantiate(bulletPrefab, transform.position, Quaternion.identity) : PhotonNetwork.Instantiate(bulletPrefab.name, transform.position, Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * 20f;
-            // Below works??
-            Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), bullet.GetComponent<BoxCollider2D>()); 
-            Destroy(bullet, 1f);
+        // If the player is basic attacking, a projectile is released but the attack cooldown starts
+        if (timer == 0) {
+            if (pv.IsMine && Input.GetMouseButton(0))
+            {            
+                GameObject bullet = (PhotonNetwork.OfflineMode) ? Instantiate(bulletPrefab, transform.position, Quaternion.identity) : PhotonNetwork.Instantiate(bulletPrefab.name, transform.position, Quaternion.identity);
+                Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), bullet.GetComponent<CapsuleCollider2D>()); 
+                bullet.GetComponent<Rigidbody2D>().velocity = direction * 20f;
+                Destroy(bullet, 1f);
 
-            animator.SetBool("attacking", true);
-            isAttacking = true;
-            transform.localRotation = (mousePos.x >= transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-
+                animator.SetBool("attacking", true);
+                isAttacking = true;
+                transform.localRotation = (mousePos.x >= transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+                timer = 0.01f;
+            }
+        } else if (timer > waitTime) {
+            timer = 0;
+        } else {
+            timer += Time.deltaTime;
         }
+        
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
