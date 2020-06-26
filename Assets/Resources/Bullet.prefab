@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 6735374000221168922}
   - component: {fileID: 5233462339242622416}
   - component: {fileID: 1155813504334032001}
-  - component: {fileID: 1017735927245949843}
   - component: {fileID: 7755566079822276656}
   - component: {fileID: 7998562259228983253}
   - component: {fileID: 5552589375518980641}
+  - component: {fileID: 6434332578381124997}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -121,32 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5233462339242622416}
---- !u!61 &1017735927245949843
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6900850651305379917}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.030275404, y: -0.028494567}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.31257057, y: 0.30900896}
-  m_EdgeRadius: 0
 --- !u!114 &7755566079822276656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,3 +194,19 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!70 &6434332578381124997
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6900850651305379917}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.03385, y: -0.91}
+  m_Size: {x: 0.3753, y: 0.239}
+  m_Direction: 1
