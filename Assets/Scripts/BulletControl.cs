@@ -8,7 +8,7 @@ public class BulletControl : MonoBehaviourPun, IPunObservable
     public Rigidbody2D rb;
     void Update()
     {
-        Physics2D.IgnoreLayerCollision(9,8);
+        
     }
 
     

@@ -85,6 +85,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
             
             GameObject bullet = (PhotonNetwork.OfflineMode) ? Instantiate(bulletPrefab, transform.position, Quaternion.identity) : PhotonNetwork.Instantiate(bulletPrefab.name, transform.position, Quaternion.identity);
             bullet.GetComponent<Rigidbody2D>().velocity = direction * 20f;
+            // Below works??
+            Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), bullet.GetComponent<BoxCollider2D>()); 
             Destroy(bullet, 1f);
 
             animator.SetBool("attacking", true);
