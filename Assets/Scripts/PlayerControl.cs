@@ -26,7 +26,7 @@ public class PlayerControl : MonoBehaviour
     {
         entityScript.Move(movement);
     }
-    void checkInput()
+    public void checkInput()
     {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
