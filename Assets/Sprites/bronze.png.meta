@@ -15,18 +15,6 @@ TextureImporter:
       213: -7427065870603254005
     second: bronze_3
   - first:
-      213: -8621251259519579238
-    second: bronze_0
-  - first:
-      213: 4514862136489722582
-    second: bronze_1
-  - first:
-      213: -3347876194110466058
-    second: bronze_2
-  - first:
-      213: -5689939244798072584
-    second: bronze_3
-  - first:
       213: -8700832849463472278
     second: bronze_4
   - first:
@@ -50,6 +38,18 @@ TextureImporter:
   - first:
       213: -5107582934752367915
     second: bronze_11
+  - first:
+      213: -3216717100358122318
+    second: bronze_12
+  - first:
+      213: 3525716617071953501
+    second: bronze_13
+  - first:
+      213: -254004749977639724
+    second: bronze_14
+  - first:
+      213: -384775634871722065
+    second: bronze_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9b42f428a92b5880800000000000000
-      internalID: -8621251259519579238
+      spriteID: 1c5aee0cfe9a67490800000000000000
+      internalID: -7748819261645216319
       vertices: []
       indices: 
       edges: []
@@ -182,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d2c45f313308ae30800000000000000
-      internalID: 4514862136489722582
+      spriteID: fb6eba961989f3b30800000000000000
+      internalID: 4269298722081072831
       vertices: []
       indices: 
       edges: []
@@ -203,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f71f0ad654f981d0800000000000000
-      internalID: -3347876194110466058
+      spriteID: cfa046ce564f99e80800000000000000
+      internalID: -8171231330292200708
       vertices: []
       indices: 
       edges: []
@@ -224,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f8a14847664901b0800000000000000
-      internalID: -5689939244798072584
+      spriteID: b070443e0f2cde890800000000000000
+      internalID: -7427065870603254005
       vertices: []
       indices: 
       edges: []
@@ -394,6 +394,90 @@ TextureImporter:
       bones: []
       spriteID: 5daec39c1683e19b0800000000000000
       internalID: -5107582934752367915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b4ca3217dceb53d0800000000000000
+      internalID: -3216717100358122318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d56044b459cdde030800000000000000
+      internalID: 3525716617071953501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d422529608997cf0800000000000000
+      internalID: -254004749977639724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze_15
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fafde35499009aaf0800000000000000
+      internalID: -384775634871722065
       vertices: []
       indices: 
       edges: []

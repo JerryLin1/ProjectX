@@ -22,7 +22,7 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         checkInput();
-        Shoot();
+        // Shoot();
     }
 
     void FixedUpdate()
@@ -58,12 +58,9 @@ public class PlayerControl : MonoBehaviour
         if (!isAttacking)
         {
             rb.velocity = movement * movementSpeed;
-            animator.SetBool("horizontal", (movement.x != 0 && movement.y == 0) ? true : false);
-            animator.SetInteger("idle", (movement.x != 0 && movement.y == 0) ? 0 : animator.GetInteger("idle"));
             animator.SetBool("up", (movement.y > 0) ? true : false);
-            animator.SetInteger("idle", (movement.y > 0) ? 1 : animator.GetInteger("idle"));
-            animator.SetBool("down", (movement.y < 0) ? true : false);
-            animator.SetInteger("idle", (movement.y < 0) ? -1 : animator.GetInteger("idle"));
+            animator.SetBool("down", (movement.y < 0 || (movement.y == 0 && movement.x != 0)) ? true : false);
+            animator.SetBool("idleForward", (movement.y <= 0) ? true : false);
         }
         else
         {
