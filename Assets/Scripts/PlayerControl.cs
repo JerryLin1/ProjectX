@@ -6,7 +6,7 @@ public class PlayerControl : MonoBehaviour
 {
     private float movementSpeed = 5f;
     public Rigidbody2D rb;
-    public Animator animator;
+    Animator animator;
     Vector2 direction;
     Vector2 movement;
     Vector3 mousePos;
@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
+        animator = gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<Animator>();
     }
     void Update()
     {

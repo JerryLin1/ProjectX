@@ -13,7 +13,7 @@ public class abl_Bullet : Ability
         bullet.GetComponent<Rigidbody2D>().velocity = direction * 20f;
         Destroy(bullet, 1f);
 
-        parent.GetComponent<Animator>().SetTrigger("shoot");
+        animator.SetTrigger("shoot");
         parent.GetComponent<Transform>().localRotation = (mousePos.x >= transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         goOnCooldown();
     }

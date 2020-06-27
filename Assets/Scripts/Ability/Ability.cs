@@ -7,9 +7,11 @@ public abstract class Ability : MonoBehaviour
     protected abstract float cooldown {get;}
     protected float currentCooldown = 0f;
     protected Transform parent;
+    protected Animator animator;
     void Start()
     {
         parent = gameObject.transform.parent;
+        animator = parent.transform.GetChild(1).transform.GetChild(0).GetComponent<Animator>();
     }
     public abstract void Cast(Vector3 mousePos, Vector2 direction);
     public virtual void goOnCooldown()
