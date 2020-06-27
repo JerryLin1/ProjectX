@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerControl : Entity
 {
-    Entity entityScript;
-    Animator animator;
+    protected override float maxHP { get { return 100f; } }
+    protected override float movementSpeed { get { return 8f; } }
     Vector2 direction;
     Vector2 movement;
     Vector3 mousePos;
 
-    void Start()
+    public override void customStart()
     {
         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
-        entityScript = gameObject.GetComponent<ent_player>();
-        animator = gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<Animator>();
     }
-    void Update()
+    public override void Update()
     {
         checkInput();
         faceCursorWhileIdle();
@@ -24,7 +22,7 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        entityScript.Move(movement);
+        Move(movement);
     }
     public void checkInput()
     {

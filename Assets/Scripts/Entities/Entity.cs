@@ -17,15 +17,10 @@ public abstract class Entity : MonoBehaviour
         currentHP = maxHP;
         animator = gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        customStart();
     }
-
-    public virtual void Update()
-    {
-        
-    }
-    public virtual void FixedUpdate() {
-        Move(movement);
-    }
+    public virtual void customStart(){}
+    public virtual void Update(){}
     public virtual void Move(Vector2 movement)
     {
         if (movement.y != 0) lastVelocity = movement.y;
