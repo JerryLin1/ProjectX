@@ -5,11 +5,9 @@ using UnityEngine;
 public class abl_Bullet : Ability
 {
     public GameObject bulletPrefab;
-    //???????????????????//
-    protected float cooldown { set {cooldown = 1.25f;}  }
+    protected override float cooldown { get { return 1.25f; } }
     public override void Cast(Vector3 mousePos, Vector2 direction)
     {
-        Debug.Log(cooldown);
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         Physics2D.IgnoreCollision(parent.GetComponent<BoxCollider2D>(), bullet.GetComponent<CapsuleCollider2D>());
         bullet.GetComponent<Rigidbody2D>().velocity = direction * 20f;
