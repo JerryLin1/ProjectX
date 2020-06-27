@@ -7,7 +7,6 @@ public class PlayerControl : Entity
     protected override float maxHP { get { return 100f; } }
     protected override float movementSpeed { get { return 8f; } }
     Vector2 direction;
-    Vector2 movement;
     Vector3 mousePos;
 
     public override void customStart()
