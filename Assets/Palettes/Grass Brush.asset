@@ -95,12 +95,12 @@ MonoBehaviour:
   randomTileSetSize: {x: 1, y: 1, z: 1}
   randomTileSets:
   - randomTiles:
-    - {fileID: 11400000, guid: b768906354db811479ab9c4cea6b013a, type: 2}
+    - {fileID: 11400000, guid: 5a6e839a3c13e6844962c8f1eb8b52cf, type: 2}
   - randomTiles:
-    - {fileID: 11400000, guid: 747d5586a1c111448b7b50be709ddeb0, type: 2}
+    - {fileID: 11400000, guid: 432214d6f5e75c84a8db40a5a08441a2, type: 2}
   - randomTiles:
-    - {fileID: 11400000, guid: 2869d157c82af91478656f3be503d1d6, type: 2}
+    - {fileID: 11400000, guid: 956a4bdb4546e984f900afa5e3e8abb7, type: 2}
   - randomTiles:
-    - {fileID: 11400000, guid: 45476a56000c9964988037cee56ce8d2, type: 2}
-  pickRandomTiles: 1
+    - {fileID: 11400000, guid: 889d07b169fcef643a6bc534a4a69971, type: 2}
+  pickRandomTiles: 0
   addToRandomTiles: 0
