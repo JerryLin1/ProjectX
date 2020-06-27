@@ -1,0 +1,40 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class Entity : MonoBehaviour
+{
+    protected abstract float maxHP { get; }
+    protected float currentHP;
+    protected abstract float movementSpeed { get; }
+    public Rigidbody2D rb;
+
+    protected Animator animator;
+    public Vector2 movement;
+    protected float lastVelocity = 0;
+    public virtual void Start()
+    {
+        currentHP = maxHP;
+        animator = gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<Animator>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    public virtual void Update()
+    {
+        
+    }
+    public virtual void FixedUpdate() {
+        Move(movement);
+    }
+    public virtual void Move(Vector2 movement)
+    {
+        if (movement.y != 0) lastVelocity = movement.y;
+        rb.velocity = movement * movementSpeed;
+        animator.SetBool("up", (movement.y > 0) ? true : false);
+        animator.SetBool("down", (movement.y < 0 || (movement.y == 0 && movement.x != 0)) ? true : false);
+        animator.SetBool("idleForward", (lastVelocity < 0) ? true : false);
+
+        // Rotate entity while moving
+        if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+    }
+}

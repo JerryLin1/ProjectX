@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    private float movementSpeed = 5f;
-    public Rigidbody2D rb;
+    Entity entityScript;
     Animator animator;
     Vector2 direction;
     Vector2 movement;
     Vector3 mousePos;
-    float lastVelocity = 0;
 
     void Start()
     {
         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
+        entityScript = gameObject.GetComponent<ent_player>();
         animator = gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<Animator>();
     }
     void Update()
     {
         checkInput();
+        faceCursorWhileIdle();
     }
 
     void FixedUpdate()
     {
-        Move();
+        entityScript.Move(movement);
     }
     void checkInput()
     {
@@ -38,18 +38,8 @@ public class PlayerControl : MonoBehaviour
         direction.Normalize();
     }
 
-    void Move()
+    void faceCursorWhileIdle()
     {
-        if (movement.y != 0) lastVelocity = movement.y; 
-        
-        rb.velocity = movement * movementSpeed;
-        animator.SetBool("up", (movement.y > 0) ? true : false);
-        animator.SetBool("down", (movement.y < 0 || (movement.y == 0 && movement.x != 0)) ? true : false);
-        animator.SetBool("idleForward", (lastVelocity < 0) ? true : false);
-
-        // Rotate player while moving
-        if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-
         // Rotate player while idle
         if (movement.y == 0 && movement.x == 0) {
             animator.SetBool("idleForward", (direction.y < 0) ? true : false);
