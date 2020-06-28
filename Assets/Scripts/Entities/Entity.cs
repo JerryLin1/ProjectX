@@ -6,7 +6,7 @@ public abstract class Entity : MonoBehaviour
 {
     protected abstract float maxHP { get; }
     protected float currentHP;
-    protected abstract float movementSpeed { get; }
+    protected abstract float movementSpeed { get;}
     public Rigidbody2D rb;
 
     protected Animator animator;
@@ -38,7 +38,8 @@ public abstract class Entity : MonoBehaviour
         animator.SetBool("down", false);
         animator.SetBool("idleForward", false);
         rb.velocity = Vector2.zero;
-        
-
     }
+
+    public virtual float GetMovementSpeed() {return movementSpeed;}
+    public virtual void SetMovementSpeed(float newMovementSpeed) {movementSpeed = newMovementSpeed;}
 }
