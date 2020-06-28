@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerControl : Entity
 {
-    public bool isAttacking = false;
     protected override float maxHP { get { return 100f; } }
     protected override float movementSpeed { get { return 8f; } }
     Vector2 direction;
     Vector3 mousePos;
+    public bool isAttacking;
 
     public override void customStart()
     {
@@ -22,7 +22,9 @@ public class PlayerControl : Entity
 
     void FixedUpdate()
     {
-        if (!isAttacking) Move(movement);    
+        
+        if (!isAttacking) Move(movement);
+        else MeleeAttack();    
     }
     public void checkInput()
     {

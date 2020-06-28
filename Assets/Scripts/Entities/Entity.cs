@@ -32,4 +32,13 @@ public abstract class Entity : MonoBehaviour
         // Rotate entity while moving
         if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
     }
+
+    public virtual void MeleeAttack() {
+        animator.SetBool("up", false);
+        animator.SetBool("down", false);
+        animator.SetBool("idleForward", false);
+        rb.velocity = Vector2.zero;
+        
+
+    }
 }
