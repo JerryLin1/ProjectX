@@ -16,7 +16,7 @@ public class abl_Dash : Ability
             parent.GetComponent<Rigidbody2D>().AddForce(dashDirection * dashSpeed * 5f);
             dashTimer -= Time.deltaTime;
             GameObject ghostInstance = Instantiate(ghostTrail, parent.position, parent.localRotation);
-            ghostInstance.GetComponent<ghostTrail>().setGhostLeaderSr(parent.GetChild(1).transform.GetChild(0).GetComponent<SpriteRenderer>());
+            ghostInstance.GetComponent<ghostTrail>().setGhostLeaderSr(parent.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>());
         }
         else {
             parent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

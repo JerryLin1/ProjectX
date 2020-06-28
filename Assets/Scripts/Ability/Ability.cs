@@ -11,7 +11,7 @@ public abstract class Ability : MonoBehaviour
     void Start()
     {
         parent = gameObject.transform.parent;
-        animator = parent.transform.GetChild(1).transform.GetChild(0).GetComponent<Animator>();
+        animator = parent.transform.GetChild(0).transform.GetChild(0).GetComponent<Animator>();
     }
     public abstract void Cast(Vector3 mousePos, Vector2 direction);
     public virtual void goOnCooldown()

@@ -30,8 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6964452288629647152}
   - {fileID: 6964452290502451514}
+  - {fileID: 6964452288629647152}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,6 +50,7 @@ MonoBehaviour:
   rb: {fileID: 6964452288617674341}
   movement: {x: 0, y: 0}
   isAttacking: 0
+  nearbyItem: {fileID: 0}
 --- !u!50 &6964452288617674341
 Rigidbody2D:
   serializedVersion: 4
@@ -128,7 +129,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6964452288617674343}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6964452288629647155
 MonoBehaviour:
@@ -385,7 +386,7 @@ Transform:
   - {fileID: 6964452288757108735}
   - {fileID: 6964452290220124309}
   m_Father: {fileID: 6964452288617674343}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &6964452290502451493
 SortingGroup:

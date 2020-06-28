@@ -15,7 +15,7 @@ public abstract class Entity : MonoBehaviour
     public virtual void Start()
     {
         currentHP = maxHP;
-        animator = gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<Animator>();
+        animator = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         customStart();
     }
