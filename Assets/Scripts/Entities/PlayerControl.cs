@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : Entity
 {
+    public bool isAttacking = false;
     protected override float maxHP { get { return 100f; } }
     protected override float movementSpeed { get { return 8f; } }
     Vector2 direction;
@@ -21,14 +22,14 @@ public class PlayerControl : Entity
 
     void FixedUpdate()
     {
-        Move(movement);
+        if (!isAttacking) Move(movement);    
     }
     public void checkInput()
     {
+
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
-
-        // If the player is basic attacking, set projectiles to travel to mouse location
+        
     
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
