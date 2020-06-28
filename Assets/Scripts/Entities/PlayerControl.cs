@@ -7,8 +7,10 @@ public class PlayerControl : Entity
     public bool isAttacking = false;
     protected override float maxHP { get { return 100f; } }
     protected override float movementSpeed { get { return 8f; } }
+    ArrayList inventory = new ArrayList();
     Vector2 direction;
     Vector3 mousePos;
+    public Item nearbyItem;
 
     public override void customStart()
     {
@@ -43,5 +45,22 @@ public class PlayerControl : Entity
             animator.SetBool("idleForward", (direction.y < 0) ? true : false);
             transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         }
+    }
+
+    public void inventoryPickup(Item item) {
+        inventory.Add(item);
+        item.onPickUpEffect(this);
+    }
+    public void inventoryTriggerPassiveItems() {
+        // TODO: Constantly active items. I.E. Leave fire trail behind you
+    }
+    public void inventoryTriggerOnDamagedItems() {
+        // TODO: Activated when player loses health. I.E. Create explosion
+    }
+    public void inventoryTriggerOnHitItems() {
+        // TODO: Activated when player hits something. I.E. Poison target
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+       nearbyItem = other.GetComponent<Item>();
     }
 }
