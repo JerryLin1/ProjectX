@@ -488,9 +488,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 245159974, guid: f7e75bc8e3a97bb4a81c52c616d6a27a, type: 3}
+      propertyPath: abilities.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 245159974, guid: f7e75bc8e3a97bb4a81c52c616d6a27a, type: 3}
       propertyPath: abilities.Array.data[0]
       value: 
       objectReference: {fileID: 1864526884}
+    - target: {fileID: 245159974, guid: f7e75bc8e3a97bb4a81c52c616d6a27a, type: 3}
+      propertyPath: abilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 1864526883}
     - target: {fileID: 550403877, guid: f7e75bc8e3a97bb4a81c52c616d6a27a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -4473,6 +4481,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 442712421}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1864526883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864526882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662f020539377d04292f6443ad446eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostTrail: {fileID: 2898760417849669030, guid: 446380d459961dd4d95ce7f6e2029eee,
+    type: 3}
 --- !u!114 &1864526884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4485,8 +4507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ddd3a884a2d6aa49a66ab62b5819fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCrescent: {fileID: 6900850651305379917, guid: 9ca20896ad9b8e14e98e1d7cdadb626d,
-    type: 3}
 --- !u!1 &1921690622
 GameObject:
   m_ObjectHideFlags: 0

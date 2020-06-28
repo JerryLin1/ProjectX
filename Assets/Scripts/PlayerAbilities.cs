@@ -28,6 +28,10 @@ public class PlayerAbilities : MonoBehaviour
         {
             abilities[0].Cast(mousePos, direction);
         }
+        if (Input.GetMouseButton(1) && !abilities[1].onCooldown())
+        {
+            abilities[1].Cast(mousePos, direction);
+        }
     }
     
 }
