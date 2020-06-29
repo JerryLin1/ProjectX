@@ -8,7 +8,7 @@ public class PlayerControl : Entity
     Vector2 direction;
     Vector3 mousePos;
     public bool isAttacking;
-    public Item nearbyItem;
+    public GameObject nearbyItem;
 
     public override void customStart()
     {
@@ -55,10 +55,10 @@ public class PlayerControl : Entity
         }
     }
 
-    public void inventoryPickup(Item item)
+    public void inventoryPickup(GameObject item)
     {
         inventory.Add(item);
-        item.onPickUpEffect(this);
+        item.GetComponent<Item>().onPickUpEffect(this);
     }
     public void inventoryTriggerPassiveItems()
     {
@@ -78,7 +78,7 @@ public class PlayerControl : Entity
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        nearbyItem = other.GetComponent<Item>();
+        nearbyItem = other.gameObject;
     }
     private void OnTriggerExit2D(Collider2D other)
     {
