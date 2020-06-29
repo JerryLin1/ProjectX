@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerControl : Entity
 {
     protected override float maxHP { get { return 100f; } }
-    protected override float movementSpeed { get { return 8f; } set {movementSpeed = 8f;} }
     ArrayList inventory = new ArrayList();
     Vector2 direction;
     Vector3 mousePos;
@@ -14,6 +13,7 @@ public class PlayerControl : Entity
 
     public override void customStart()
     {
+        movementSpeed = 8f;
         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
     }
     public override void Update()
@@ -24,13 +24,11 @@ public class PlayerControl : Entity
 
     void FixedUpdate()
     {
-
         if (!isAttacking) Move(movement);
         else MeleeAttack();
     }
     public void checkInput()
     {
-
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 

@@ -8,5 +8,6 @@ public class itm_feather : Item
     private float movementSpeedMultiplier = 2f;
     public override void onPickUpEffect(Entity control) {
         control.SetMovementSpeed(control.GetMovementSpeed() * movementSpeedMultiplier);
+        
     }
 }

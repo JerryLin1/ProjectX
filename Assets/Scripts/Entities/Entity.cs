@@ -6,7 +6,7 @@ public abstract class Entity : MonoBehaviour
 {
     protected abstract float maxHP { get; }
     protected float currentHP;
-    protected abstract float movementSpeed { get; set;}
+    protected float movementSpeed;
     public Rigidbody2D rb;
 
     protected Animator animator;
