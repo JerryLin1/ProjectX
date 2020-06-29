@@ -260,6 +260,12 @@ TextureImporter:
   - first:
       213: 2888152922218676344
     second: AnimationsTest_30
+  - first:
+      213: -2553805696046424373
+    second: AnimationsTest_31
+  - first:
+      213: -1532829420475812433
+    second: AnimationsTest_32
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1034,8 +1040,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4e152eac1f7d4240800000000000000
-      internalID: 4777614540867444300
+      spriteID: bce98c5004f0f8cd0800000000000000
+      internalID: -2553805696046424373
       vertices: []
       indices: 
       edges: []
@@ -1055,8 +1061,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8abb9348b36bff60800000000000000
-      internalID: 8069152800423787146
+      spriteID: fa5754b63cb4abae0800000000000000
+      internalID: -1532829420475812433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationsTest_33
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 32
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e8b1e06c5cdb0590800000000000000
+      internalID: -7706824047993964315
       vertices: []
       indices: 
       edges: []
