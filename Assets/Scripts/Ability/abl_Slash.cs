@@ -9,6 +9,7 @@ public class abl_Slash : Ability
     public override void Cast(Vector3 mousePos, Vector2 direction)
     {
         GameObject crescent = Instantiate(crescentPrefab, parent.transform.position, Quaternion.identity);
+        Physics2D.IgnoreCollision(crescent.GetComponent<PolygonCollider2D>(), parent.GetComponent<BoxCollider2D>());
         if (mousePos.x > parent.transform.position.x) crescent.transform.localScale = new Vector2(crescent.transform.localScale.x * -1, crescent.transform.localScale.y);
         crescent.GetComponent<Rigidbody2D>().AddForce(direction*500f);
         crescent.transform.up = direction;
