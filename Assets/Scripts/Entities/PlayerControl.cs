@@ -48,7 +48,7 @@ public class PlayerControl : Entity
     void faceCursorWhileIdle()
     {
         // Rotate player while idle
-        if (movement.y == 0 && movement.x == 0)
+        if (movement.y == 0 && movement.x == 0 && !isAttacking)
         {
             animator.SetBool("idleForward", (direction.y < 0) ? true : false);
             transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
