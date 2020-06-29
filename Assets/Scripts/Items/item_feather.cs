@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class itm_feather : Item
+public class item_feather : Item
 {
     private float movementSpeedMultiplier = 1.2f;
     public void Start() {

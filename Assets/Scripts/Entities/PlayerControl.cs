@@ -80,5 +80,8 @@ public class PlayerControl : Entity
     {
         nearbyItem = other.GetComponent<Item>();
     }
-    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        nearbyItem = null;
+    }
 }
