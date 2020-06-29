@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : Entity
 {
@@ -9,6 +10,8 @@ public class PlayerControl : Entity
     Vector3 mousePos;
     public bool isAttacking;
     public GameObject nearbyItem;
+    public GameObject HUD;
+    public GameObject slotPrefab;
 
     public override void customStart()
     {
@@ -43,6 +46,14 @@ public class PlayerControl : Entity
             inventoryPickup(nearbyItem);
             Destroy(nearbyItem.gameObject);
         }
+
+        // Open inventory HUD
+        if (Input.GetKey(KeyCode.Tab)) {
+            HUD.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else {
+            HUD.transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 
     void faceCursorWhileIdle()
@@ -57,6 +68,11 @@ public class PlayerControl : Entity
 
     public void inventoryPickup(GameObject item)
     {
+        GameObject slot = Instantiate(slotPrefab);
+        slot.transform.GetChild(0).GetComponent<Image>().sprite = item.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite; 
+        slot.transform.SetParent(HUD.transform.GetChild(0));
+        slot.GetComponent<RectTransform>().localPosition = new Vector3(inventory.Count * 60 - 400, -30, 0);
+        slot.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         inventory.Add(item);
         item.GetComponent<Item>().onPickUpEffect(this);
     }
