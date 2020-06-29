@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2839488675869343187}
   - component: {fileID: 4554477561501850712}
   - component: {fileID: 4480733955110138105}
-  - component: {fileID: 6231474821058809630}
+  - component: {fileID: 8027323194650682208}
+  - component: {fileID: 737511742085262903}
   m_Layer: 0
   m_Name: blinkDaggerProjectile
   m_TagString: Untagged
@@ -105,8 +106,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &6231474821058809630
-PolygonCollider2D:
+--- !u!61 &8027323194650682208
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,7 +119,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.02438891, y: 0.016884685}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -128,17 +129,18 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.23306108, y: 0.013023376}
-      - {x: -0.21352577, y: -0.024750113}
-      - {x: -0.22654915, y: -0.059882402}
-      - {x: -0.165452, y: -0.10958648}
-      - {x: -0.09244132, y: -0.09763348}
-      - {x: 0.03600931, y: -0.10059631}
-      - {x: 0.06379819, y: -0.12368059}
-      - {x: 0.08329058, y: -0.00259614}
-      - {x: 0.08720541, y: 0.03123939}
-      - {x: 0.118233204, y: 0.049595}
-      - {x: 0.041666746, y: 0.06899023}
-      - {x: -0.15623903, y: 0.06639409}
+  serializedVersion: 2
+  m_Size: {x: 0.20829463, y: 0.3583808}
+  m_EdgeRadius: 0
+--- !u!114 &737511742085262903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2919314894000660769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21f23b478bb9374bb56da22affc5fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
