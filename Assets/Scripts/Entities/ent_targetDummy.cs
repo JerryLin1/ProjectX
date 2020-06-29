@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ent_targetDummy : Entity
 {
-    protected override float maxHP { get { return 10000f; } }
-    void Start() {
+    public override void customStart() {
+        maxHP = 10000f;
         movementSpeed = 0f;
     }
 }

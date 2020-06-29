@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerControl : Entity
 {
-    protected override float maxHP { get { return 100f; } }
     ArrayList inventory = new ArrayList();
     Vector2 direction;
     Vector3 mousePos;
@@ -14,6 +13,7 @@ public class PlayerControl : Entity
     public override void customStart()
     {
         movementSpeed = 8f;
+        maxHP = 100f;
         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
     }
     public override void Update()
@@ -41,7 +41,7 @@ public class PlayerControl : Entity
         if (Input.GetKey(KeyCode.E) && nearbyItem != null)
         {
             inventoryPickup(nearbyItem);
-            Destroy(nearbyItem);
+            Destroy(nearbyItem.gameObject);
         }
     }
 
@@ -70,10 +70,15 @@ public class PlayerControl : Entity
     }
     public void inventoryTriggerOnHitItems()
     {
-        // TODO: Activated when player hits something. I.E. Poison target
+        // TODO: Activated when player deals damage. I.E. Poison target
+    }
+    public void inventoryTriggerOnAbilityItems()
+    {
+        // TODO: Activated when player uses any ability. I.E. Send out bullets when dashing
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         nearbyItem = other.GetComponent<Item>();
     }
+    
 }

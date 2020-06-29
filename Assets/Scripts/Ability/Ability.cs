@@ -16,7 +16,7 @@ public abstract class Ability : MonoBehaviour
     public abstract void Cast(Vector3 mousePos, Vector2 direction);
     public virtual void goOnCooldown()
     {
-        currentCooldown = cooldown;
+        currentCooldown = cooldown * parent.GetComponent<Entity>().GetCooldownFactor();
     }
     public virtual void decreaseCooldown()
     {

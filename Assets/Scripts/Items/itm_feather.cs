@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class itm_feather : Item
 {
-    public override int tier { get { return 3; } }
-    private float movementSpeedMultiplier = 2f;
+    private float movementSpeedMultiplier = 1.2f;
+    public void Start() {
+        tier = 3;
+    }
     public override void onPickUpEffect(Entity control) {
         control.SetMovementSpeed(control.GetMovementSpeed() * movementSpeedMultiplier);
-        
     }
 }
