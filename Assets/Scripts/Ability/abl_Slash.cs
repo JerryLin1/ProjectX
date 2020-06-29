@@ -8,12 +8,11 @@ public class abl_Slash : Ability
     public GameObject crescentPrefab;
     public override void Cast(Vector3 mousePos, Vector2 direction)
     {
-        GameObject crescent = Instantiate(crescentPrefab, parent.transform.position, parent.localRotation);
-        if (mousePos.x > parent.transform.position.x) {
-            crescent.transform.localScale = new Vector2(crescent.transform.localScale.x * -1, crescent.transform.localScale.y);
-        }
+        GameObject crescent = Instantiate(crescentPrefab, parent.transform.position, Quaternion.identity);
+        if (mousePos.x > parent.transform.position.x) crescent.transform.localScale = new Vector2(crescent.transform.localScale.x * -1, crescent.transform.localScale.y);
         crescent.GetComponent<Rigidbody2D>().AddForce(direction*500f);
         crescent.transform.up = direction;
+        
         Destroy(crescent, 0.2f);
 
         animator.SetTrigger("shoot");
