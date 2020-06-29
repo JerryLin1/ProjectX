@@ -7,7 +7,7 @@ public class ghostTrail : MonoBehaviour
     SpriteRenderer ghostLeaderSr;
     SpriteRenderer childSr;
     float timer = 0.5f;
-    float opacity = 0.8f;
+    float opacity = 0.5f;
     float opacityDecrease;
     void Start()
     {

@@ -25,6 +25,14 @@ public class abl_Dash : Ability
     public override void Cast(Vector3 mousePos, Vector2 direction) {
         dashDirection = direction;
         dashTimer = dashTime;
+        dashSpeed = 100f;
         goOnCooldown();
+    }
+
+    public void miniDash(Vector3 mousePos, Vector2 direction) {
+        dashDirection = direction;
+        dashTimer = 0.0125f;
+        dashSpeed = 50f;
+        // goOnCooldown();
     }
 }

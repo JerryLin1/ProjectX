@@ -135,6 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2898760417849669028}
   - component: {fileID: 2898760417849669031}
+  - component: {fileID: -2222756482103368917}
   m_Layer: 0
   m_Name: ghostTrail
   m_TagString: Untagged
@@ -169,3 +170,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93334adc8069c8c4ab23692e19940b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &-2222756482103368917
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2898760417849669030}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
