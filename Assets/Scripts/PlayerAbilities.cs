@@ -27,7 +27,8 @@ public class PlayerAbilities : MonoBehaviour
         if (Input.GetMouseButton(0) && !abilities[0].onCooldown())
         {
             abilities[0].Cast(mousePos, direction);
-        }
+        } 
+
         if (Input.GetMouseButton(1) && !abilities[1].onCooldown())
         {
             abilities[1].Cast(mousePos, direction);
