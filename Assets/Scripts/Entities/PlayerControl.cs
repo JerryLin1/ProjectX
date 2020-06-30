@@ -11,8 +11,7 @@ public class PlayerControl : Entity
     Vector3 mousePos;
     public bool isAttacking;
     public GameObject nearbyItem;
-    public GameObject HUD;
-    public GameObject slotPrefab;
+    public hudControl hudControl;
 
     public override void customStart()
     {
@@ -49,11 +48,12 @@ public class PlayerControl : Entity
         }
 
         // Open inventory HUD
-        if (Input.GetKey(KeyCode.Tab)) {
-            HUD.transform.GetChild(0).gameObject.SetActive(true);
-        }
-        else {
-            HUD.transform.GetChild(0).gameObject.SetActive(false);
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (hudControl.isInventoryOpen())
+                hudControl.closeInventory();
+            else
+                hudControl.openInventory();
         }
     }
 
@@ -69,17 +69,7 @@ public class PlayerControl : Entity
 
     public void inventoryPickup(GameObject item)
     {
-        GameObject slot = Instantiate(slotPrefab);
-        slot.transform.GetChild(0).GetComponent<Image>().sprite = item.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite; 
-        slot.transform.SetParent(HUD.transform.GetChild(0));
-        slot.GetComponent<RectTransform>().localPosition = nextSlotPos;
-        slot.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        
-        nextSlotPos.x += 50;
-        if (nextSlotPos.x > 800-400) {
-            nextSlotPos.y -= 50;
-            nextSlotPos.x = -400;
-        }
+        hudControl.addItem(item);
 
         inventory.Add(item);
         item.GetComponent<Item>().onPickUpEffect(this);
