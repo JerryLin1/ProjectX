@@ -15,8 +15,15 @@ public class inAttack : MonoBehaviour
     }
 
     // Specific methods for rogue players
-
     public void rogue_miniDash() {
-        transform.root.GetChild(1).GetComponent<abl_Slash>().miniDash = true;
+        transform.root.GetChild(1).GetComponent<abl_Slash>().miniDash();
     }
+
+    public void rogue_cancelAttack() {
+        if (!Input.GetMouseButton(0)) {
+            transform.root.GetComponent<PlayerControl>().isAttacking = false;
+            transform.GetComponent<Animator>().SetBool("idleForward",true);
+        }
+    }
+
 }
