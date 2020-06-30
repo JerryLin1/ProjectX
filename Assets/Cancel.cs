@@ -13,10 +13,13 @@ public class Cancel : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (!Input.GetMouseButton(0)) {
-            animator.transform.root.GetComponent<PlayerControl>().isAttacking = false;
-            animator.Rebind();
+        if (stateInfo.normalizedTime >= 0.25f) {
+            if (!Input.GetMouseButton(0)) {
+                animator.transform.root.GetComponent<PlayerControl>().isAttacking = false;
+                animator.Rebind();
+            }
         }
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
