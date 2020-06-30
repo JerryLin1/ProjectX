@@ -12,7 +12,6 @@ public class inAttack : MonoBehaviour
 
     public void onExitAttack() {
         transform.root.GetComponent<PlayerControl>().isAttacking = false;
-        // transform.root.GetChild(1).GetComponent<abl_Slash>().goOnCooldown();
     }
 
     // Specific methods for rogue players

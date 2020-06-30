@@ -16,7 +16,6 @@ public class Cancel : StateMachineBehaviour
         if (!Input.GetMouseButton(0)) {
             animator.transform.root.GetComponent<PlayerControl>().isAttacking = false;
             animator.Rebind();
-            animator.transform.root.GetChild(1).GetComponent<abl_Slash>().goOnCooldown();
         }
     }
 
