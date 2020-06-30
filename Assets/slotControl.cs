@@ -12,7 +12,7 @@ public class slotControl : MonoBehaviour
 
     void Start()
     {
-        tooltip = transform.parent.GetChild(0).gameObject;
+        tooltip = transform.parent.parent.GetChild(1).gameObject;
     }
     public void setItemSprite(Sprite sprite)
     {
