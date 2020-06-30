@@ -7,6 +7,7 @@ public class abl_BlinkDagger : Ability
     // Start is called before the first frame update
     protected override float cooldown { get { return 1.5f; } }
     float reactivationWindow = 5f;
+    bool resetDagger = false;
     public GameObject daggersPrefab;
     GameObject dagger;
 
@@ -20,9 +21,16 @@ public class abl_BlinkDagger : Ability
             reactivationWindow = 5f;
             goOnCooldown();
         } 
+
+        if (resetDagger == true) {
+            parent.position = dagger.transform.position;
+            Destroy(dagger);
+            reactivationWindow = 5f;
+            resetDagger = false;
+            goOnCooldown();
+        }
     }
     public override void Cast(Vector3 mousePos, Vector2 direction) {
-
         if (reactivationWindow == 5f) {
             if (dagger != null) Destroy(dagger);
             dagger = Instantiate(daggersPrefab, parent.position, parent.localRotation);
@@ -33,14 +41,7 @@ public class abl_BlinkDagger : Ability
             animator.SetTrigger("throw");
             parent.GetComponent<Transform>().localRotation = (mousePos.x >= transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         } else {
-            parent.position = dagger.transform.position;
-            Destroy(dagger);
-            reactivationWindow = 5f;
-            goOnCooldown();
+            resetDagger = true;
         }
-        
-        
-
     }
-
 }
