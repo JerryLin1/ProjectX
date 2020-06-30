@@ -7,7 +7,7 @@ public class item_watch : Item
     private float cooldownFactorReduction = 1f;
 
     public void Start() {
-        tier = 3;
+        itemTier = 3;
         itemName = "Pocketwatch";
         itemDesc = "Your abilities come up more often";
     }

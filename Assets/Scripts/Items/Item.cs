@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour
 {
 
-    public int tier;
+    public int itemTier;
     public string itemName;
     public string itemDesc;
     public virtual void onPickUpEffect(Entity control) {}
@@ -13,7 +13,7 @@ public abstract class Item : MonoBehaviour
     public virtual void onDamagedEffect(Entity control) {}
     public virtual void onHitEffect(Entity control) {}
 
-    public virtual Sprite getItemSprite() {
+    public Sprite getItemSprite() {
         return transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite;
     }
 }

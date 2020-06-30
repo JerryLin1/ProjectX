@@ -7,7 +7,7 @@ public class item_ballandchain : Item
     private float movementSpeedMultiplier = 0.5f;
     void Start()
     {
-        tier = -1;
+        itemTier = -1;
         itemName = "Ball and chain";
         itemDesc = "Decreases your movement speed and might do smthing l8r idk";
     }

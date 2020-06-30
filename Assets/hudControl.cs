@@ -19,7 +19,11 @@ public class hudControl : MonoBehaviour
     }
     public void addItem(GameObject item) {
         GameObject slot = Instantiate(slotPrefab);
-        slot.GetComponent<slotControl>().setItemSprite(item.GetComponent<Item>().getItemSprite());
+        slotControl sc = slot.GetComponent<slotControl>();
+        sc.setItemSprite(item.GetComponent<Item>().getItemSprite());
+        sc.setItemName(item.GetComponent<Item>().itemName);
+        sc.setItemDesc(item.GetComponent<Item>().itemDesc);
+        sc.setItemTier(item.GetComponent<Item>().itemTier);
         slot.transform.SetParent(inventoryUI.transform);
         slot.GetComponent<RectTransform>().localPosition = slotOffset;
         slot.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);

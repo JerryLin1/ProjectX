@@ -272,7 +272,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &6671928364343194756
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6671928364344878431}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.6, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -368,6 +368,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   isAttacking: 0
   nearbyItem: {fileID: 0}
+  hudControl: {fileID: 0}
 --- !u!50 &6671928364344878425
 Rigidbody2D:
   serializedVersion: 4
