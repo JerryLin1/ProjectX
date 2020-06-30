@@ -8,6 +8,8 @@ public class item_ballandchain : Item
     void Start()
     {
         tier = -1;
+        itemName = "Ball and chain";
+        itemDesc = "Decreases your movement speed and might do smthing l8r idk";
     }
     public override void onPickUpEffect(Entity control) {
         control.SetMovementSpeed(control.GetMovementSpeed() * movementSpeedMultiplier);
