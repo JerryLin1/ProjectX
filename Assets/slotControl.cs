@@ -23,9 +23,11 @@ public class slotControl : MonoBehaviour
     public void setItemTier(int newItemTier) { itemTier = newItemTier; }
     public void OnMouseOver()
     {
-        tooltip.SetActive(true);
         tooltip.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "<size=20>" + itemName + "</size>" + "\n" + itemDesc;
         tooltip.transform.GetChild(0).position = new Vector2(transform.position.x+1, transform.position.y);
+        tooltip.SetActive(true);
+        tooltip.SetActive(false);
+        tooltip.SetActive(true);
     }
     public void OnMouseExit()
     {
