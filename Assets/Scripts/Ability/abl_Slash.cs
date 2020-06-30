@@ -14,7 +14,6 @@ public class abl_Slash : Ability
 
         animator.SetTrigger("slashing");
         inAttackAnimation = true;
-        parent.GetComponent<Transform>().localRotation = (mousePos.x >= transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
     }
 
     public void miniDash() {
