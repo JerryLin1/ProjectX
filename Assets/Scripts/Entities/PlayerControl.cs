@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerControl : Entity
 {
     ArrayList inventory = new ArrayList();
+    Vector2 nextSlotPos = new Vector3(-400, -30, 0);
     Vector2 direction;
     Vector3 mousePos;
     public bool isAttacking;
@@ -71,8 +72,15 @@ public class PlayerControl : Entity
         GameObject slot = Instantiate(slotPrefab);
         slot.transform.GetChild(0).GetComponent<Image>().sprite = item.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite; 
         slot.transform.SetParent(HUD.transform.GetChild(0));
-        slot.GetComponent<RectTransform>().localPosition = new Vector3(inventory.Count * 60 - 400, -30, 0);
+        slot.GetComponent<RectTransform>().localPosition = nextSlotPos;
         slot.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        
+        nextSlotPos.x += 50;
+        if (nextSlotPos.x > 800-400) {
+            nextSlotPos.y -= 50;
+            nextSlotPos.x = -400;
+        }
+
         inventory.Add(item);
         item.GetComponent<Item>().onPickUpEffect(this);
     }
