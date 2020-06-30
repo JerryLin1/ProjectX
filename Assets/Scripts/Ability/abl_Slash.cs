@@ -11,12 +11,14 @@ public class abl_Slash : Ability
     {
         this.mousePos = mousePos;
         this.direction = direction;
+        
+        
 
         animator.SetTrigger("slashing");
-        inAttackAnimation = true;
     }
 
     public void miniDash() {
         transform.GetComponent<abl_Dash>().miniDash(mousePos, direction);
+        parent.GetComponent<Transform>().localRotation = (mousePos.x >= transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
     }
 }
