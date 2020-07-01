@@ -23,7 +23,8 @@ public class abl_BlinkDagger : Ability
         } 
 
         if (resetDagger == true) {
-            parent.position = dagger.transform.GetChild(0).transform.position;
+            Vector3 newPos = dagger.transform.GetChild(0).transform.position;
+            parent.position = new Vector3(newPos.x, newPos.y+0.6f, newPos.z);
             
             Destroy(dagger);
             reactivationWindow = 5f;
