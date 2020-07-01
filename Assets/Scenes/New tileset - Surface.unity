@@ -4817,11 +4817,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2515113980289444343, guid: 40467a2ee9d2b824f9b30a72506c3885,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6372808887391764584, guid: 40467a2ee9d2b824f9b30a72506c3885,
         type: 3}
       propertyPath: m_Name
@@ -4934,34 +4929,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6372808887391764589, guid: 40467a2ee9d2b824f9b30a72506c3885,
         type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6372808887391764589, guid: 40467a2ee9d2b824f9b30a72506c3885,
-        type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1921690625}
-    - target: {fileID: 6372808887391764589, guid: 40467a2ee9d2b824f9b30a72506c3885,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6372808887391764589, guid: 40467a2ee9d2b824f9b30a72506c3885,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1123397705
-      objectReference: {fileID: 0}
-    - target: {fileID: 6372808888389217932, guid: 40467a2ee9d2b824f9b30a72506c3885,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6372808888389217935, guid: 40467a2ee9d2b824f9b30a72506c3885,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40467a2ee9d2b824f9b30a72506c3885, type: 3}
 --- !u!1001 &6671928362374154164
