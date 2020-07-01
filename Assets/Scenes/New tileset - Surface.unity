@@ -602,7 +602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2593541d7985ee4b9f91d7d8ae5abe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inAttackAnimation: 0
   daggersPrefab: {fileID: 2919314894000660769, guid: 157de52761300f649a0fc4c0fd7c8a4e,
     type: 3}
 --- !u!1 &902883632
@@ -4810,6 +4809,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b8119e82893f2f41a182cbcb4183c24, type: 3}
+--- !u!1001 &3571616684670952013
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3571616685306926144, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_Name
+      value: Gleam Charm Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571616685306926146, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571616685306926146, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571616685306926146, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571616685306926146, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571616685306926146, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571616685306926146, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571616685306926146, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571616685306926146, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571616685306926146, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571616685306926146, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571616685306926146, guid: 34f26bfea87acca4684d32553d206303,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 34f26bfea87acca4684d32553d206303, type: 3}
 --- !u!1001 &6372808887475784969
 PrefabInstance:
   m_ObjectHideFlags: 0

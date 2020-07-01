@@ -23,6 +23,7 @@ public class PlayerControl : Entity
     {
         checkInput();
         faceCursorWhileIdle();
+        inventoryTriggerPassiveItems();
     }
 
     void FixedUpdate()
@@ -44,7 +45,6 @@ public class PlayerControl : Entity
         if (Input.GetKey(KeyCode.E) && nearbyItem != null)
         {
             inventoryPickup(nearbyItem);
-            Destroy(nearbyItem.gameObject);
         }
 
         // Open inventory HUD
@@ -73,10 +73,14 @@ public class PlayerControl : Entity
 
         inventory.Add(item);
         item.GetComponent<Item>().onPickUpEffect(this);
+        item.transform.position = new Vector3(-999999, -999999);
+        item.GetComponent<BoxCollider2D>().enabled = false;
     }
     public void inventoryTriggerPassiveItems()
     {
-        // TODO: Constantly active items. I.E. Leave fire trail behind you
+        foreach (GameObject item in inventory) {
+            item.GetComponent<Item>().passiveEffect(this);
+        }
     }
     public void inventoryTriggerOnDamagedItems()
     {
