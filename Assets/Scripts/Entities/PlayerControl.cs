@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayerControl : Entity
 {
     ArrayList inventory = new ArrayList();
-    Vector2 nextSlotPos = new Vector3(-400, -30, 0);
     Vector2 direction;
     Vector3 mousePos;
     public bool isAttacking;
