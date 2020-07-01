@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class Ability : MonoBehaviour
 {
     protected abstract float cooldown {get;}
-    public bool inAttackAnimation = false;
     protected float currentCooldown = 0f;
     protected Transform parent;
     protected Animator animator;
