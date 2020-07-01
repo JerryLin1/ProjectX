@@ -12,8 +12,6 @@ public class abl_Slash : Ability
         this.mousePos = mousePos;
         this.direction = direction;
         
-        
-
         animator.SetTrigger("slashing");
     }
 

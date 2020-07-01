@@ -23,7 +23,8 @@ public class abl_BlinkDagger : Ability
         } 
 
         if (resetDagger == true) {
-            parent.position = dagger.transform.position;
+            parent.position = dagger.transform.GetChild(0).transform.position;
+            
             Destroy(dagger);
             reactivationWindow = 5f;
             resetDagger = false;
@@ -33,6 +34,7 @@ public class abl_BlinkDagger : Ability
     public override void Cast(Vector3 mousePos, Vector2 direction) {
         if (reactivationWindow == 5f) {
             if (dagger != null) Destroy(dagger);
+            Debug.Log(parent.localRotation);
             dagger = Instantiate(daggersPrefab, parent.position, parent.localRotation);
             dagger.GetComponent<Rigidbody2D>().AddForce(direction * 500f);
             dagger.transform.up = direction;

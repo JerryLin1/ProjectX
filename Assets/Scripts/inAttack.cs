@@ -15,15 +15,16 @@ public class inAttack : MonoBehaviour
     }
 
     // Specific methods for rogue players
-    public void rogue_miniDash() {
-        transform.root.GetChild(1).GetComponent<abl_Slash>().miniDash();
-    }
 
-    // public void rogue_cancelAttack() {
-        // if (!Input.GetMouseButton(0)) {
-        //     transform.root.GetComponent<PlayerControl>().isAttacking = false;
-        //     transform.GetComponent<Animator>().Rebind();
-        // }
-    // }
+    public bool rogue_animationCancel;
+    public void rogue_miniDash() {
+        if (!Input.GetMouseButton(0) || rogue_animationCancel == true) {
+            transform.root.GetComponent<PlayerControl>().isAttacking = false;
+            rogue_animationCancel = false;
+            transform.GetComponent<Animator>().Rebind();
+        } else {
+            transform.root.GetChild(1).GetComponent<abl_Slash>().miniDash();
+        }
+    }
 
 }
