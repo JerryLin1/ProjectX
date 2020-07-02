@@ -10,6 +10,7 @@ public class item_gleamcharm : Item
         itemTier = 2;
         itemName = "Gleam charm";
         itemDesc = "u make ghost!! :0";
+        itemType = "passive";
     }
     public override void passiveEffect(Entity control)
     {

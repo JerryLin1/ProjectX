@@ -8,6 +8,7 @@ public abstract class Item : MonoBehaviour
     public int itemTier;
     public string itemName;
     public string itemDesc;
+    public string itemType;
     public virtual void onPickUpEffect(Entity control) {}
     public virtual void passiveEffect(Entity control) {}
     public virtual void onDamagedEffect(Entity control) {}

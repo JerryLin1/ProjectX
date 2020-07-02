@@ -9,6 +9,7 @@ public class item_feather : Item
         itemTier = 3;
         itemName = "Enchanted feather";
         itemDesc = "Slightly increases movement speed";
+        itemType = "passive";
     }
     public override void onPickUpEffect(Entity control) {
         control.SetMovementSpeed(control.GetMovementSpeed() * movementSpeedMultiplier);

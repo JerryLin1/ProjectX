@@ -8,7 +8,7 @@ public class PlayerControl : Entity
     GameObject[] storage = new GameObject[6];
     GameObject[] activeEquipped = new GameObject[4];
     GameObject[] passiveEquipped = new GameObject[4];
-    GameObject[] consumables = new GameObject[2];
+    GameObject[] consumableEquipped = new GameObject[2];
     Vector2 direction;
     Vector3 mousePos;
     public bool isAttacking;
@@ -43,7 +43,7 @@ public class PlayerControl : Entity
         direction.Normalize();
 
         // Pick up item
-        if (Input.GetKey(KeyCode.E) && nearbyItems[0] != null)
+        if (Input.GetKey(KeyCode.E) && nearbyItems.Count > 0)
         {
             pickupItem(nearbyItems[0]);
         }
@@ -70,17 +70,69 @@ public class PlayerControl : Entity
 
     public void pickupItem(GameObject item)
     {
-        for (int i = 0; i < storage.Length; i++)
+        Item itemScript = item.GetComponent<Item>();
+        bool normalSlotsFull = true;
+        if (itemScript.itemType == "passive")
         {
-            if (storage[i] == null)
+            for (int i = 0; i < passiveEquipped.Length; i++)
             {
-                storage[i] = item;
-                hudControl.addItem(item);
-                item.GetComponent<Item>().onPickUpEffect(this);
-                item.transform.position = new Vector3(-999999, -999999);
-                item.GetComponent<BoxCollider2D>().enabled = false;
+                if (passiveEquipped[i] == null)
+                {
+                    normalSlotsFull = false;
+                    passiveEquipped[i] = item;
+                    hudControl.equipPassiveItem(item, i);
+                    item.transform.position = new Vector3(-999999, -999999);
+                    item.GetComponent<BoxCollider2D>().enabled = false;
+                    break;
+                }
             }
         }
+        else if (itemScript.itemType == "active")
+        {
+            for (int i = 0; i < activeEquipped.Length; i++)
+            {
+                if (activeEquipped[i] == null)
+                {
+                    normalSlotsFull = false;
+                    activeEquipped[i] = item;
+                    hudControl.equipActiveItem(item, i);
+                    item.transform.position = new Vector3(-999999, -999999);
+                    item.GetComponent<BoxCollider2D>().enabled = false;
+                    break;
+                }
+            }
+        }
+        else if (itemScript.itemType == "consumable")
+        {
+            for (int i = 0; i < consumableEquipped.Length; i++)
+            {
+                if (consumableEquipped[i] == null)
+                {
+                    normalSlotsFull = false;
+                    consumableEquipped[i] = item;
+                    hudControl.equipConsumableItem(item, i);
+                    item.transform.position = new Vector3(-999999, -999999);
+                    item.GetComponent<BoxCollider2D>().enabled = false;
+                    break;
+                }
+            }
+        }
+        if (normalSlotsFull)
+        {
+            for (int i = 0; i < storage.Length; i++)
+            {
+                if (storage[i] == null)
+                {
+                    normalSlotsFull = false;
+                    storage[i] = item;
+                    hudControl.addStorageItem(item, i);
+                    item.transform.position = new Vector3(-999999, -999999);
+                    item.GetComponent<BoxCollider2D>().enabled = false;
+                    break;
+                }
+            }
+        }
+        if (normalSlotsFull) Debug.Log("You have no room for that item");
     }
     public void inventoryTriggerPassiveItems()
     {

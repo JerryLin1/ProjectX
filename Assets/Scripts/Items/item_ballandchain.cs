@@ -10,6 +10,7 @@ public class item_ballandchain : Item
         itemTier = -1;
         itemName = "Ball and chain";
         itemDesc = "Decreases your movement speed and might do smthing l8r idk";
+        itemType = "passive";
     }
     public override void onPickUpEffect(Entity control) {
         control.SetMovementSpeed(control.GetMovementSpeed() * movementSpeedMultiplier);

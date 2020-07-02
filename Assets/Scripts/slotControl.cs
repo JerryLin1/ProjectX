@@ -12,7 +12,7 @@ public class slotControl : MonoBehaviour
 
     void Start()
     {
-        tooltip = transform.parent.parent.GetChild(1).gameObject;
+        tooltip = transform.parent.parent.parent.parent.GetChild(2).gameObject;
     }
     public void setItemSprite(Sprite sprite)
     {
@@ -21,20 +21,20 @@ public class slotControl : MonoBehaviour
     public void setItemName(string newItemName) { itemName = newItemName; }
     public void setItemDesc(string newItemDesc) { itemDesc = newItemDesc; }
     public void setItemTier(int newItemTier) { itemTier = newItemTier; }
-    public void OnMouseOver()
-    {
-        tooltip.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "<size=20>" + itemName + "</size>" + "\n" + itemDesc;
-        tooltip.transform.GetChild(0).position = new Vector2(transform.position.x+1, transform.position.y);
-        tooltip.SetActive(true);
-        tooltip.SetActive(false);
-        tooltip.SetActive(true);
-    }
-    public void OnMouseExit()
-    {
-        tooltip.SetActive(false);
-    }
-    public void OnDisable() {
-        if (tooltip != null)
-            tooltip.SetActive(false);
-    }
+    // public void OnMouseOver()
+    // {
+    //     tooltip.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "<size=20>" + itemName + "</size>" + "\n" + itemDesc;
+    //     tooltip.transform.GetChild(0).position = new Vector2(transform.position.x+1, transform.position.y);
+    //     tooltip.SetActive(true);
+    //     tooltip.SetActive(false);
+    //     tooltip.SetActive(true);
+    // }
+    // public void OnMouseExit()
+    // {
+    //     tooltip.SetActive(false);
+    // }
+    // public void OnDisable() {
+    //     if (tooltip != null)
+    //         tooltip.SetActive(false);
+    // }
 }
