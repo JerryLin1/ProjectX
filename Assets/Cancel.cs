@@ -13,8 +13,10 @@ public class Cancel : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (!Input.GetMouseButton(0)) {
-            animator.GetComponent<inAttack>().rogue_animationCancel = true;
+        if (stateInfo.normalizedTime > 0.125f) {
+            if (!Input.GetMouseButton(0)) {
+                animator.GetComponent<inAttack>().rogue_animationCancel = true;
+            }
         }
     }
 

@@ -11,6 +11,7 @@ public class abl_BlinkDagger : Ability
     bool resetDagger = false;
 
     public GameObject daggersPrefab;
+    public GameObject teleportParticlesPrefab;
     GameObject dagger;
 
     void Update() {
@@ -29,7 +30,6 @@ public class abl_BlinkDagger : Ability
             }
         }
         
-
         if (reactivationWindow <= 0) {
             Destroy(dagger);
             reactivationWindow = 5f;
@@ -38,7 +38,12 @@ public class abl_BlinkDagger : Ability
 
         if (resetDagger == true) {
             Vector3 newPos = dagger.transform.GetChild(0).transform.position;
+            GameObject teleportParticles1 = Instantiate(teleportParticlesPrefab, parent.position, parent.localRotation);
+            Destroy(teleportParticles1, 0.3333f);
+            
             parent.position = new Vector3(newPos.x, newPos.y+transform.root.GetComponent<BoxCollider2D>().size.y, newPos.z);
+            GameObject teleportParticles2 = Instantiate(teleportParticlesPrefab, parent.position, parent.localRotation);
+            Destroy(teleportParticles2, 0.3333f);
             
             Destroy(dagger);
             reactivationWindow = 5f;

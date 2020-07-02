@@ -729,6 +729,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   daggersPrefab: {fileID: 2919314894000660769, guid: 157de52761300f649a0fc4c0fd7c8a4e,
     type: 3}
+  teleportParticlesPrefab: {fileID: 5956963105953058358, guid: 4e0cab5a2a2fab447ad9be31865c7f79,
+    type: 3}
 --- !u!1 &902883632
 GameObject:
   m_ObjectHideFlags: 0
