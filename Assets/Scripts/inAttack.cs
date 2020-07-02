@@ -18,6 +18,7 @@ public class inAttack : MonoBehaviour
 
     public bool rogue_animationCancel;
     public void rogue_miniDash() {
+        
         if (rogue_animationCancel == true) {
             transform.root.GetComponent<PlayerControl>().isAttacking = false;
             rogue_animationCancel = false;

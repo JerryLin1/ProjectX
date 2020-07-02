@@ -54,7 +54,7 @@ public class abl_BlinkDagger : Ability
     public override void Cast(Vector3 mousePos, Vector2 direction) {
         if (reactivationWindow == 5f && dagger == null) {
             dagger = Instantiate(daggersPrefab, parent.position, parent.localRotation);
-            dagger.GetComponent<Rigidbody2D>().velocity = direction*15f;
+            dagger.GetComponent<Rigidbody2D>().velocity = direction*20f;
             dagger.transform.up = direction;
             Physics2D.IgnoreCollision(dagger.GetComponent<BoxCollider2D>(), parent.GetComponent<BoxCollider2D>());
 
