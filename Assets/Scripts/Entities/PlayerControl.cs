@@ -86,7 +86,8 @@ public class PlayerControl : Entity
     {
         foreach (GameObject item in passiveEquipped)
         {
-            item.GetComponent<Item>().passiveEffect(this);
+            if (item != null)
+                item.GetComponent<Item>().passiveEffect(this);
         }
     }
     public void inventoryTriggerOnDamagedItems()
