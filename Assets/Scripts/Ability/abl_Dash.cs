@@ -26,6 +26,7 @@ public class abl_Dash : Ability
         dashDirection = direction;
         dashTimer = dashTime;
         dashSpeed = 100f;
+        animator.SetTrigger("dash");
         goOnCooldown();
     }
 
