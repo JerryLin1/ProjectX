@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerControl : Entity
 {
-    ArrayList inventory = new ArrayList();
+    GameObject[] storage = new GameObject[6];
+    GameObject[] activeEquipped = new GameObject[4];
+    GameObject[] passiveEquipped = new GameObject[4];
+    GameObject[] consumables = new GameObject[2];
     Vector2 direction;
     Vector3 mousePos;
     public bool isAttacking;
-    public GameObject nearbyItem;
+    List<GameObject> nearbyItems = new List<GameObject>();
     public hudControl hudControl;
 
     public override void customStart()
@@ -35,15 +38,14 @@ public class PlayerControl : Entity
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 
-
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
         direction.Normalize();
 
         // Pick up item
-        if (Input.GetKey(KeyCode.E) && nearbyItem != null)
+        if (Input.GetKey(KeyCode.E) && nearbyItems[0] != null)
         {
-            inventoryPickup(nearbyItem);
+            pickupItem(nearbyItems[0]);
         }
 
         // Open inventory HUD
@@ -66,18 +68,24 @@ public class PlayerControl : Entity
         }
     }
 
-    public void inventoryPickup(GameObject item)
+    public void pickupItem(GameObject item)
     {
-        hudControl.addItem(item);
-
-        inventory.Add(item);
-        item.GetComponent<Item>().onPickUpEffect(this);
-        item.transform.position = new Vector3(-999999, -999999);
-        item.GetComponent<BoxCollider2D>().enabled = false;
+        for (int i = 0; i < storage.Length; i++)
+        {
+            if (storage[i] == null)
+            {
+                storage[i] = item;
+                hudControl.addItem(item);
+                item.GetComponent<Item>().onPickUpEffect(this);
+                item.transform.position = new Vector3(-999999, -999999);
+                item.GetComponent<BoxCollider2D>().enabled = false;
+            }
+        }
     }
     public void inventoryTriggerPassiveItems()
     {
-        foreach (GameObject item in inventory) {
+        foreach (GameObject item in passiveEquipped)
+        {
             item.GetComponent<Item>().passiveEffect(this);
         }
     }
@@ -95,10 +103,14 @@ public class PlayerControl : Entity
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        nearbyItem = other.gameObject;
+        GameObject i = other.gameObject;
+        if (i.GetComponent<Item>())
+            nearbyItems.Add(i);
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        nearbyItem = null;
+        GameObject i = other.gameObject;
+        if (i.GetComponent<Item>())
+            nearbyItems.Remove(i);
     }
 }
