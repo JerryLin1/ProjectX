@@ -11,6 +11,7 @@ public class PlayerControl : Entity
     GameObject[] consumableEquipped = new GameObject[2];
     Vector2 direction;
     Vector3 mousePos;
+    PlayerAbilities playerAbilities;
     public bool isAttacking;
     List<GameObject> nearbyItems = new List<GameObject>();
     public hudControl hudControl;
@@ -19,6 +20,7 @@ public class PlayerControl : Entity
     {
         movementSpeed = 8f;
         maxHP = 100f;
+        playerAbilities = transform.GetChild(1).GetComponent<PlayerAbilities>();
         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
     }
     public override void Update()
@@ -43,7 +45,7 @@ public class PlayerControl : Entity
         direction.Normalize();
 
         // Pick up item
-        if (Input.GetKey(KeyCode.E) && nearbyItems.Count > 0)
+        if (Input.GetKeyDown(KeyCode.E) && nearbyItems.Count > 0)
         {
             pickupItem(nearbyItems[0]);
         }
@@ -95,6 +97,7 @@ public class PlayerControl : Entity
                 {
                     normalSlotsFull = false;
                     activeEquipped[i] = item;
+                    setAbility(itemScript.itemAbility, i);
                     hudControl.equipActiveItem(item, i);
                     item.transform.position = new Vector3(-999999, -999999);
                     item.GetComponent<BoxCollider2D>().enabled = false;
@@ -134,6 +137,10 @@ public class PlayerControl : Entity
         }
         if (normalSlotsFull) Debug.Log("You have no room for that item");
     }
+    public void setAbility(Ability ability, int slot) {
+        playerAbilities.abilities[slot] = ability;
+        playerAbilities.abilities[slot].onEquip();
+    }
     public void inventoryTriggerPassiveItems()
     {
         foreach (GameObject item in passiveEquipped)
@@ -156,12 +163,14 @@ public class PlayerControl : Entity
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Add nearby items to a list
         GameObject i = other.gameObject;
         if (i.GetComponent<Item>())
             nearbyItems.Add(i);
     }
     private void OnTriggerExit2D(Collider2D other)
     {
+        // Remove items that are too far away from the list
         GameObject i = other.gameObject;
         if (i.GetComponent<Item>())
             nearbyItems.Remove(i);

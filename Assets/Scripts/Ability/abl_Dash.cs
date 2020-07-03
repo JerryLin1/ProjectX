@@ -11,18 +11,25 @@ public class abl_Dash : Ability
     Vector2 dashDirection;
     public GameObject ghostTrail;
 
-    private void Update() {
-        if (dashTimer > 0f) {
-            parent.GetComponent<Rigidbody2D>().AddForce(dashDirection * dashSpeed * 5f);
-            dashTimer -= Time.deltaTime;
-            GameObject ghostInstance = Instantiate(ghostTrail, parent.position, parent.localRotation);
-            ghostInstance.GetComponent<ghostTrail>().setGhostLeaderSr(parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>());
-        }
-        else {
-            parent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    private void Update()
+    {
+        if (parent != null)
+        {
+            if (dashTimer > 0f)
+            {
+                parent.GetComponent<Rigidbody2D>().AddForce(dashDirection * dashSpeed * 5f);
+                dashTimer -= Time.deltaTime;
+                GameObject ghostInstance = Instantiate(ghostTrail, parent.position, parent.localRotation);
+                ghostInstance.GetComponent<ghostTrail>().setGhostLeaderSr(parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>());
+            }
+            else
+            {
+                parent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            }
         }
     }
-    public override void Cast(Vector3 mousePos, Vector2 direction) {
+    public override void Cast(Vector3 mousePos, Vector2 direction)
+    {
         dashDirection = direction;
         dashTimer = dashTime;
         dashSpeed = 100f;
@@ -32,7 +39,8 @@ public class abl_Dash : Ability
         goOnCooldown();
     }
 
-    public void miniDash(Vector3 mousePos, Vector2 direction) {
+    public void miniDash(Vector3 mousePos, Vector2 direction)
+    {
         dashDirection = direction;
         dashTimer = 0.0125f;
         dashSpeed = 50f;

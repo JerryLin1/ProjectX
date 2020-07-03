@@ -10,6 +10,9 @@ public abstract class Ability : MonoBehaviour
     protected Animator animator;
     void Start()
     {
+        
+    }
+    public virtual void onEquip() {
         parent = gameObject.transform.parent;
         animator = parent.transform.GetChild(0).transform.GetChild(0).GetComponent<Animator>();
     }

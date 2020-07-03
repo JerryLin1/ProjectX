@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6671928362807983225}
   - component: {fileID: 6671928362807983204}
-  - component: {fileID: 6671928362807983227}
-  - component: {fileID: 6671928362807983226}
   m_Layer: 0
   m_Name: Abilities
   m_TagString: Untagged
@@ -45,38 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8231166355dbd47b7b5e711359127a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilities:
-  - {fileID: 6671928362807983226}
-  - {fileID: 6671928362807983227}
---- !u!114 &6671928362807983227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6671928362807983224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662f020539377d04292f6443ad446eb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ghostTrail: {fileID: 2898760417849669030, guid: 446380d459961dd4d95ce7f6e2029eee,
-    type: 3}
---- !u!114 &6671928362807983226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6671928362807983224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ddd3a884a2d6aa49a66ab62b5819fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crescentPrefab: {fileID: 3725474140917375392, guid: f26a586b232ca234f9dabb7fab3a331b,
-    type: 3}
-  miniDash: 0
+  abilities: []
 --- !u!1 &6671928364195664116
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +72,7 @@ Transform:
   m_GameObject: {fileID: 6671928364195664116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.75, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6671928364343194757}
   m_RootOrder: 0
@@ -192,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea8d16c5a97bb64d99f4dc272a2f2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rogue_animationCancel: 0
 --- !u!1 &6671928364285539293
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +335,6 @@ MonoBehaviour:
   rb: {fileID: 6671928364344878425}
   movement: {x: 0, y: 0}
   isAttacking: 0
-  nearbyItem: {fileID: 0}
   hudControl: {fileID: 0}
 --- !u!50 &6671928364344878425
 Rigidbody2D:

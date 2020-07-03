@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    public Ability[] abilities;
+    public Ability[] abilities = new Ability[4];
 
     Vector3 mousePos;
     Vector2 direction;
@@ -16,7 +16,8 @@ public class PlayerAbilities : MonoBehaviour
     {
         checkInput();
         for (int i = 0; i < abilities.Length; i++) {
-            abilities[i].decreaseCooldown();
+            if (abilities[i] != null) 
+                abilities[i].decreaseCooldown();
         }
     }
     void checkInput()
@@ -24,16 +25,16 @@ public class PlayerAbilities : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
         direction.Normalize();
-        if (Input.GetMouseButton(0) && !abilities[0].onCooldown())
+        if (abilities[0] != null && Input.GetMouseButton(0) && !abilities[0].onCooldown())
         {
             abilities[0].Cast(mousePos, direction);
         } 
 
-        if (Input.GetMouseButton(1) && !abilities[1].onCooldown())
+        if (abilities[1] != null && Input.GetMouseButton(1) && !abilities[1].onCooldown())
         {
             abilities[1].Cast(mousePos, direction);
         }
-        if (Input.GetKeyDown(KeyCode.F) && !abilities[2].onCooldown()) {
+        if (abilities[2] != null && Input.GetKeyDown(KeyCode.F) && !abilities[2].onCooldown()) {
             abilities[2].Cast(mousePos, direction);
         }
     }

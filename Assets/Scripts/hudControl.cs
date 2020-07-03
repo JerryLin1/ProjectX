@@ -21,7 +21,6 @@ public class hudControl : MonoBehaviour
         inventoryUI.transform.GetChild(0).GetChild(0).GetChild(slot).GetChild(0).GetComponent<Image>().enabled = true;
     }
     public void equipPassiveItem(GameObject item, int slot) {
-        Debug.Log(slot);
         inventoryUI.transform.GetChild(1).GetChild(0).GetChild(slot).GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
         inventoryUI.transform.GetChild(1).GetChild(0).GetChild(slot).GetChild(0).GetComponent<Image>().enabled = true;
     }
