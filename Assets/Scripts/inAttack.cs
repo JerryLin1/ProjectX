@@ -24,7 +24,7 @@ public class inAttack : MonoBehaviour
             rogue_animationCancel = false;
             transform.GetComponent<Animator>().Rebind();
         } else {
-            transform.root.GetChild(1).GetComponent<abl_Slash>().miniDash();
+            GameObject.Find("Daggers Item").GetComponent<abl_Slash>().miniDash();
         }
     }
 

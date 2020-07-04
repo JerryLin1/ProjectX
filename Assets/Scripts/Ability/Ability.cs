@@ -13,8 +13,8 @@ public abstract class Ability : MonoBehaviour
         
     }
     public virtual void onEquip() {
-        parent = gameObject.transform.parent;
-        animator = parent.transform.GetChild(0).transform.GetChild(0).GetComponent<Animator>();
+        parent = GameObject.Find("Player").transform;
+        animator = GameObject.Find("Player").transform.Find("Sprites").transform.Find("Body").GetComponent<Animator>();
     }
     public abstract void Cast(Vector3 mousePos, Vector2 direction);
 

@@ -17,9 +17,9 @@ public class abl_Slash : Ability
     }
 
     public void miniDash() {
-        transform.GetComponent<abl_Dash>().miniDash(mousePos, direction);
-        parent.GetComponent<Transform>().localRotation = (mousePos.x >= transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-        GameObject crescent = Instantiate(crescentPrefab, transform.position, parent.localRotation);
+        GameObject.Find("Dash Cloak Item").GetComponent<abl_Dash>().miniDash(mousePos, direction);
+        parent.transform.localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        GameObject crescent = Instantiate(crescentPrefab, parent.transform.position, parent.transform.localRotation);
         crescent.transform.up = direction;
         Destroy(crescent, 0.3333f); 
     }
