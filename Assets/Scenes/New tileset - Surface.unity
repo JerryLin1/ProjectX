@@ -5014,6 +5014,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Daggers Item
       objectReference: {fileID: 0}
+    - target: {fileID: 4936462585598203080, guid: dcb7ae3fda9a02b40952548f168e9a45,
+        type: 3}
+      propertyPath: ghostTrail
+      value: 
+      objectReference: {fileID: 2898760417849669030, guid: 446380d459961dd4d95ce7f6e2029eee,
+        type: 3}
     - target: {fileID: 4936462585598203081, guid: dcb7ae3fda9a02b40952548f168e9a45,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5626,6 +5632,27 @@ PrefabInstance:
         type: 3}
       propertyPath: abilities.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671928364195664119, guid: f7e75bc8e3a97bb4a81c52c616d6a27a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3011494807137413604, guid: 54e311054a1a19b42aff4cf0fc4f95ee,
+        type: 3}
+    - target: {fileID: 6671928364195664119, guid: f7e75bc8e3a97bb4a81c52c616d6a27a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671928364195664119, guid: f7e75bc8e3a97bb4a81c52c616d6a27a,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671928364195664119, guid: f7e75bc8e3a97bb4a81c52c616d6a27a,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6671928364344878426, guid: f7e75bc8e3a97bb4a81c52c616d6a27a,
         type: 3}

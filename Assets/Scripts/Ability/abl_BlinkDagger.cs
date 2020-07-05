@@ -60,7 +60,7 @@ public class abl_BlinkDagger : Ability
 
             destroyTimer = 1f;
             animator.SetTrigger("throw");
-            parent.GetComponent<Transform>().localRotation = (mousePos.x >= transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+            parent.transform.localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         } else if (dagger.GetComponent<BlinkDaggerCollision>().collided) {
             resetDagger = true;
         }
