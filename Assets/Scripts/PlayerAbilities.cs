@@ -37,6 +37,9 @@ public class PlayerAbilities : MonoBehaviour
         if (abilities[2] != null && Input.GetKeyDown(KeyCode.F) && !abilities[2].onCooldown()) {
             abilities[2].Cast(mousePos, direction);
         }
+        if (abilities[3] != null && Input.GetKeyDown(KeyCode.Q) && !abilities[3].onCooldown()) {
+            abilities[3].Cast(mousePos, direction);
+        }
     }
     
 }
