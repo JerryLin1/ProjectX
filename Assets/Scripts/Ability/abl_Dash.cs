@@ -38,12 +38,4 @@ public class abl_Dash : Ability
         animator.SetTrigger("dash");
         goOnCooldown();
     }
-
-    public void miniDash(Vector3 mousePos, Vector2 direction)
-    {
-        dashDirection = direction;
-        dashTimer = 0.0125f;
-        dashSpeed = 50f;
-        // goOnCooldown();
-    }
 }

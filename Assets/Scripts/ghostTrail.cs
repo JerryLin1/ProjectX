@@ -29,4 +29,8 @@ public class ghostTrail : MonoBehaviour
         childSr.sprite = ghostLeaderSr.sprite;
     }
 
+    public void setDashOpacity(float newOpacity) {
+        opacity = newOpacity;
+    }
+ 
 }
