@@ -17,18 +17,26 @@ public class hudControl : MonoBehaviour
         screenDimension = GetComponent<CanvasScaler>().referenceResolution;
     }
     public void addStorageItem(GameObject item, int slot) {
+        Item itemScript = item.GetComponent<Item>();
+        inventoryUI.transform.GetChild(0).GetChild(0).GetChild(slot).GetComponent<slotControl>().setItemInfo(itemScript.itemName, itemScript.itemDesc, itemScript.itemTier);
         inventoryUI.transform.GetChild(0).GetChild(0).GetChild(slot).GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
         inventoryUI.transform.GetChild(0).GetChild(0).GetChild(slot).GetChild(0).GetComponent<Image>().enabled = true;
     }
     public void equipPassiveItem(GameObject item, int slot) {
+        Item itemScript = item.GetComponent<Item>();
+        inventoryUI.transform.GetChild(1).GetChild(0).GetChild(slot).GetComponent<slotControl>().setItemInfo(itemScript.itemName, itemScript.itemDesc, itemScript.itemTier);
         inventoryUI.transform.GetChild(1).GetChild(0).GetChild(slot).GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
         inventoryUI.transform.GetChild(1).GetChild(0).GetChild(slot).GetChild(0).GetComponent<Image>().enabled = true;
     }
     public void equipActiveItem(GameObject item, int slot) {
+        Item itemScript = item.GetComponent<Item>();
+        bottomUI.transform.GetChild(0).GetChild(0).GetChild(slot).GetComponent<slotControl>().setItemInfo(itemScript.itemName, itemScript.itemDesc, itemScript.itemTier);
         bottomUI.transform.GetChild(0).GetChild(0).GetChild(slot).GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
         bottomUI.transform.GetChild(0).GetChild(0).GetChild(slot).GetChild(0).GetComponent<Image>().enabled = true;
     }
     public void equipConsumableItem(GameObject item, int slot) {
+        Item itemScript = item.GetComponent<Item>();
+        bottomUI.transform.GetChild(1).GetChild(0).GetChild(slot).GetComponent<slotControl>().setItemInfo(itemScript.itemName, itemScript.itemDesc, itemScript.itemTier);
         bottomUI.transform.GetChild(1).GetChild(0).GetChild(slot).GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
         bottomUI.transform.GetChild(1).GetChild(0).GetChild(slot).GetChild(0).GetComponent<Image>().enabled = true;
         
