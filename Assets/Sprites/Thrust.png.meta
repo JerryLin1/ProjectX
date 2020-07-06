@@ -1,43 +1,19 @@
 fileFormatVersion: 2
-guid: 74c2bb46595b9fb4f95d4bea4f1e8fe1
+guid: ff0d8d835fa93f842aac004123699cf9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 226094714192931115
-    second: PurpleDash_0
+      213: -3971448639319642843
+    second: Thrust_0
   - first:
-      213: -1633090683780997771
-    second: PurpleDash_1
+      213: 4352637255900294146
+    second: Thrust_1
   - first:
-      213: 7840145300730089325
-    second: PurpleDash_2
+      213: 4414150143222128918
+    second: Thrust_2
   - first:
-      213: 131664936476419785
-    second: PurpleDash_3
-  - first:
-      213: -7640546016886303842
-    second: PurpleDash_4
-  - first:
-      213: 4170407010514154123
-    second: PurpleDash_5
-  - first:
-      213: -3647420097640767985
-    second: PurpleDash_0
-  - first:
-      213: 5339818436981400773
-    second: PurpleDash_1
-  - first:
-      213: 8981317191986534304
-    second: PurpleDash_2
-  - first:
-      213: 7188086831099348677
-    second: PurpleDash_3
-  - first:
-      213: -5769473928535276414
-    second: PurpleDash_4
-  - first:
-      213: -2645086753556726830
-    second: PurpleDash_5
+      213: -3017042825262443818
+    second: Thrust_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -119,29 +95,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PurpleDash_0
+      name: Thrust_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 32
-        height: 32
+        y: 40
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +113,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0e508dfeb2c16dc0800000000000000
-      internalID: -3647420097640767985
+      spriteID: 52de4a1118492e8c0800000000000000
+      internalID: -3971448639319642843
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PurpleDash_1
+      name: Thrust_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
+        x: 24
+        y: 40
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,62 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c4ab5da398da1a40800000000000000
-      internalID: 5339818436981400773
+      spriteID: 20c6112e58ca76c30800000000000000
+      internalID: 4352637255900294146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PurpleDash_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a7577ba66c04ac70800000000000000
-      internalID: 8981317191986534304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PurpleDash_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c6075683e631c360800000000000000
-      internalID: 7188086831099348677
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PurpleDash_4
+      name: Thrust_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 32
-        height: 32
+        y: 16
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28407cca706beefa0800000000000000
-      internalID: -5769473928535276414
+      spriteID: 611aef70b26324d30800000000000000
+      internalID: 4414150143222128918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PurpleDash_5
+      name: Thrust_3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
+        x: 24
+        y: 16
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -254,8 +176,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dbf826ac93ca4bd0800000000000000
-      internalID: -2645086753556726830
+      spriteID: 6d25710198f4126d0800000000000000
+      internalID: -3017042825262443818
       vertices: []
       indices: 
       edges: []

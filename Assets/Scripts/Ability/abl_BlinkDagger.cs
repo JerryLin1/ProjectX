@@ -57,7 +57,7 @@ public class abl_BlinkDagger : Ability
             dagger.GetComponent<Rigidbody2D>().velocity = direction*20f;
             dagger.transform.up = direction;
             Physics2D.IgnoreCollision(dagger.GetComponent<BoxCollider2D>(), parent.GetComponent<BoxCollider2D>());
-
+            
             destroyTimer = 1f;
             animator.SetTrigger("throw");
             parent.transform.localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
