@@ -2,22 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyControl : Entity
+public class EnemyControl : MonoBehaviour
 {
-    Transform target;
-    public override void customStart()
-    {
-        movementSpeed = 4f;
-        maxHP = 15f;   
-        target = GameObject.Find("Player").GetComponent<Transform>();
-    }
+    public Transform target;
+    public Animator animator;
 
-    public override void Update()
+ 
+    void Update()
     {
-        transform.localRotation = (target.position.x - transform.position.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-        transform.position = Vector2.MoveTowards(transform.position, target.position, movementSpeed*Time.deltaTime);
-        
-        
+        transform.localRotation = (transform.position.x < target.position.x) ? Quaternion.Euler(0,180,0) : Quaternion.Euler(0,0,0); 
+        if (Vector2.Distance(transform.position, target.transform.position) < 1f) {
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        } else {
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        }
     }
 
 }
