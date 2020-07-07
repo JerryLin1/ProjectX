@@ -7,10 +7,9 @@ public abstract class Entity : MonoBehaviour
     protected float maxHP;
     protected float currentHP;
     protected float movementSpeed;
-    public Rigidbody2D rb;
-
+    protected Rigidbody2D rb;
     protected Animator animator;
-    public Vector2 movement;
+    protected Vector2 movement;
     protected float cooldownFactor = 1f;
     protected float lastVelocity = 0;
     public virtual void Start()
