@@ -2,39 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class slotControl : MonoBehaviour
 {
-    public GameObject tooltip;
-    public string itemName;
-    public string itemDesc;
-    public int itemTier;
+    GameObject tooltip;
+    public Item item;
+    GameObject slotImage;
+    GameObject mouseSlot;
+    int slotIndex;
+    public string slotType;
 
     void Start()
     {
         tooltip = transform.parent.parent.parent.parent.GetChild(2).gameObject;
+        mouseSlot = transform.parent.parent.parent.parent.GetChild(3).gameObject;
+        slotImage = transform.GetChild(0).gameObject;
+        slotIndex = transform.GetSiblingIndex();
+        slotType = transform.parent.parent.GetComponent<slotsType>().type;
     }
     public void setItemSprite(Sprite sprite)
     {
-        transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+        slotImage.GetComponent<Image>().sprite = sprite;
     }
-    public void setItemName(string newItemName) { itemName = newItemName; }
-    public void setItemDesc(string newItemDesc) { itemDesc = newItemDesc; }
-    public void setItemTier(int newItemTier) { itemTier = newItemTier; }
-    // public void OnMouseOver()
-    // {
-    //     tooltip.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "<size=20>" + itemName + "</size>" + "\n" + itemDesc;
-    //     tooltip.transform.GetChild(0).position = new Vector2(transform.position.x+1, transform.position.y);
-    //     tooltip.SetActive(true);
-    //     tooltip.SetActive(false);
-    //     tooltip.SetActive(true);
-    // }
-    // public void OnMouseExit()
-    // {
-    //     tooltip.SetActive(false);
-    // }
-    // public void OnDisable() {
-    //     if (tooltip != null)
-    //         tooltip.SetActive(false);
-    // }
+    public void OnMouseOver()
+    {
+        if (item != null)
+        {
+            tooltip.transform.GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "<size=20>" + item.itemName + "</size>" + "\n" + item.itemDesc;
+            tooltip.transform.GetChild(0).position = new Vector2(transform.position.x + 1, transform.position.y);
+            tooltip.SetActive(true);
+            tooltip.SetActive(false);
+            tooltip.SetActive(true);
+        }
+        mouseSlot.GetComponent<mouseSlotControl>().slotHovered = this.gameObject; 
+    }
+    public void OnMouseExit()
+    {
+        mouseSlot.GetComponent<mouseSlotControl>().slotHovered = null;
+        tooltip.SetActive(false);
+    }
+    public void OnDisable()
+    {
+        if (tooltip != null)
+            tooltip.SetActive(false);
+    }
 }
