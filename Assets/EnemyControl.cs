@@ -7,6 +7,8 @@ public class EnemyControl : MonoBehaviour
     Transform target;
     public Animator animator;
 
+    public GameObject attackPrefab;
+
     float cooldown = 1f;
     float timer = 0f;
 
@@ -18,8 +20,10 @@ public class EnemyControl : MonoBehaviour
     {
 
         transform.localRotation = (transform.position.x < target.position.x) ? Quaternion.Euler(0,180,0) : Quaternion.Euler(0,0,0); 
-        if (timer == 0f && Vector2.Distance(transform.position, target.transform.position) < 2f) {
+        if (timer == 0f && Vector2.Distance(transform.position, target.transform.position) < 3f) {
             animator.SetTrigger("attack");
+            GameObject attack = Instantiate(attackPrefab, transform.position, transform.localRotation);
+            attack.transform.up = target.position - transform.position;
             timer += Time.deltaTime;
         } else {
             timer += Time.deltaTime;
