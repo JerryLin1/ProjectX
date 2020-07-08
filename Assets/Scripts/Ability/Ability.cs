@@ -10,16 +10,15 @@ public abstract class Ability : MonoBehaviour
     protected Animator animator;
     void Start()
     {
-        
+        parent = transform.root.GetComponent<Transform>();
+        animator = transform.parent.Find("Sprites/Body").GetComponent<Animator>();
     }
     public virtual void onEquip() {
-        parent = GameObject.Find("Player").transform;
-        animator = GameObject.Find("Player").transform.Find("Sprites").transform.Find("Body").GetComponent<Animator>();
+        
     }
     public abstract void Cast(Vector3 mousePos, Vector2 direction);
 
     // This method is for if the ability requires the mouse to be held down
-    public virtual void Release() {}
     public virtual void goOnCooldown()
     {
         currentCooldown = cooldown * parent.GetComponent<Entity>().GetCooldownFactor();

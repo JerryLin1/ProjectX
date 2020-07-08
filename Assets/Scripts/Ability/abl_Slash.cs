@@ -9,7 +9,6 @@ public class abl_Slash : Ability
     Vector2 direction;
 
     float dashTimer = 0f;
-    float dashTime = 0.1f;
     float dashSpeed = 100f;
     Vector2 dashDirection;
 
@@ -46,8 +45,8 @@ public class abl_Slash : Ability
         this.dashTimer = dashTimer;
         this.dashSpeed = dashSpeed;
 
-        parent.transform.localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-        GameObject crescent = Instantiate(crescentPrefab, parent.transform.position, parent.transform.localRotation);
+        parent.GetComponent<Transform>().localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        GameObject crescent = Instantiate(crescentPrefab, parent.GetComponent<Transform>().position, parent.GetComponent<Transform>().localRotation);
         crescent.transform.localScale = new Vector3(crescentScale, crescentScale, 0);
         crescent.transform.up = direction;
         Destroy(crescent, 0.3333f); 
