@@ -11,15 +11,11 @@ public class slotControl : MonoBehaviour
     GameObject slotImage;
     GameObject mouseSlot;
     int slotIndex;
-    public string slotType;
 
     void Start()
     {
-        tooltip = transform.parent.parent.parent.parent.GetChild(2).gameObject;
-        mouseSlot = transform.parent.parent.parent.parent.GetChild(3).gameObject;
+        tooltip = transform.parent.parent.parent.GetChild(2).gameObject;
         slotImage = transform.GetChild(0).gameObject;
-        slotIndex = transform.GetSiblingIndex();
-        slotType = transform.parent.parent.GetComponent<slotsType>().type;
     }
     public void setItemSprite(Sprite sprite)
     {
@@ -35,11 +31,9 @@ public class slotControl : MonoBehaviour
             tooltip.SetActive(false);
             tooltip.SetActive(true);
         }
-        mouseSlot.GetComponent<mouseSlotControl>().slotHovered = this.gameObject; 
     }
     public void OnMouseExit()
     {
-        mouseSlot.GetComponent<mouseSlotControl>().slotHovered = null;
         tooltip.SetActive(false);
     }
     public void OnDisable()

@@ -16,34 +16,22 @@ public class hudControl : MonoBehaviour
         bottomUI = transform.GetChild(1).gameObject;
         screenDimension = GetComponent<CanvasScaler>().referenceResolution;
     }
-    public void addStorageItem(GameObject item, int slot) {
+    public void pickupPassiveItem(GameObject item) {
+        GameObject slotInstance = Instantiate(slotPrefab, Vector3.zero, Quaternion.identity);
         Item itemScript = item.GetComponent<Item>();
-        GameObject stemp = inventoryUI.transform.GetChild(0).GetChild(0).GetChild(slot).gameObject;
-        stemp.GetComponent<slotControl>().item = item.GetComponent<Item>();
-        stemp.transform.GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
-        stemp.transform.GetChild(0).GetComponent<Image>().enabled = true;
+        slotInstance.transform.SetParent(inventoryUI.transform.GetChild(0));
+        slotInstance.GetComponent<slotControl>().item = item.GetComponent<Item>();
+        slotInstance.transform.GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
+        slotInstance.transform.GetChild(0).GetComponent<Image>().enabled = true;
+        slotInstance.transform.localScale = new Vector3(1, 1, 1);
+        slotInstance.transform.localPosition = new Vector3(0, 0, 1);
     }
-    public void equipPassiveItem(GameObject item, int slot) {
+    public void pickupActiveItem(GameObject item) {
         Item itemScript = item.GetComponent<Item>();
-        GameObject stemp = inventoryUI.transform.GetChild(1).GetChild(0).GetChild(slot).gameObject;
+        GameObject stemp = bottomUI.transform.GetChild(1).GetChild(0).gameObject;
         stemp.GetComponent<slotControl>().item = item.GetComponent<Item>();
         stemp.transform.GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
         stemp.transform.GetChild(0).GetComponent<Image>().enabled = true;
-    }
-    public void equipActiveItem(GameObject item, int slot) {
-        Item itemScript = item.GetComponent<Item>();
-        GameObject stemp = bottomUI.transform.GetChild(0).GetChild(0).GetChild(slot).gameObject;
-        stemp.GetComponent<slotControl>().item = item.GetComponent<Item>();
-        stemp.transform.GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
-        stemp.transform.GetChild(0).GetComponent<Image>().enabled = true;
-    }
-    public void equipConsumableItem(GameObject item, int slot) {
-        Item itemScript = item.GetComponent<Item>();
-        GameObject stemp = bottomUI.transform.GetChild(0).GetChild(0).GetChild(slot).gameObject;
-        stemp.GetComponent<slotControl>().item = item.GetComponent<Item>();
-        stemp.transform.GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
-        stemp.transform.GetChild(0).GetComponent<Image>().enabled = true;
-        
     }
     public void openInventory() {inventoryUI.SetActive(true);}
     public void closeInventory() {inventoryUI.SetActive(false);}

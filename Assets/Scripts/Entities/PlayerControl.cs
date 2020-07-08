@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerControl : Entity
 {
-    GameObject[] storage = new GameObject[6];
-    GameObject[] activeEquipped = new GameObject[4];
-    GameObject[] passiveEquipped = new GameObject[4];
-    GameObject[] consumableEquipped = new GameObject[2];
+    GameObject activeItem;
+    List<GameObject> items = new List<GameObject>();
     Vector2 direction;
     Vector3 mousePos;
     PlayerAbilities playerAbilities;
@@ -73,81 +71,24 @@ public class PlayerControl : Entity
     public void pickupItem(GameObject item)
     {
         Item itemScript = item.GetComponent<Item>();
-        bool normalSlotsFull = true;
         if (itemScript.itemType == "passive")
         {
-            for (int i = 0; i < passiveEquipped.Length; i++)
-            {
-                if (passiveEquipped[i] == null)
-                {
-                    normalSlotsFull = false;
-                    passiveEquipped[i] = item;
-                    hudControl.equipPassiveItem(item, i);
-                    item.transform.position = new Vector3(-999999, -999999);
-                    item.GetComponent<BoxCollider2D>().enabled = false;
-                    break;
-                }
-            }
+            itemScript.onPickUpEffect(this);
+            items.Add(item);
+            hudControl.pickupPassiveItem(item);
         }
         else if (itemScript.itemType == "active")
         {
-            for (int i = 0; i < activeEquipped.Length; i++)
-            {
-                if (activeEquipped[i] == null)
-                {
-                    normalSlotsFull = false;
-                    activeEquipped[i] = item;
-                    setAbility(itemScript.itemAbility, i);
-                    hudControl.equipActiveItem(item, i);
-                    item.transform.position = new Vector3(-999999, -999999);
-                    item.GetComponent<BoxCollider2D>().enabled = false;
-                    break;
-                }
-            }
+            
         }
-        else if (itemScript.itemType == "consumable")
-        {
-            for (int i = 0; i < consumableEquipped.Length; i++)
-            {
-                if (consumableEquipped[i] == null)
-                {
-                    normalSlotsFull = false;
-                    consumableEquipped[i] = item;
-                    hudControl.equipConsumableItem(item, i);
-                    item.transform.position = new Vector3(-999999, -999999);
-                    item.GetComponent<BoxCollider2D>().enabled = false;
-                    break;
-                }
-            }
-        }
-        if (normalSlotsFull)
-        {
-            for (int i = 0; i < storage.Length; i++)
-            {
-                if (storage[i] == null)
-                {
-                    normalSlotsFull = false;
-                    storage[i] = item;
-                    hudControl.addStorageItem(item, i);
-                    item.transform.position = new Vector3(-999999, -999999);
-                    item.GetComponent<BoxCollider2D>().enabled = false;
-                    break;
-                }
-            }
-        }
-        if (normalSlotsFull) Debug.Log("You have no room for that item");
     }
-    public void setAbility(Ability ability, int slot) {
-        playerAbilities.abilities[slot] = ability;
-        playerAbilities.abilities[slot].onEquip();
+    public void setAbility(Ability ability) {
+        playerAbilities.abilities[4] = ability;
+        playerAbilities.abilities[4].onEquip();
     }
     public void inventoryTriggerPassiveItems()
     {
-        foreach (GameObject item in passiveEquipped)
-        {
-            if (item != null)
-                item.GetComponent<Item>().passiveEffect(this);
-        }
+        // TODO: Passive effects that are always active. would use item class's passiveEffect() method
     }
     public void inventoryTriggerOnDamagedItems()
     {

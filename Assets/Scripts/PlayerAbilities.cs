@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    public Ability[] abilities = new Ability[4];
+    public Ability[] abilities = new Ability[5];
 
     Vector3 mousePos;
     Vector2 direction;

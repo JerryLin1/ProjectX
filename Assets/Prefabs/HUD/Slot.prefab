@@ -89,10 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00e75a33c571634f97f16c329d9be4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltip: {fileID: 0}
-  itemName: 
-  itemDesc: 
-  itemTier: 0
+  item: {fileID: 0}
 --- !u!61 &6843637678763406546
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -136,7 +133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2581486408766375997
 RectTransform:
   m_ObjectHideFlags: 0
