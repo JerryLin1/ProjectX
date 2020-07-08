@@ -76,15 +76,28 @@ public class PlayerControl : Entity
             itemScript.onPickUpEffect(this);
             items.Add(item);
             hudControl.pickupPassiveItem(item);
+            item.GetComponent<BoxCollider2D>().enabled = false;
+            item.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         }
         else if (itemScript.itemType == "active")
         {
-            
+            if (activeItem != null)
+            {
+                activeItem.transform.position = transform.position;
+                activeItem.GetComponent<BoxCollider2D>().enabled = true;
+                activeItem.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+            }
+            activeItem = item;
+            hudControl.pickupActiveItem(item);
+            setAbility(item.GetComponent<Item>().itemAbility, 4);
+            item.GetComponent<BoxCollider2D>().enabled = false;
+            item.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         }
     }
-    public void setAbility(Ability ability) {
-        playerAbilities.abilities[4] = ability;
-        playerAbilities.abilities[4].onEquip();
+    public void setAbility(Ability ability, int slot)
+    {
+        playerAbilities.abilities[slot] = ability;
+        playerAbilities.abilities[slot].onEquip();
     }
     public void inventoryTriggerPassiveItems()
     {
