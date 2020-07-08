@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class EnemyControl : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
     public Animator animator;
 
- 
-    void Update()
+    float cooldown = 1f;
+    float timer = 0f;
+
+    void Start() {
+        target = GameObject.Find("Player").transform;
+    }
+    
+    void FixedUpdate()
     {
+
         transform.localRotation = (transform.position.x < target.position.x) ? Quaternion.Euler(0,180,0) : Quaternion.Euler(0,0,0); 
-        if (Vector2.Distance(transform.position, target.transform.position) < 1f) {
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        if (timer == 0f && Vector2.Distance(transform.position, target.transform.position) < 2f) {
+            animator.SetTrigger("attack");
+            timer += Time.deltaTime;
         } else {
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-        }
+            timer += Time.deltaTime;
+            if (timer >= cooldown) timer = 0;
+        } 
     }
 
 }

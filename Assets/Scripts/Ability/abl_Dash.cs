@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class abl_Dash : Ability
 {
-    protected override float cooldown { get { return 2f; } }
+    protected override float cooldown { get { return 1f; } }
     float dashTime = 0.1f;
     float dashTimer = 0f;
     float dashSpeed = 100f;
