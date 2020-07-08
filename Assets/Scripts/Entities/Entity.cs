@@ -20,26 +20,8 @@ public abstract class Entity : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
     public virtual void customStart(){}
-    public virtual void Update(){}
-    public virtual void Move(Vector2 movement)
-    {
-        if (movement.y != 0) lastVelocity = movement.y;
-        rb.velocity = movement * movementSpeed;
-        animator.SetBool("up", (movement.y > 0) ? true : false);
-        animator.SetBool("down", (movement.y < 0 || (movement.y == 0 && movement.x != 0)) ? true : false);
-        animator.SetBool("idleForward", (lastVelocity < 0) ? true : false);
 
-        // Rotate entity while moving
-        if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-    }
-
-    public virtual void MeleeAttack() {
-        animator.SetBool("up", false);
-        animator.SetBool("down", false);
-        animator.SetBool("idleForward", false);
-        rb.velocity = Vector2.zero;
-    }
-
+    
     public virtual float GetMovementSpeed() {return movementSpeed;}
     public virtual void SetMovementSpeed(float newMovementSpeed) {movementSpeed = newMovementSpeed;}
     public virtual float GetCooldownFactor() {return cooldownFactor;}

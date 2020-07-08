@@ -21,7 +21,7 @@ public class PlayerControl : Entity
         playerAbilities = transform.GetChild(1).GetComponent<PlayerAbilities>();
         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
     }
-    public override void Update()
+    public void Update()
     {
         checkInput();
         faceCursorWhileIdle();
@@ -56,6 +56,24 @@ public class PlayerControl : Entity
             else
                 hudControl.openInventory();
         }
+    }
+
+    public void Move(Vector2 movement)
+    {
+        if (movement.y != 0) lastVelocity = movement.y;
+        rb.velocity = movement * movementSpeed;
+        animator.SetBool("up", (movement.y > 0) ? true : false);
+        animator.SetBool("down", (movement.y < 0 || (movement.y == 0 && movement.x != 0)) ? true : false);
+        animator.SetBool("idleForward", (lastVelocity < 0) ? true : false);
+
+        // Rotate entity while moving
+        if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+    }
+    public void MeleeAttack() {
+        animator.SetBool("up", false);
+        animator.SetBool("down", false);
+        animator.SetBool("idleForward", false);
+        rb.velocity = Vector2.zero;
     }
 
     void faceCursorWhileIdle()
