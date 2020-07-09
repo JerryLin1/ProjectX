@@ -6,12 +6,12 @@ public class inAttack : MonoBehaviour
 {
     // General methods for attacks
     public void onEnterAttack() {
-        transform.root.GetComponent<PlayerControl>().isAttacking = true;
-        transform.root.GetComponent<PlayerControl>().MeleeAttack();
+        transform.root.GetComponent<Player>().isAttacking = true;
+        transform.root.GetComponent<Player>().MeleeAttack();
     }
 
     public void onExitAttack() {
-        transform.root.GetComponent<PlayerControl>().isAttacking = false;
+        transform.root.GetComponent<Player>().isAttacking = false;
     }
 
     // Specific methods for rogue players
@@ -20,7 +20,7 @@ public class inAttack : MonoBehaviour
     public void rogue_miniDash() {
         
         if (rogue_animationCancel == true) {
-            transform.root.GetComponent<PlayerControl>().isAttacking = false;
+            transform.root.GetComponent<Player>().isAttacking = false;
             rogue_animationCancel = false;
             transform.GetComponent<Animator>().Rebind();
         } else {

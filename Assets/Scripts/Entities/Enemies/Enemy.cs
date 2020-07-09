@@ -2,25 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : Entity
 {
-    Transform target;
-    public Animator animator;
-
+    protected Transform target;
+    protected float cooldown;
+    protected float timer;
+    protected float range;
     public GameObject attackPrefab;
 
-    float cooldown = 1f;
-    float timer = 0f;
-
-    void Start() {
+    protected override void customStart() {
+        enemyCustomStart();
         target = GameObject.Find("Player").transform;
     }
-    
-    void Update()
-    {
-
+    protected virtual void enemyCustomStart(){}
+    protected virtual void meleeAttack() {
         transform.localRotation = (transform.position.x < target.position.x) ? Quaternion.Euler(0,180,0) : Quaternion.Euler(0,0,0); 
-        if (timer == 0f && Vector2.Distance(transform.position, target.transform.position) < 3f) {
+        if (timer == 0f && Vector2.Distance(transform.position, target.transform.position) < range) {
             animator.SetTrigger("attack");
             GameObject attack = Instantiate(attackPrefab, transform.position, transform.localRotation);
             attack.transform.up = target.position - transform.position;

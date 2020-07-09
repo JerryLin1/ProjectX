@@ -12,16 +12,15 @@ public abstract class Entity : MonoBehaviour
     protected Vector2 movement;
     protected float cooldownFactor = 1f;
     protected float lastVelocity = 0;
-    public virtual void Start()
+    protected virtual void Start()
     {
         customStart();
         currentHP = maxHP;
-        animator = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<Animator>();
+        animator = transform.Find("Sprites/Body").GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
-    public virtual void customStart(){}
+    protected virtual void customStart(){}
 
-    
     public virtual float GetMovementSpeed() {return movementSpeed;}
     public virtual void SetMovementSpeed(float newMovementSpeed) {movementSpeed = newMovementSpeed;}
     public virtual float GetCooldownFactor() {return cooldownFactor;}

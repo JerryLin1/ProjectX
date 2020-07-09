@@ -9,7 +9,7 @@ public class hudControl : MonoBehaviour
     GameObject bottomUI;
     Vector2 screenDimension;
     public GameObject slotPrefab;
-    public PlayerControl pc;
+    public Player pc;
     void Start()
     {
         inventoryUI = transform.GetChild(0).gameObject;

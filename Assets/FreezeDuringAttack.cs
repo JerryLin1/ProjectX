@@ -7,7 +7,7 @@ public class FreezeDuringAttack : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.parent.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;  
+        animator.transform.root.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;  
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -19,7 +19,7 @@ public class FreezeDuringAttack : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       animator.transform.parent.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+       animator.transform.root.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

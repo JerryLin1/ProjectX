@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerControl : Entity
+public class Player : Entity
 {
     GameObject activeItem;
     List<GameObject> items = new List<GameObject>();
@@ -14,17 +14,16 @@ public class PlayerControl : Entity
     List<GameObject> nearbyItems = new List<GameObject>();
     public hudControl hudControl;
 
-    public override void customStart()
+    protected override void customStart()
     {
-        movementSpeed = 8f;
+        movementSpeed = 5.5f;
         maxHP = 100f;
         playerAbilities = transform.GetChild(1).GetComponent<PlayerAbilities>();
         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
     }
-    public void Update()
+    void Update()
     {
         checkInput();
-        faceCursorWhileIdle();
         inventoryTriggerPassiveItems();
     }
 
@@ -33,7 +32,7 @@ public class PlayerControl : Entity
         if (!isAttacking) Move(movement);
         else MeleeAttack();
     }
-    public void checkInput()
+    void checkInput()
     {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
@@ -58,32 +57,22 @@ public class PlayerControl : Entity
         }
     }
 
-    public void Move(Vector2 movement)
+    void Move(Vector2 movement)
     {
         if (movement.y != 0) lastVelocity = movement.y;
         rb.velocity = movement * movementSpeed;
-        animator.SetBool("up", (movement.y > 0) ? true : false);
-        animator.SetBool("down", (movement.y < 0 || (movement.y == 0 && movement.x != 0)) ? true : false);
-        animator.SetBool("idleForward", (lastVelocity < 0) ? true : false);
+        animator.SetBool("moving", (rb.velocity == Vector2.zero) ? false : true);
 
         // Rotate entity while moving
         if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+
+        // Rotate entity while idle
+        if (movement.y == 0 && movement.x == 0 && !isAttacking) transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+
     }
     public void MeleeAttack() {
-        animator.SetBool("up", false);
-        animator.SetBool("down", false);
-        animator.SetBool("idleForward", false);
+        animator.SetBool("moving", false);
         rb.velocity = Vector2.zero;
-    }
-
-    void faceCursorWhileIdle()
-    {
-        // Rotate player while idle
-        if (movement.y == 0 && movement.x == 0 && !isAttacking)
-        {
-            animator.SetBool("idleForward", (direction.y < 0) ? true : false);
-            transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-        }
     }
 
     public void pickupItem(GameObject item)
