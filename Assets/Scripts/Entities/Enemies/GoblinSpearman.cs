@@ -13,11 +13,17 @@ public class GoblinSpearman : Enemy
 
     void Update()
     {
-        transform.localRotation = (transform.position.x < target.position.x) ? Quaternion.Euler(0,180,0) : Quaternion.Euler(0,0,0); 
-      
+        if (!isAttacking) {
+            transform.localRotation = (transform.position.x < target.position.x) ? Quaternion.Euler(0,180,0) : Quaternion.Euler(0,0,0); 
+        } 
         meleeAttack();
+    }
+        
+        
+      
+        
     
         
         
-    }
+    
 }

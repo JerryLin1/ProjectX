@@ -10,7 +10,9 @@ public abstract class Enemy : Entity
     protected float range;
 
     public GameObject[] attackPrefabs;
+    public bool isAttacking;
     int attackAnimationIndex = 0;
+    Vector2 attackDirection;
 
     protected override void customStart() {
         enemyCustomStart();
@@ -21,6 +23,7 @@ public abstract class Enemy : Entity
 
         if (timer == 0f && Vector2.Distance(transform.position, target.transform.position) < range) {
             animator.SetTrigger("attack");
+            attackDirection = target.position-transform.position;
             timer += Time.deltaTime;
         } else if (timer > 0f) {
             timer += Time.deltaTime;
@@ -30,7 +33,7 @@ public abstract class Enemy : Entity
 
     public virtual void createMeleeAttackAnimation() {
         GameObject attackAnimation = Instantiate(attackPrefabs[attackAnimationIndex], transform.position, transform.localRotation);
-        attackAnimation.transform.up = target.position - transform.position;
+        attackAnimation.transform.up = attackDirection;
         attackAnimationIndex ++;
         if (attackAnimationIndex == attackPrefabs.Length) {
             attackAnimationIndex = 0;

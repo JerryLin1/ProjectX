@@ -9,4 +9,12 @@ public class createAttackAnimation : MonoBehaviour
         transform.root.GetComponent<Enemy>().createMeleeAttackAnimation();
     }
 
+    public void inMeleeAttack() {
+        transform.root.GetComponent<Enemy>().isAttacking = true;
+    }
+
+    public void exitMeleeAttack() {
+        transform.root.GetComponent<Enemy>().isAttacking = false;
+    }
+
 }
