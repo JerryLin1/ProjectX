@@ -8,7 +8,9 @@ public abstract class Enemy : Entity
     protected float cooldown;
     protected float timer;
     protected float range;
-    public GameObject attackPrefab;
+
+    public GameObject[] attackPrefabs;
+    int attackAnimationIndex = 0;
 
     protected override void customStart() {
         enemyCustomStart();
@@ -16,16 +18,23 @@ public abstract class Enemy : Entity
     }
     protected virtual void enemyCustomStart(){}
     protected virtual void meleeAttack() {
-        transform.localRotation = (transform.position.x < target.position.x) ? Quaternion.Euler(0,180,0) : Quaternion.Euler(0,0,0); 
+
         if (timer == 0f && Vector2.Distance(transform.position, target.transform.position) < range) {
             animator.SetTrigger("attack");
-            GameObject attack = Instantiate(attackPrefab, transform.position, transform.localRotation);
-            attack.transform.up = target.position - transform.position;
             timer += Time.deltaTime;
-        } else {
+        } else if (timer > 0f) {
             timer += Time.deltaTime;
             if (timer >= cooldown) timer = 0;
         } 
+    }
+
+    public virtual void createMeleeAttackAnimation() {
+        GameObject attackAnimation = Instantiate(attackPrefabs[attackAnimationIndex], transform.position, transform.localRotation);
+        attackAnimation.transform.up = target.position - transform.position;
+        attackAnimationIndex ++;
+        if (attackAnimationIndex == attackPrefabs.Length) {
+            attackAnimationIndex = 0;
+        }
     }
 
 }

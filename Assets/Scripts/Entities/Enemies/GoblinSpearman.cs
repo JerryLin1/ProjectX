@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class GoblinSpearman : Enemy
 {
-    // Update is called once per frame
-
     protected override void enemyCustomStart() {
         // Physics2D.IgnoreLayerCollision(10,10);
-        cooldown = 1f;
+        cooldown = 1.1f;
         timer = 0f;
-        range = 3f;
+        range = 2f;
     }
 
     void Update()
     {
+        transform.localRotation = (transform.position.x < target.position.x) ? Quaternion.Euler(0,180,0) : Quaternion.Euler(0,0,0); 
+      
         meleeAttack();
+    
+        
+        
     }
 }
