@@ -53,7 +53,7 @@ public class abl_Slash : Ability
         GameObject crescent = Instantiate(crescentPrefab, parent.GetComponent<Transform>().position, parent.GetComponent<Transform>().localRotation);
         crescent.transform.localScale = new Vector3(crescentScale, crescentScale, 0);
         crescent.transform.up = direction;
-        crescent.GetComponent<crescentControl>().createCrescent(transform.root.gameObject, 8);
+        crescent.GetComponent<Crescent>().setCrescent(transform.root.gameObject, 8, 6f, 0.2f);
 
         // Get enemies hit and apply damage and knockback
         

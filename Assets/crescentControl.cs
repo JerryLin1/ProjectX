@@ -36,6 +36,10 @@ public class crescentControl : MonoBehaviour
     private IEnumerator KnockCoroutine(Rigidbody2D enemy)
     {
         yield return new WaitForSeconds(.2f);
+
+        enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+        yield return new WaitForSeconds(.1f);
         enemy.GetComponent<Pathfinding.AIPath>().canMove = true;
         Destroy(gameObject);
     }
