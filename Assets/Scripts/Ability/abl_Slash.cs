@@ -14,6 +14,8 @@ public class abl_Slash : Ability
 
     public GameObject crescentPrefab;
     public GameObject ghostTrail;
+
+    public float knockbackThrust;
     void Update() {
         
         if (parent != null)
@@ -41,18 +43,22 @@ public class abl_Slash : Ability
     }
 
     public void miniDash(float dashTimer, float dashSpeed, float crescentScale) {
+        // Set miniDash parameters
         dashDirection = direction;
         this.dashTimer = dashTimer;
         this.dashSpeed = dashSpeed;
 
+        // Create crescent in direction of mouse click
         parent.GetComponent<Transform>().localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         GameObject crescent = Instantiate(crescentPrefab, parent.GetComponent<Transform>().position, parent.GetComponent<Transform>().localRotation);
         crescent.transform.localScale = new Vector3(crescentScale, crescentScale, 0);
         crescent.transform.up = direction;
-        Collider2D[] enemiesHit = crescent.GetComponent<crescentControl>().getHit();
-        foreach (Collider2D enemy in enemiesHit) {
-            enemy.GetComponent<Entity>().takeDamage(8);
-        }
-        Destroy(crescent, 0.3333f); 
+        crescent.GetComponent<crescentControl>().createCrescent(transform.root.gameObject, 8);
+
+        // Get enemies hit and apply damage and knockback
+        
+            
+
+        
     }
 }

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class DestroyOnExit : StateMachineBehaviour {
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        Destroy(animator.gameObject, stateInfo.length*stateInfo.speedMultiplier);
+        Destroy(animator.transform.root.gameObject, stateInfo.length*stateInfo.speedMultiplier);
     }
 }

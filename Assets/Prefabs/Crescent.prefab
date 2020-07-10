@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9107844151118316425}
   - component: {fileID: 6725897866790408707}
+  - component: {fileID: 2464693477057629281}
   m_Layer: 0
   m_Name: Crescent
   m_TagString: Untagged
@@ -49,6 +50,22 @@ MonoBehaviour:
     m_Bits: 1024
   attackOffset: {x: 0, y: 0.5}
   hitboxRadius: 1
+--- !u!58 &2464693477057629281
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499258652111405111}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.64}
+  serializedVersion: 2
+  m_Radius: 0.97639656
 --- !u!1 &2932712244276402358
 GameObject:
   m_ObjectHideFlags: 0

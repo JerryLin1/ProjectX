@@ -4,17 +4,38 @@ using UnityEngine;
 
 public class crescentControl : MonoBehaviour
 {
-    public LayerMask enemyLayers;
-    public Vector2 attackOffset = new Vector2(0, 0.5f);
-    public float hitboxRadius = 1;
-    Collider2D[] hitEnemies;
-    public Collider2D[] getHit() {
-        Vector2 v = transform.position;
-        hitEnemies = Physics2D.OverlapCircleAll(v+attackOffset, hitboxRadius, enemyLayers);
-        return hitEnemies;
+    int damage;
+    GameObject user;
+
+    void Start() {
+        Destroy(gameObject, 0.5f);
     }
-    void OnDrawGizmosSelected() {
-        Vector2 v = transform.position;
-        Gizmos.DrawWireSphere(v + attackOffset, hitboxRadius);
+
+    public void createCrescent(GameObject user, int damage) {
+        this.user = user;
+        this.damage = damage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D enemy) {
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        if (user != null) {
+            if (enemy.gameObject.layer == LayerMask.NameToLayer("Enemies") && user.layer != LayerMask.NameToLayer("Enemies")) {
+                enemy.GetComponent<Entity>().takeDamage(damage);
+
+                enemy.GetComponent<Pathfinding.AIPath>().canMove = false;
+                Vector2 difference = enemy.transform.position - transform.position;
+                difference = difference.normalized * 3f;
+                enemy.GetComponent<Enemy>().knockback(difference);
+                StartCoroutine(KnockCoroutine(enemy.GetComponent<Rigidbody2D>()));
+            }
+        }
+        
+    }
+    
+    private IEnumerator KnockCoroutine(Rigidbody2D enemy)
+    {
+        yield return new WaitForSeconds(.15f);
+        enemy.GetComponent<Pathfinding.AIPath>().canMove = true;
+        Destroy(gameObject);
     }
 }

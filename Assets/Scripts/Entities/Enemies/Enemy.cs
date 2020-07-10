@@ -18,6 +18,10 @@ public abstract class Enemy : Entity
         target = GameObject.Find("Player").transform;
     }
     protected virtual void enemyCustomStart(){}
+
+    public virtual void knockback(Vector2 force) {
+        rb.AddForce(force, ForceMode2D.Impulse);
+    }
     protected virtual void meleeAttack() {
 
         if (timer == 0f && Vector2.Distance(transform.position, target.transform.position) < range) {

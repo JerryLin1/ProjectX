@@ -6,12 +6,13 @@ public class GoblinSpearman : Enemy
 {
     protected override void enemyCustomStart() {
         // Physics2D.IgnoreLayerCollision(10,10);
-        maxHP = 50;
+        maxHP = 10000;
         cooldown = 1.1f;
         timer = 0f;
         range = 2f;
 
         attackPrefabs[1].transform.localScale = new Vector3(0.75f, 0.75f, 0);
+        attackPrefabs[1].GetComponent<crescentControl>().createCrescent(gameObject, 5);
     }
 
     void Update()
