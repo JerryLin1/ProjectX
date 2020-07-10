@@ -8,7 +8,6 @@ public abstract class Enemy : Entity
     protected float cooldown;
     protected float timer;
     protected float range;
-
     public GameObject[] attackPrefabs;
     public bool isAttacking;
     int attackAnimationIndex = 0;
@@ -30,7 +29,6 @@ public abstract class Enemy : Entity
             if (timer >= cooldown) timer = 0;
         } 
     }
-
     public virtual void createMeleeAttackAnimation() {
         GameObject attackAnimation = Instantiate(attackPrefabs[attackAnimationIndex], transform.position, transform.localRotation);
         attackAnimation.transform.up = attackDirection;
