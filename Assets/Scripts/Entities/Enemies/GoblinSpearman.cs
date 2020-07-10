@@ -9,7 +9,7 @@ public class GoblinSpearman : Enemy
         maxHP = 10000;
         cooldown = 1.1f;
         timer = 0f;
-        range = 2f;
+        range = 1f;
 
         attackPrefabs[1].transform.localScale = new Vector3(0.75f, 0.75f, 0);
         attackPrefabs[1].GetComponent<crescentControl>().createCrescent(gameObject, 5);

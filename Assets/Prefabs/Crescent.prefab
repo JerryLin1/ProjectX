@@ -45,11 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ae04ccf9064dd4cb02220394e7a9a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 1024
-  attackOffset: {x: 0, y: 0.5}
-  hitboxRadius: 1
 --- !u!58 &2464693477057629281
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -63,9 +58,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.64}
+  m_Offset: {x: 0, y: 0.65}
   serializedVersion: 2
-  m_Radius: 0.97639656
+  m_Radius: 0.7659847
 --- !u!1 &2932712244276402358
 GameObject:
   m_ObjectHideFlags: 0

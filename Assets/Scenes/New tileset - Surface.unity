@@ -630,12 +630,12 @@ PrefabInstance:
     - target: {fileID: 7233642804490169004, guid: 9fe4d840aa4d3ce428bfef230167a4db,
         type: 3}
       propertyPath: endReachedDistance
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7233642804490169004, guid: 9fe4d840aa4d3ce428bfef230167a4db,
         type: 3}
       propertyPath: slowdownDistance
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7233642804490169004, guid: 9fe4d840aa4d3ce428bfef230167a4db,
         type: 3}
