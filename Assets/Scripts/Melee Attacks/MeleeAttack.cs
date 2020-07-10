@@ -21,7 +21,7 @@ public abstract class MeleeAttack : MonoBehaviour
     }
 
     // Should be called immediately after crescent creation
-    public virtual void setCrescent(GameObject attacker, int damage, float knockbackPower, float knockbackDuration) {
+    public virtual void setAttack(GameObject attacker, int damage, float knockbackPower, float knockbackDuration) {
         this.attacker = attacker;
         this.damage = damage;
 

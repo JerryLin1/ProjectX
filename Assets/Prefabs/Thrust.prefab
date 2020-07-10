@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4801431683526742108}
   - component: {fileID: 4400452587686078732}
+  - component: {fileID: 6559618676873712025}
   m_Layer: 0
   m_Name: Thrust
   m_TagString: Untagged
@@ -58,6 +59,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.50876343, y: 1.4328656}
   m_EdgeRadius: 0
+--- !u!114 &6559618676873712025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801431683526742097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391d638dbf6e7eb41873be5642f3066e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4959940411391723741
 GameObject:
   m_ObjectHideFlags: 0

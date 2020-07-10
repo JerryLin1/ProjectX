@@ -12,7 +12,7 @@ public class GoblinSpearman : Enemy
         range = 1f;
 
         attackPrefabs[1].transform.localScale = new Vector3(0.75f, 0.75f, 0);
-        attackPrefabs[1].GetComponent<Crescent>().setCrescent(gameObject, 5, 2f, 0.2f);
+        // attackPrefabs[1].GetComponent<Crescent>().setAttack(gameObject, 5, 2f, 0.2f);
     }
 
     void Update()
