@@ -49,6 +49,10 @@ public class abl_Slash : Ability
         GameObject crescent = Instantiate(crescentPrefab, parent.GetComponent<Transform>().position, parent.GetComponent<Transform>().localRotation);
         crescent.transform.localScale = new Vector3(crescentScale, crescentScale, 0);
         crescent.transform.up = direction;
+        Collider2D[] enemiesHit = crescent.GetComponent<crescentControl>().getHit();
+        foreach (Collider2D enemy in enemiesHit) {
+            enemy.GetComponent<Entity>().takeDamage(8);
+        }
         Destroy(crescent, 0.3333f); 
     }
 }

@@ -20,7 +20,12 @@ public abstract class Entity : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
     protected virtual void customStart(){}
-
+    public virtual void takeDamage(float damage) {
+        currentHP -= damage;
+        if (currentHP <= 0) {
+            Destroy(gameObject);
+        }
+    }
     public virtual float GetMovementSpeed() {return movementSpeed;}
     public virtual void SetMovementSpeed(float newMovementSpeed) {movementSpeed = newMovementSpeed;}
     public virtual float GetCooldownFactor() {return cooldownFactor;}
