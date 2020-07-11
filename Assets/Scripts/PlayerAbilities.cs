@@ -8,9 +8,10 @@ public class PlayerAbilities : MonoBehaviour
 
     Vector3 mousePos;
     Vector2 direction;
+    Player player;
     void Start()
     {
-
+        player = transform.parent.GetComponent<Player>();
     }
     void Update()
     {
@@ -28,6 +29,9 @@ public class PlayerAbilities : MonoBehaviour
         if (abilities[0] != null && Input.GetMouseButton(0) && !abilities[0].onCooldown())
         {
             abilities[0].Cast(mousePos, direction);
+            foreach (GameObject item in player.items) {
+                item.GetComponent<Item>().onBasicAttack(player);
+            }
         } 
 
         if (abilities[1] != null && Input.GetMouseButton(1) && !abilities[1].onCooldown())

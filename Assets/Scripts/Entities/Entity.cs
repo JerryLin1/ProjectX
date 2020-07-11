@@ -17,6 +17,7 @@ public abstract class Entity : MonoBehaviour
     protected Shader shaderGUItext;
     protected Shader shaderSpritesDefault;
     float flashTimer = 0;
+    public List<StatusEffect> statuses = new List<StatusEffect>();
 
     protected virtual void Start()
     {

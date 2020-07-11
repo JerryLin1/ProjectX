@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Player : Entity
 {
     GameObject activeItem;
-    List<GameObject> items = new List<GameObject>();
+    public List<GameObject> items = new List<GameObject>();
     Vector2 direction;
     Vector3 mousePos;
     PlayerAbilities playerAbilities;
@@ -109,7 +109,9 @@ public class Player : Entity
     }
     public void inventoryTriggerPassiveItems()
     {
-        // TODO: Passive effects that are always active. would use item class's passiveEffect() method
+        foreach (GameObject item in items) {
+            item.GetComponent<Item>().passiveEffect(this);
+        }
     }
     public void inventoryTriggerOnDamagedItems()
     {
