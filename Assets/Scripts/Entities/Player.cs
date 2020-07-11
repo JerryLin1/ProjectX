@@ -21,7 +21,7 @@ public class Player : Entity
         playerAbilities = transform.GetChild(1).GetComponent<PlayerAbilities>();
         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
     }
-    void Update()
+    protected override void customUpdate()
     {
         checkInput();
         inventoryTriggerPassiveItems();

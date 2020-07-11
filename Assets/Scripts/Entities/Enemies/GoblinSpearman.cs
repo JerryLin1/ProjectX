@@ -13,7 +13,7 @@ public class GoblinSpearman : Enemy
         // attackPrefabs[1].transform.localScale = new Vector3(0.75f, 0.75f, 0);
     }
 
-    void Update()
+    protected override void customUpdate()
     {
         if (!isAttacking) {
             animator.SetBool("moving", (GetComponent<Pathfinding.IAstarAI>().velocity != Vector3.zero) ? true : false);
