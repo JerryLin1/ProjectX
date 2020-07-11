@@ -22,17 +22,14 @@ public class abl_Dash : Ability
                 GameObject ghostInstance = Instantiate(ghostTrail, parent.position, parent.localRotation);
                 ghostInstance.GetComponent<ghostTrail>().setGhostLeaderSr(parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>());
             }
-            else
-            {
-                parent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            }
+            
         }
     }
     public override void Cast(Vector3 mousePos, Vector2 direction)
     {
         dashDirection = direction;
         dashTimer = dashTime;
-        dashSpeed = 100f;
+        dashSpeed = 150f;
 
         parent.GetComponent<Transform>().localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         animator.SetTrigger("dash");

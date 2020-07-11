@@ -19,9 +19,6 @@ public abstract class Enemy : Entity
     }
     protected virtual void enemyCustomStart(){}
 
-    public virtual void knockback(Vector2 force) {
-        rb.AddForce(force, ForceMode2D.Impulse);
-    }
     protected virtual void meleeAttack() {
 
         if (timer == 0f && Vector2.Distance(transform.position, target.transform.position) < range) {
@@ -36,7 +33,7 @@ public abstract class Enemy : Entity
     public virtual void createMeleeAttackAnimation() {
         GameObject attackAnimation = Instantiate(attackPrefabs[attackAnimationIndex], transform.position, transform.localRotation);
         attackAnimation.transform.up = attackDirection;
-        attackAnimation.GetComponent<MeleeAttack>().setAttack(gameObject, 2, 3f, 0.2f);
+        attackAnimation.GetComponent<MeleeAttack>().setAttack(gameObject, 2, 10f, 0.2f);
 
         attackAnimationIndex ++;
         if (attackAnimationIndex == attackPrefabs.Length) {

@@ -12,6 +12,9 @@ public abstract class Entity : MonoBehaviour
     protected Vector2 movement;
     protected float cooldownFactor = 1f;
     protected float lastVelocity = 0;
+    public bool isBeingAttacked;
+
+
     protected virtual void Start()
     {
         customStart();
@@ -20,6 +23,11 @@ public abstract class Entity : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
     protected virtual void customStart(){}
+
+    public virtual void knockback(Vector2 force) {
+        rb.AddForce(force, ForceMode2D.Impulse);
+    }
+
     public virtual void takeDamage(float damage) {
         currentHP -= damage;
         if (currentHP <= 0) {

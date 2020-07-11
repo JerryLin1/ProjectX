@@ -17,7 +17,7 @@ public abstract class MeleeAttack : MonoBehaviour
         // Destroy and disable collider after specific duration
         animationDuration = transform.Find("Sprite").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
         Destroy(gameObject, knockbackDuration+recoveryDuration+animationDuration+extraDuration);
-        StartCoroutine(attackMissed());
+        StartCoroutine(AttackMissed());
     }
 
     // Should be called immediately after crescent creation
@@ -33,17 +33,21 @@ public abstract class MeleeAttack : MonoBehaviour
 
     protected virtual IEnumerator KnockCoroutine(Rigidbody2D enemy)
     {
-        // Knockback and prevent movement
-        yield return new WaitForSeconds(knockbackDuration);
-        enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        if (enemy != null) {
+            // Knockback and prevent movement
+            enemy.GetComponent<Entity>().isBeingAttacked = true;
+            yield return new WaitForSeconds(knockbackDuration);
+            enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-        // Allow movement and destroy attack projectile
-        yield return new WaitForSeconds(recoveryDuration);
-        enemy.GetComponent<Pathfinding.AIPath>().canMove = true;
-        Destroy(gameObject);
+            // Allow movement and destroy attack projectile
+            yield return new WaitForSeconds(recoveryDuration);
+            if (enemy.gameObject.layer == LayerMask.NameToLayer("Enemies")) enemy.GetComponent<Pathfinding.AIPath>().canMove = true;
+            enemy.GetComponent<Entity>().isBeingAttacked = false;
+            Destroy(gameObject);
+        } 
     }
 
-    protected virtual IEnumerator attackMissed() {
+    protected virtual IEnumerator AttackMissed() {
 
         // Disable collider at the end of animation
         yield return new WaitForSeconds(animationDuration);

@@ -29,8 +29,9 @@ public class Player : Entity
 
     void FixedUpdate()
     {
-        if (!isAttacking) Move(movement);
-        else MeleeAttack();
+        if (isAttacking) MeleeAttack();
+        else if (isBeingAttacked) return;
+        else Move(movement);
     }
     void checkInput()
     {
