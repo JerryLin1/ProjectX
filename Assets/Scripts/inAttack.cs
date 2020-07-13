@@ -24,7 +24,7 @@ public class inAttack : MonoBehaviour
             rogue_animationCancel = false;
             transform.GetComponent<Animator>().Rebind();
         } else {
-            GameObject.Find("Player/Abilities").GetComponent<abl_Slash>().miniDash(0.0125f, 50f, 1f);
+            GameObject.Find("Player/Abilities").GetComponent<abl_Slash>().miniDash(0.1f, 100f, 1f);
         }
     }
 
