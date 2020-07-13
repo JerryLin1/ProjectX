@@ -25,7 +25,7 @@ public abstract class Entity : MonoBehaviour
         currentHP = maxHP;
         animator = transform.Find("Sprites/Body").GetComponent<Animator>();
         spriteRenderer = transform.Find("Sprites/Body").GetComponent<SpriteRenderer>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         shaderGUItext = Shader.Find("GUI/Text Shader");
         shaderSpritesDefault = Shader.Find("Sprites/Default");
     }
