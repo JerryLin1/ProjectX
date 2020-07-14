@@ -22,16 +22,12 @@ public class abl_Slash : Ability
         {
             if (dashTimer > 0f)
             {
-                parent.GetComponent<Collider2D>().enabled = false;
                 parent.GetComponent<Rigidbody2D>().AddForce(dashDirection * dashSpeed * 5f);
                 dashTimer -= Time.deltaTime;
                 GameObject ghostInstance = Instantiate(ghostTrail, parent.position, parent.localRotation);
                 ghostInstance.GetComponent<ghostTrail>().setDashOpacity(0.25f);
                 ghostInstance.GetComponent<ghostTrail>().setGhostLeaderSr(parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>());
-            } else {
-                parent.GetComponent<Collider2D>().enabled = true;
-            }
-            
+            } 
         }
     } 
     public override void Cast(Vector3 mousePos, Vector2 direction)
