@@ -42,7 +42,9 @@ public abstract class Entity : MonoBehaviour
         rb.AddForce(force, ForceMode2D.Impulse);
     }
 
-    public virtual void takeDamage(float damage) {
+    public virtual void takeDamage(float damage, Entity source) {
+        source.triggerOnHitEffects(this);
+        triggerOnDamagedEffects(source);
         currentHP -= damage;
         if (currentHP <= 0) {
             Destroy(gameObject);
@@ -50,6 +52,9 @@ public abstract class Entity : MonoBehaviour
         spriteRenderer.material.shader = shaderGUItext;
         flashTimer = 0.1f;
     }
+    public virtual void triggerPassiveEffects(){}
+    public virtual void triggerOnDamagedEffects(Entity source){}
+    public virtual void triggerOnHitEffects(Entity enemy){}
     public virtual float GetMovementSpeed() {return movementSpeed;}
     public virtual void SetMovementSpeed(float newMovementSpeed) {movementSpeed = newMovementSpeed;}
     public virtual float GetCooldownFactor() {return cooldownFactor;}
