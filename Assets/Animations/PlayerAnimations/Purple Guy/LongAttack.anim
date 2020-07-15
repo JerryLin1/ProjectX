@@ -88,9 +88,6 @@ AnimationClip:
     - time: 1.8333334
       value: {fileID: -893646550122486737, guid: bf4b0e9da7f5e4b42bb6b84c6b7dda18,
         type: 3}
-    - time: 1.9166666
-      value: {fileID: -5312107724623078038, guid: bf4b0e9da7f5e4b42bb6b84c6b7dda18,
-        type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -133,13 +130,12 @@ AnimationClip:
     - {fileID: 3779351709977801011, guid: bf4b0e9da7f5e4b42bb6b84c6b7dda18, type: 3}
     - {fileID: 6105331173260820527, guid: bf4b0e9da7f5e4b42bb6b84c6b7dda18, type: 3}
     - {fileID: -893646550122486737, guid: bf4b0e9da7f5e4b42bb6b84c6b7dda18, type: 3}
-    - {fileID: -5312107724623078038, guid: bf4b0e9da7f5e4b42bb6b84c6b7dda18, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2
+    m_StopTime: 1.9166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -166,28 +162,28 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.16666667
+  - time: 0.25
     functionName: rogue_miniDash
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.41666666
+  - time: 0.5833333
     functionName: rogue_miniDash
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.8333333
+  - time: 0.9166667
     functionName: rogue_miniDash
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.1666666
+  - time: 1.25
     functionName: rogue_miniDash
     data: 
     objectReferenceParameter: {fileID: 0}

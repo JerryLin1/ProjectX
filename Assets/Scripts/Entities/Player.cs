@@ -16,7 +16,7 @@ public class Player : Entity
 
     protected override void customStart()
     {
-        movementSpeed = 10f;
+        movementSpeed = 6f;
         maxHP = 100f;
         playerAbilities = transform.GetChild(1).GetComponent<PlayerAbilities>();
         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
@@ -29,8 +29,7 @@ public class Player : Entity
 
     void FixedUpdate()
     {
-        if (isAttacking) MeleeAttack();
-        else if (isBeingAttacked) return;
+        if (isBeingAttacked) return;
         else Move(movement);
     }
     void checkInput()
@@ -62,10 +61,16 @@ public class Player : Entity
     {
         if (movement.y != 0) lastVelocity = movement.y;
         rb.velocity = movement * movementSpeed;
-        animator.SetBool("moving", (rb.velocity == Vector2.zero) ? false : true);
 
-        // Rotate entity while moving
-        if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        if (!isAttacking) {
+            animator.SetBool("moving", (rb.velocity == Vector2.zero) ? false : true);
+
+            // Rotate entity while moving
+            if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        } else {
+            rb.velocity *= 0.25f;
+        }
+
 
         // Rotate entity while idle
         if (movement.y == 0 && movement.x == 0 && !isAttacking) transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
@@ -73,7 +78,7 @@ public class Player : Entity
     }
     public void MeleeAttack() {
         animator.SetBool("moving", false);
-        rb.velocity = Vector2.zero;
+        // rb.velocity = Vector2.zero;
     }
 
     public void pickupItem(GameObject item)

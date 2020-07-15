@@ -40,9 +40,9 @@ public class abl_Slash : Ability
 
     public void miniDash(float dashTimer, float dashSpeed, float crescentScale) {
         // Set miniDash parameters
-        dashDirection = direction;
-        this.dashTimer = dashTimer;
-        this.dashSpeed = dashSpeed;
+        // dashDirection = direction;
+        // this.dashTimer = dashTimer;
+        // this.dashSpeed = dashSpeed;
 
         // Create crescent in direction of mouse click
         parent.GetComponent<Transform>().localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
