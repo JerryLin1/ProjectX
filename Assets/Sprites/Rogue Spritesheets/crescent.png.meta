@@ -11,6 +11,18 @@ TextureImporter:
   - first:
       213: 8499883113701891779
     second: crescent_2
+  - first:
+      213: 6137072839508231019
+    second: crescent_0
+  - first:
+      213: 1608129717142316444
+    second: crescent_1
+  - first:
+      213: 682428719704361715
+    second: crescent_2
+  - first:
+      213: -8407836247470253978
+    second: crescent_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,6 +124,48 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b63069f5b334b2550800000000000000
+      internalID: 6137072839508231019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crescent_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c95640f1579315610800000000000000
+      internalID: 1608129717142316444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crescent_2
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 32
         height: 32
@@ -122,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73545c0a8d0548a90800000000000000
-      internalID: -7312631003602401993
+      spriteID: 3fac08e0e49787900800000000000000
+      internalID: 682428719704361715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crescent_1
+      name: crescent_3
       rect:
         serializedVersion: 2
         x: 32
@@ -143,29 +197,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44b0ecaeda02f98f0800000000000000
-      internalID: -531670299665626300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crescent_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ceda8858a6a5f570800000000000000
-      internalID: 8499883113701891779
+      spriteID: 668d1e3ca7d515b80800000000000000
+      internalID: -8407836247470253978
       vertices: []
       indices: 
       edges: []
