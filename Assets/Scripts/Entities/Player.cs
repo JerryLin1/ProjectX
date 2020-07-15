@@ -24,7 +24,7 @@ public class Player : Entity
     protected override void customUpdate()
     {
         checkInput();
-        inventoryTriggerPassiveItems();
+        triggerPassiveEffects();
     }
 
     void FixedUpdate()
@@ -62,12 +62,15 @@ public class Player : Entity
         if (movement.y != 0) lastVelocity = movement.y;
         rb.velocity = movement * movementSpeed;
 
-        if (!isAttacking) {
+        if (!isAttacking)
+        {
             animator.SetBool("moving", (rb.velocity == Vector2.zero) ? false : true);
 
             // Rotate entity while moving
             if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-        } else {
+        }
+        else
+        {
             rb.velocity *= 0.25f;
         }
 
@@ -76,7 +79,8 @@ public class Player : Entity
         if (movement.y == 0 && movement.x == 0 && !isAttacking) transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
 
     }
-    public void MeleeAttack() {
+    public void MeleeAttack()
+    {
         animator.SetBool("moving", false);
         // rb.velocity = Vector2.zero;
     }
@@ -112,23 +116,33 @@ public class Player : Entity
         playerAbilities.abilities[slot] = ability;
         playerAbilities.abilities[slot].onEquip();
     }
-    public void inventoryTriggerPassiveItems()
+    public override void triggerPassiveEffects()
     {
-        foreach (GameObject item in items) {
+        foreach (GameObject item in items)
+        {
             item.GetComponent<Item>().passiveEffect(this);
         }
     }
-    public void inventoryTriggerOnDamagedItems()
+    public override void triggerOnDamagedEffects(Entity source)
     {
-        // TODO: Activated when player loses health. I.E. Create explosion
+        foreach (GameObject item in items)
+        {
+            item.GetComponent<Item>().onDamagedEffect(this, source);
+        }
     }
-    public void inventoryTriggerOnHitItems()
+    public override void triggerOnHitEffects(Entity enemy)
     {
-        // TODO: Activated when player deals damage. I.E. Poison target
+        foreach (GameObject item in items)
+        {
+            item.GetComponent<Item>().onHitEffect(this, enemy);
+        }
     }
-    public void inventoryTriggerOnAbilityItems()
+    public void triggerOnAbilityEffects()
     {
-        // TODO: Activated when player uses any ability. I.E. Send out bullets when dashing
+        foreach (GameObject item in items)
+        {
+            item.GetComponent<Item>().onAbility(this);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

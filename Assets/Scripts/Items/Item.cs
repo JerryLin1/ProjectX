@@ -12,9 +12,9 @@ public abstract class Item : MonoBehaviour
     public Ability itemAbility;
     public virtual void onPickUpEffect(Entity control) {}
     public virtual void passiveEffect(Entity control) {}
-    public virtual void onDamagedEffect(Entity control) {}
-    public virtual void onBasicAttack(Entity control) {}
-    public virtual void onHitEffect(Entity control) {}
+    public virtual void onDamagedEffect(Entity control, Entity source) {}
+    public virtual void onAbility(Entity control) {}
+    public virtual void onHitEffect(Entity control, Entity enemy) {}
     public Sprite getItemSprite() {
         return transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite;
     }

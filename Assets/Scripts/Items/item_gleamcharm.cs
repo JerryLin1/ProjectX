@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class item_gleamcharm : Item
 {
-    public GameObject ghostEffectPrefab;
     public GameObject hasteStatusPrefab;
     float hasteCooldown = 1f;
     float hasteCooldownTimer = 0f;
@@ -12,7 +11,7 @@ public class item_gleamcharm : Item
     {
         itemTier = 2;
         itemName = "Gleam charm";
-        itemDesc = "u make ghost!! :0";
+        itemDesc = "Briefly increases movement speed when an ability is casted.";
         itemType = "passive";
     }
     private void Update()
@@ -22,12 +21,7 @@ public class item_gleamcharm : Item
             hasteCooldownTimer -= Time.deltaTime;
         }
     }
-    public override void passiveEffect(Entity control)
-    {
-        GameObject ghostInstance = Instantiate(ghostEffectPrefab, control.transform.position, control.transform.localRotation);
-        ghostInstance.GetComponent<ghostTrail>().setGhostLeaderSr(control.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>());
-    }
-    public override void onBasicAttack(Entity control)
+    public override void onAbility(Entity control)
     {
         if (hasteCooldownTimer <= 0)
         {

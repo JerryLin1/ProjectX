@@ -29,20 +29,21 @@ public class PlayerAbilities : MonoBehaviour
         if (abilities[0] != null && Input.GetMouseButton(0) && !abilities[0].onCooldown())
         {
             abilities[0].Cast(mousePos, direction);
-            foreach (GameObject item in player.items) {
-                item.GetComponent<Item>().onBasicAttack(player);
-            }
+            player.triggerOnAbilityEffects();
         } 
 
         if (abilities[1] != null && Input.GetMouseButton(1) && !abilities[1].onCooldown())
         {
             abilities[1].Cast(mousePos, direction);
+            player.triggerOnAbilityEffects();
         }
         if (abilities[2] != null && Input.GetKeyDown(KeyCode.F) && !abilities[2].onCooldown()) {
             abilities[2].Cast(mousePos, direction);
+            player.triggerOnAbilityEffects();
         }
         if (abilities[3] != null && Input.GetKeyDown(KeyCode.Q) && !abilities[3].onCooldown()) {
             abilities[3].Cast(mousePos, direction);
+            player.triggerOnAbilityEffects();
         }
     }
     
