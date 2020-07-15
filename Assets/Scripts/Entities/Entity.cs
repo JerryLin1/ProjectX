@@ -27,7 +27,7 @@ public abstract class Entity : MonoBehaviour
         spriteRenderer = transform.Find("Sprites/Body").GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         shaderGUItext = Shader.Find("GUI/Text Shader");
-        shaderSpritesDefault = Shader.Find("Sprites/Default");
+        shaderSpritesDefault = transform.Find("Sprites/Body").GetComponent<SpriteRenderer>().material.shader;
     }
     protected virtual void Update() {
         if (flashTimer > 0) {
