@@ -20,6 +20,7 @@ public class Player : Entity
         maxHP = 100f;
         playerAbilities = transform.GetChild(1).GetComponent<PlayerAbilities>();
         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
+
     }
     protected override void customUpdate()
     {
