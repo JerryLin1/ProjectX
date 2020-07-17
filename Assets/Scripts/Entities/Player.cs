@@ -120,6 +120,7 @@ public class Player : Entity
     }
     public override void triggerOnDamagedEffects(Entity source)
     {
+        hudControl.setHealthBar(currentHP, maxHP);
         foreach (GameObject item in items)
         {
             item.GetComponent<Item>().onDamagedEffect(this, source);

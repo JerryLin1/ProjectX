@@ -33,6 +33,10 @@ public class hudControl : MonoBehaviour
         stemp.transform.GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
         stemp.transform.GetChild(0).GetComponent<Image>().enabled = true;
     }
+    public void setHealthBar(float currentHP, float maxHP) {
+        float percentage = currentHP/maxHP;
+        transform.GetChild(3).GetComponent<Slider>().value = percentage;
+    }
     public void openInventory() {inventoryUI.SetActive(true);}
     public void closeInventory() {inventoryUI.SetActive(false);}
     public bool isInventoryOpen() {return inventoryUI.activeSelf;}
