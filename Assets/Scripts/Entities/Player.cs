@@ -14,7 +14,7 @@ public class Player : Entity
     List<GameObject> nearbyItems = new List<GameObject>();
     public hudControl hudControl;
     public GameObject dustPrefab;
-    float dustCooldown = 0.6f;
+    float dustCooldown = 0.2f;
     float dustTimer = 0f;
 
     protected override void customStart()
