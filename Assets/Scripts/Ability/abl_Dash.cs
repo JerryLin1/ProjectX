@@ -18,6 +18,7 @@ public class abl_Dash : Ability
             if (dashTimer > 0f)
             {
                 parent.GetComponent<Rigidbody2D>().AddForce(dashDirection * dashSpeed * 5f);
+                parent.GetComponent<Transform>().localRotation = (dashDirection.x >= 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
                 dashTimer -= Time.deltaTime;
                 GameObject ghostInstance = Instantiate(ghostTrail, parent.position, parent.localRotation);
                 ghostInstance.GetComponent<ghostTrail>().setGhostLeaderSr(parent.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>());
@@ -29,7 +30,7 @@ public class abl_Dash : Ability
     {
         dashDirection = direction;
         dashTimer = dashTime;
-        dashSpeed = 150f;
+        dashSpeed = 175f;
 
         parent.GetComponent<Transform>().localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         animator.SetTrigger("dash");

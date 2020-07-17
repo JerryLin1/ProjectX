@@ -14,6 +14,7 @@ public class InAbility : MonoBehaviour
     }
 
     
+    
     // Specific methods for rogue players
 
     public bool rogue_animationCancel;

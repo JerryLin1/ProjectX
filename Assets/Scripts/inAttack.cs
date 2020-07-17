@@ -7,8 +7,6 @@ public class inAttack : MonoBehaviour
     // General methods for attacks
     public void onEnterAttack() {
         transform.root.GetComponent<Player>().isAttacking = true;
-        
-        transform.root.GetComponent<Player>().MeleeAttack();
     }
 
     public void onExitAttack() {

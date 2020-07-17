@@ -26,6 +26,7 @@ public class Player : Entity
     {
         checkInput();
         triggerPassiveEffects();
+        
     }
 
     void FixedUpdate()
@@ -56,6 +57,11 @@ public class Player : Entity
             else
                 hudControl.openInventory();
         }
+
+        // Make sure right animation is being played
+        animator.SetBool("moving", (rb.velocity == Vector2.zero || isAttacking) ? false : true);
+
+       
     }
 
     void Move(Vector2 movement)
@@ -63,29 +69,16 @@ public class Player : Entity
         if (movement.y != 0) lastVelocity = movement.y;
         rb.velocity = movement * movementSpeed;
 
-        if (!isAttacking)
-        {
-            animator.SetBool("moving", (rb.velocity == Vector2.zero) ? false : true);
+        if (isAttacking) rb.velocity *= 0.25f;
 
-            // Rotate entity while moving
-            if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-        }
-        else
-        {
-            animator.SetBool("moving", false);
-            rb.velocity *= 0.25f;
-        }
-
+         // Rotate entity while moving
+        if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        
 
         // Rotate entity while idle
         if (movement.y == 0 && movement.x == 0 && !isAttacking) transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+    }
 
-    }
-    public void MeleeAttack()
-    {
-        animator.SetBool("moving", false);
-        // rb.velocity = Vector2.zero;
-    }
 
     public void pickupItem(GameObject item)
     {
