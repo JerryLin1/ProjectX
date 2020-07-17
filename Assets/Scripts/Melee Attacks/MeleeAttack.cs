@@ -7,7 +7,7 @@ public abstract class MeleeAttack : MonoBehaviour
     protected float knockbackPower;
     protected float knockbackDuration;
     protected float animationDuration;
-    protected float recoveryDuration = 0.2f;
+    protected float recoveryDuration = 0.05f;
     protected float extraDuration = 0.25f;
     protected int damage;
     protected GameObject attacker;

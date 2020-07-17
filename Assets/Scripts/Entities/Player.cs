@@ -72,6 +72,7 @@ public class Player : Entity
         }
         else
         {
+            animator.SetBool("moving", false);
             rb.velocity *= 0.25f;
         }
 

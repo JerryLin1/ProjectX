@@ -14,7 +14,7 @@ public class CancelBasicAttack : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (!Input.GetMouseButton(0)) {
-            animator.GetComponent<inAttack>().rogue_animationCancel = true;
+            animator.GetComponent<InAbility>().rogue_animationCancel = true;
         }
         
     }
