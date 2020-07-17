@@ -7,6 +7,7 @@ public class inAttack : MonoBehaviour
     // General methods for attacks
     public void onEnterAttack() {
         transform.root.GetComponent<Player>().isAttacking = true;
+        
         transform.root.GetComponent<Player>().MeleeAttack();
     }
 
@@ -20,11 +21,12 @@ public class inAttack : MonoBehaviour
     public void rogue_miniDash() {
         
         if (rogue_animationCancel == true) {
+            GameObject.Find("Player/Abilities").GetComponent<abl_Slash>().createCrescent(1f);
             transform.root.GetComponent<Player>().isAttacking = false;
             rogue_animationCancel = false;
             transform.GetComponent<Animator>().Rebind();
         } else {
-            GameObject.Find("Player/Abilities").GetComponent<abl_Slash>().miniDash(0.025f, 100f, 1f);
+            GameObject.Find("Player/Abilities").GetComponent<abl_Slash>().createCrescent(1f);
         }
     }
 
