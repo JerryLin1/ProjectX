@@ -9,16 +9,23 @@ public class PlayerAbilities : MonoBehaviour
     Vector3 mousePos;
     Vector2 direction;
     Player player;
+    hudControl hudControl;
     void Start()
     {
         player = transform.parent.GetComponent<Player>();
+        hudControl = player.hudControl;
     }
     void Update()
     {
         checkInput();
-        for (int i = 0; i < abilities.Length; i++) {
-            if (abilities[i] != null) 
+        for (int i = 0; i < abilities.Length; i++)
+        {
+            if (abilities[i] != null)
+            {
                 abilities[i].decreaseCooldown();
+                if (abilities[i].getCooldown() > 0) 
+                    hudControl.updateAbilityCooldown(i, abilities[i].getRemainingCooldown(), abilities[i].getCooldown());
+            }
         }
     }
     void checkInput()
@@ -30,21 +37,23 @@ public class PlayerAbilities : MonoBehaviour
         {
             abilities[0].Cast(mousePos, direction);
             player.triggerOnAbilityEffects();
-        } 
+        }
 
         if (abilities[1] != null && Input.GetMouseButton(1) && !abilities[1].onCooldown())
         {
             abilities[1].Cast(mousePos, direction);
             player.triggerOnAbilityEffects();
         }
-        if (abilities[2] != null && Input.GetKeyDown(KeyCode.F) && !abilities[2].onCooldown()) {
+        if (abilities[2] != null && Input.GetKeyDown(KeyCode.F) && !abilities[2].onCooldown())
+        {
             abilities[2].Cast(mousePos, direction);
             player.triggerOnAbilityEffects();
         }
-        if (abilities[3] != null && Input.GetKeyDown(KeyCode.Q) && !abilities[3].onCooldown()) {
+        if (abilities[3] != null && Input.GetKeyDown(KeyCode.Q) && !abilities[3].onCooldown())
+        {
             abilities[3].Cast(mousePos, direction);
             player.triggerOnAbilityEffects();
         }
     }
-    
+
 }
