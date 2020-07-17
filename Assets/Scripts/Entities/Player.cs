@@ -13,6 +13,9 @@ public class Player : Entity
     public bool isAttacking;
     List<GameObject> nearbyItems = new List<GameObject>();
     public hudControl hudControl;
+    public GameObject dustPrefab;
+    float dustCooldown = 1f;
+    float dustTimer = 0f;
 
     protected override void customStart()
     {
@@ -26,7 +29,8 @@ public class Player : Entity
     {
         checkInput();
         triggerPassiveEffects();
-        
+
+        dustTimer -= Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -74,9 +78,13 @@ public class Player : Entity
          // Rotate entity while moving
         if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         
-
         // Rotate entity while idle
         if (movement.y == 0 && movement.x == 0 && !isAttacking) transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+
+        if (dustTimer <= 0 && (rb.velocity.x != 0 || rb.velocity.y != 0)) {
+            GameObject dust = Instantiate(dustPrefab, transform.position, Quaternion.identity);
+            dustTimer = dustCooldown;
+        }
     }
 
 
