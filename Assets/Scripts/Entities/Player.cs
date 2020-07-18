@@ -73,11 +73,14 @@ public class Player : Entity
 
         if (isAttacking) rb.velocity *= 0.25f;
 
-        // Rotate entity while moving
-        if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        if (!isAttacking) {
+            // Rotate entity while 
+            if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
 
-        // Rotate entity while idle
-        if (movement.y == 0 && movement.x == 0 && !isAttacking) transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+            // Rotate entity while idle
+            if (movement.y == 0 && movement.x == 0 && !isAttacking) transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        }
+       
 
         if (dustTimer <= 0 && (rb.velocity.x != 0 || rb.velocity.y != 0))
         {
