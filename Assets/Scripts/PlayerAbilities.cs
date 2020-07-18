@@ -24,7 +24,7 @@ public class PlayerAbilities : MonoBehaviour
             {
                 abilities[i].decreaseCooldown();
                 if (abilities[i].getCooldown() > 0) 
-                    hudControl.updateAbilityCooldown(i, abilities[i].getRemainingCooldown(), abilities[i].getCooldown());
+                    hudControl.updateAbilityCooldown(i, abilities[i].getRemainingCooldown(), abilities[i].getCooldown()*player.GetCooldownFactor());
             }
         }
     }

@@ -29,34 +29,51 @@ public abstract class Entity : MonoBehaviour
         shaderGUItext = Shader.Find("GUI/Text Shader");
         shaderSpritesDefault = transform.Find("Sprites/Body").GetComponent<SpriteRenderer>().material.shader;
     }
-    protected virtual void Update() {
-        if (flashTimer > 0) {
+    protected virtual void Update()
+    {
+        if (flashTimer > 0)
+        {
             flashTimer -= Time.deltaTime;
             if (flashTimer <= 0) spriteRenderer.material.shader = shaderSpritesDefault;
         }
         customUpdate();
     }
-    protected virtual void customStart(){}
-    protected virtual void customUpdate(){}
-    public virtual void knockback(Vector2 force) {
+    protected virtual void customStart() { }
+    protected virtual void customUpdate() { }
+    public virtual void knockback(Vector2 force)
+    {
         rb.AddForce(force, ForceMode2D.Impulse);
     }
 
-    public virtual void takeDamage(float damage, Entity source) {
+    public virtual void takeDamage(float damage, Entity source)
+    {
         source.triggerOnHitEffects(this);
         triggerOnDamagedEffects(source);
         currentHP -= damage;
-        if (currentHP <= 0) {
+        if (currentHP <= 0)
+        {
+            source.triggerOnKillEffects();
             Destroy(gameObject);
         }
         spriteRenderer.material.shader = shaderGUItext;
         flashTimer = 0.1f;
     }
-    public virtual void triggerPassiveEffects(){}
-    public virtual void triggerOnDamagedEffects(Entity source){}
-    public virtual void triggerOnHitEffects(Entity enemy){}
-    public virtual float GetMovementSpeed() {return movementSpeed;}
-    public virtual void SetMovementSpeed(float newMovementSpeed) {movementSpeed = newMovementSpeed;}
-    public virtual float GetCooldownFactor() {return cooldownFactor;}
-    public virtual void SetCooldownFactor(float newCooldownFactor) {cooldownFactor = newCooldownFactor;}
+    public virtual void heal(float heal)
+    {
+        currentHP += heal;
+        if (currentHP > maxHP)
+        {
+            currentHP = maxHP;
+        }
+        triggerOnHealEffects();
+    }
+    public virtual void triggerPassiveEffects() { }
+    public virtual void triggerOnDamagedEffects(Entity source) { }
+    public virtual void triggerOnHealEffects() { }
+    public virtual void triggerOnHitEffects(Entity enemy) { }
+    public virtual void triggerOnKillEffects() { }
+    public virtual float GetMovementSpeed() { return movementSpeed; }
+    public virtual void SetMovementSpeed(float newMovementSpeed) { movementSpeed = newMovementSpeed; }
+    public virtual float GetCooldownFactor() { return cooldownFactor; }
+    public virtual void SetCooldownFactor(float newCooldownFactor) { cooldownFactor = newCooldownFactor; }
 }

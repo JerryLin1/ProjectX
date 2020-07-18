@@ -5,7 +5,7 @@ using UnityEngine;
 public class GoblinSpearman : Enemy
 {
     protected override void enemyCustomStart() {
-        maxHP = 5000;
+        maxHP = 50;
         cooldown = 1.1f;
         timer = 0f;
         range = 1f;

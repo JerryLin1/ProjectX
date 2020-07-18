@@ -138,11 +138,25 @@ public class Player : Entity
             item.GetComponent<Item>().onDamagedEffect(this, source);
         }
     }
+    public override void triggerOnHealEffects()
+    {
+        hudControl.setHealthBar(currentHP, maxHP);
+        foreach (GameObject item in items)
+        {
+            item.GetComponent<Item>().onHealEffect(this);
+        }
+    }
     public override void triggerOnHitEffects(Entity enemy)
     {
         foreach (GameObject item in items)
         {
             item.GetComponent<Item>().onHitEffect(this, enemy);
+        }
+    }
+    public override void triggerOnKillEffects() {
+        foreach (GameObject item in items)
+        {
+            item.GetComponent<Item>().onKillEffect(this);
         }
     }
     public void triggerOnAbilityEffects()
@@ -152,6 +166,7 @@ public class Player : Entity
             item.GetComponent<Item>().onAbility(this);
         }
     }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Add nearby items to a list
