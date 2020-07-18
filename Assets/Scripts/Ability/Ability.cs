@@ -32,4 +32,10 @@ public abstract class Ability : MonoBehaviour
         if (currentCooldown >= 0) return (true);
         else return (false);
     }
+    public float getRemainingCooldown() {
+        return currentCooldown;
+    }
+    public float getCooldown() {
+        return cooldown;
+    }
 }

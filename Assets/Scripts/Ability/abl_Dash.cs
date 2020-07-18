@@ -32,6 +32,7 @@ public class abl_Dash : Ability
         dashTimer = dashTime;
         dashSpeed = 175f;
 
+        parent.GetComponent<Player>().kickupDust();
         parent.GetComponent<Transform>().localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         animator.SetTrigger("dash");
         goOnCooldown();

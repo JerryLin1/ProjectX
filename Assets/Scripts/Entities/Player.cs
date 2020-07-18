@@ -13,6 +13,9 @@ public class Player : Entity
     public bool isAttacking;
     List<GameObject> nearbyItems = new List<GameObject>();
     public hudControl hudControl;
+    public GameObject dustPrefab;
+    float dustCooldown = 0.2f;
+    float dustTimer = 0f;
 
     protected override void customStart()
     {
@@ -26,7 +29,8 @@ public class Player : Entity
     {
         checkInput();
         triggerPassiveEffects();
-        
+
+        dustTimer -= Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -60,8 +64,6 @@ public class Player : Entity
 
         // Make sure right animation is being played
         animator.SetBool("moving", (rb.velocity == Vector2.zero || isAttacking) ? false : true);
-
-       
     }
 
     void Move(Vector2 movement)
@@ -71,14 +73,24 @@ public class Player : Entity
 
         if (isAttacking) rb.velocity *= 0.25f;
 
-         // Rotate entity while moving
+        // Rotate entity while moving
         if (rb.velocity.x != 0) transform.localRotation = (rb.velocity.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-        
 
         // Rotate entity while idle
         if (movement.y == 0 && movement.x == 0 && !isAttacking) transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+
+        if (dustTimer <= 0 && (rb.velocity.x != 0 || rb.velocity.y != 0))
+        {
+            kickupDust();
+            dustTimer = dustCooldown;
+        }
     }
 
+    public void kickupDust()
+    {
+        GameObject dust = Instantiate(dustPrefab, transform.position, Quaternion.identity);
+        Destroy(dust, 1f);
+    }
 
     public void pickupItem(GameObject item)
     {
@@ -120,6 +132,7 @@ public class Player : Entity
     }
     public override void triggerOnDamagedEffects(Entity source)
     {
+        hudControl.setHealthBar(currentHP, maxHP);
         foreach (GameObject item in items)
         {
             item.GetComponent<Item>().onDamagedEffect(this, source);

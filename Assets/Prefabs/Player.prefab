@@ -340,7 +340,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009725377, y: -0.6571776}
+  m_Offset: {x: -0.009725392, y: -0.46681088}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -351,7 +351,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6444435, y: 0.36570013}
+  m_Size: {x: 0.6444435, y: 0.7464336}
   m_EdgeRadius: 0
 --- !u!114 &5722205624608180439
 MonoBehaviour:
@@ -370,6 +370,8 @@ MonoBehaviour:
   items: []
   isAttacking: 0
   hudControl: {fileID: 0}
+  dustPrefab: {fileID: 9207157971334323291, guid: a98264f27d894764e9fa32a437081e2c,
+    type: 3}
 --- !u!1 &5722205625836952947
 GameObject:
   m_ObjectHideFlags: 0

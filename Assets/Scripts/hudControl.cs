@@ -7,6 +7,7 @@ public class hudControl : MonoBehaviour
 {
     GameObject inventoryUI;
     GameObject bottomUI;
+    GameObject abilitySlots;
     Vector2 screenDimension;
     public GameObject slotPrefab;
     public Player pc;
@@ -14,9 +15,11 @@ public class hudControl : MonoBehaviour
     {
         inventoryUI = transform.GetChild(0).gameObject;
         bottomUI = transform.GetChild(1).gameObject;
+        abilitySlots = bottomUI.transform.GetChild(0).gameObject;
         screenDimension = GetComponent<CanvasScaler>().referenceResolution;
     }
-    public void pickupPassiveItem(GameObject item) {
+    public void pickupPassiveItem(GameObject item)
+    {
         GameObject slotInstance = Instantiate(slotPrefab, Vector3.zero, Quaternion.identity);
         Item itemScript = item.GetComponent<Item>();
         slotInstance.transform.SetParent(inventoryUI.transform.GetChild(0));
@@ -26,14 +29,25 @@ public class hudControl : MonoBehaviour
         slotInstance.transform.localScale = new Vector3(1, 1, 1);
         slotInstance.transform.localPosition = new Vector3(0, 0, 1);
     }
-    public void pickupActiveItem(GameObject item) {
+    public void pickupActiveItem(GameObject item)
+    {
         Item itemScript = item.GetComponent<Item>();
         GameObject stemp = bottomUI.transform.GetChild(1).GetChild(0).gameObject;
         stemp.GetComponent<slotControl>().item = item.GetComponent<Item>();
         stemp.transform.GetChild(0).GetComponent<Image>().sprite = item.GetComponent<Item>().getItemSprite();
         stemp.transform.GetChild(0).GetComponent<Image>().enabled = true;
     }
-    public void openInventory() {inventoryUI.SetActive(true);}
-    public void closeInventory() {inventoryUI.SetActive(false);}
-    public bool isInventoryOpen() {return inventoryUI.activeSelf;}
+    public void setHealthBar(float currentHP, float maxHP)
+    {
+        float percentage = currentHP / maxHP;
+        transform.GetChild(3).GetComponent<Slider>().value = percentage;
+    }
+    public void updateAbilityCooldown(int slot, float timer, float cooldown)
+    {
+        float fillAmount = timer/cooldown;
+        abilitySlots.transform.GetChild(slot).GetChild(1).GetComponent<Image>().fillAmount = fillAmount;
+    }
+    public void openInventory() { inventoryUI.SetActive(true); }
+    public void closeInventory() { inventoryUI.SetActive(false); }
+    public bool isInventoryOpen() { return inventoryUI.activeSelf; }
 }
