@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class item_watch : Item
 {
-    private float cooldownFactorReduction = 1f;
+    private float cooldownFactorReduction = 0.2f;
 
     public void Start() {
-        itemTier = 3;
+        itemTier = 2;
         itemName = "Pocketwatch";
-        itemDesc = "Your abilities come up more often";
+        itemDesc = "You can use abilities more often.";
         itemType = "passive";
     }
     public override void onPickUpEffect(Entity control) {
