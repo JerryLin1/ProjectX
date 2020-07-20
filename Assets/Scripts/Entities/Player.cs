@@ -71,7 +71,7 @@ public class Player : Entity
         if (movement.y != 0) lastVelocity = movement.y;
         rb.velocity = movement * movementSpeed;
 
-        if (isAttacking) rb.velocity *= 0.25f;
+        if (isAttacking) rb.velocity *= 0.5f;
 
         if (!isAttacking) {
             // Rotate entity while 
