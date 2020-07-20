@@ -9,7 +9,7 @@ public class Thrust : MeleeAttack
         gameObject.GetComponent<Collider2D>().enabled = false;
         if (attacker != null) {
 
-            if (enemy.gameObject.layer == LayerMask.NameToLayer("Enemies") && attacker.layer == LayerMask.NameToLayer("Players")) {
+            if (enemy.gameObject.layer == LayerMask.NameToLayer("Enemies") && attacker.layer == LayerMask.NameToLayer("Players") && enemy.isTrigger) {
                 enemy.GetComponent<Entity>().takeDamage(damage, attacker.GetComponent<Entity>());
 
                 enemy.GetComponent<Pathfinding.AIPath>().canMove = false;
@@ -20,7 +20,7 @@ public class Thrust : MeleeAttack
                 
             } 
 
-            if (enemy.gameObject.layer == LayerMask.NameToLayer("Players") && attacker.layer == LayerMask.NameToLayer("Enemies")) {
+            if (enemy.gameObject.layer == LayerMask.NameToLayer("Players") && attacker.layer == LayerMask.NameToLayer("Enemies") && enemy.isTrigger) {
                 enemy.GetComponent<Entity>().takeDamage(damage, attacker.GetComponent<Entity>());
 
                 Vector2 difference = enemy.transform.position - transform.position;
