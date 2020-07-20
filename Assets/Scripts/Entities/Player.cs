@@ -10,6 +10,7 @@ public class Player : Entity
     Vector2 direction;
     Vector3 mousePos;
     PlayerAbilities playerAbilities;
+    CameraControl cameraControl;
     public bool isAttacking;
     List<GameObject> nearbyItems = new List<GameObject>();
     public hudControl hudControl;
@@ -22,8 +23,8 @@ public class Player : Entity
         movementSpeed = 6f;
         maxHP = 100f;
         playerAbilities = transform.GetChild(1).GetComponent<PlayerAbilities>();
-        Camera.main.GetComponent<CameraFollow>().setTarget(gameObject.transform);
-
+        cameraControl = Camera.main.GetComponent<CameraControl>();
+        cameraControl.setTarget(gameObject.transform);
     }
     protected override void customUpdate()
     {
@@ -140,6 +141,7 @@ public class Player : Entity
         {
             item.GetComponent<Item>().onDamagedEffect(this, source);
         }
+        StartCoroutine(Camera.main.GetComponent<CameraControl>().cameraShake(0.1f, 0.5f));
     }
     public override void triggerOnHealEffects()
     {
@@ -155,12 +157,14 @@ public class Player : Entity
         {
             item.GetComponent<Item>().onHitEffect(this, enemy);
         }
+        StartCoroutine(Camera.main.GetComponent<CameraControl>().cameraShake(0.05f, 0.3f));
     }
     public override void triggerOnKillEffects() {
         foreach (GameObject item in items)
         {
             item.GetComponent<Item>().onKillEffect(this);
         }
+        StartCoroutine(Camera.main.GetComponent<CameraControl>().cameraShake(0.1f, 0.5f));
     }
     public void triggerOnAbilityEffects()
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class CameraControl : MonoBehaviour
 {
     // Update is called once per frame
     public Transform leader;
@@ -30,5 +30,19 @@ public class CameraFollow : MonoBehaviour
     public void setTarget(Transform target)
     {
         leader = target;
+    }
+    public IEnumerator cameraShake(float duration, float magnitude)
+    {
+        float timeElapsed = 0f;
+        while (timeElapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+            
+            transform.position = new Vector3(transform.position.x + x, transform.position.y + y, transform.position.z);
+        
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
     }
 }
