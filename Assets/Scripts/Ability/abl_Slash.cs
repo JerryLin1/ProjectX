@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class abl_Slash : Ability
 {
-    protected override float cooldown { get { return 0f; } }
+    protected override float cooldown { get { return 0.5f; } }
     Vector3 mousePos;
     Vector2 direction;
 
@@ -16,6 +16,7 @@ public class abl_Slash : Ability
         this.direction = direction;
         parent.GetComponent<Transform>().localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         animator.SetTrigger("slashing");
+        goOnCooldown();
     }
 
     public void createCrescent(float crescentScale) {

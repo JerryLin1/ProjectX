@@ -11,9 +11,10 @@ public class abl_Dash : Ability
     Vector2 dashDirection;
     public GameObject ghostTrail;
 
-    private void Update()
+
+    void Update()
     {
-        if (parent != null)
+        if (parent != null && !parent.GetComponent<Player>().isBeingAttacked)
         {
             if (dashTimer > 0f)
             {
@@ -30,7 +31,6 @@ public class abl_Dash : Ability
     {
         dashDirection = direction;
         dashTimer = dashTime;
-        dashSpeed = 175f;
 
         parent.GetComponent<Player>().kickupDust();
         parent.GetComponent<Transform>().localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);

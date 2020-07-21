@@ -82,7 +82,6 @@ public class Player : Entity
             if (movement.y == 0 && movement.x == 0 && !isAttacking) transform.localRotation = (direction.x > 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         }
        
-
         if (dustTimer <= 0 && (rb.velocity.x != 0 || rb.velocity.y != 0))
         {
             kickupDust();
