@@ -15,6 +15,7 @@ public class PlayerAbilities : MonoBehaviour
         player = transform.parent.GetComponent<Player>();
         hudControl = player.hudControl;
     }
+
     void Update()
     {
         checkInput();

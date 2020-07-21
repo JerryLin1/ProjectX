@@ -13,7 +13,8 @@ public abstract class Ability : MonoBehaviour
         parent = transform.root.GetComponent<Transform>();
         animator = transform.parent.Find("Sprites/Body").GetComponent<Animator>();
     }
-    public virtual void onEquip() {
+
+    public virtual void onEquip() { 
         
     }
     public abstract void Cast(Vector3 mousePos, Vector2 direction);
