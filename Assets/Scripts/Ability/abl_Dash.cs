@@ -35,6 +35,7 @@ public class abl_Dash : Ability
         parent.GetComponent<Player>().kickupDust();
         parent.GetComponent<Transform>().localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         animator.SetTrigger("dash");
+        StartCoroutine(Camera.main.GetComponent<CameraControl>().cameraShake(0.1f, 0.5f));
         goOnCooldown();
     }
 }
