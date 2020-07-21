@@ -7,7 +7,7 @@ public class abl_Dash : Ability
     protected override float cooldown { get { return 1f; } }
     float dashTime = 0.1f;
     float dashTimer = 0f;
-    float dashSpeed = 3500f;
+    float dashSpeed = 1000f;
     Vector2 dashDirection;
     public GameObject ghostTrail;
 

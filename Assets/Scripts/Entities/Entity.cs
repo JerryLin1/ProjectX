@@ -57,6 +57,7 @@ public abstract class Entity : MonoBehaviour
         {
             source.triggerOnKillEffects();
             Destroy(gameObject);
+            return;
         }
         spriteRenderer.material.shader = shaderGUItext;
         flashTimer = 0.1f;

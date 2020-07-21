@@ -16,12 +16,13 @@ public abstract class MeleeAttack : MonoBehaviour
     {
         // Destroy and disable collider after specific duration
         animationDuration = transform.Find("Sprite").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
-        Destroy(gameObject, knockbackDuration+recoveryDuration+animationDuration+extraDuration);
+        Destroy(gameObject, knockbackDuration + recoveryDuration + animationDuration + extraDuration);
         StartCoroutine(AttackMissed());
     }
 
     // Should be called immediately after crescent creation
-    public virtual void setAttack(GameObject attacker, int damage, float knockbackPower, float knockbackDuration) {
+    public virtual void setAttack(GameObject attacker, int damage, float knockbackPower, float knockbackDuration)
+    {
         this.attacker = attacker;
         this.damage = damage;
 
@@ -33,21 +34,28 @@ public abstract class MeleeAttack : MonoBehaviour
 
     protected virtual IEnumerator KnockCoroutine(Rigidbody2D enemy)
     {
-        if (enemy != null) {
+        if (enemy != null)
+        {
             // Knockback and prevent movement
             enemy.GetComponent<Entity>().isBeingAttacked = true;
             yield return new WaitForSeconds(knockbackDuration);
-            enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
+            if (enemy != null)
+            {
+                enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            }
             // Allow movement and destroy attack projectile
             yield return new WaitForSeconds(recoveryDuration);
-            if (enemy.gameObject.layer == LayerMask.NameToLayer("Enemies")) enemy.GetComponent<Pathfinding.AIPath>().canMove = true;
-            enemy.GetComponent<Entity>().isBeingAttacked = false;
-            Destroy(gameObject);
-        } 
+            if (enemy != null)
+            {
+                if (enemy.gameObject.layer == LayerMask.NameToLayer("Enemies")) enemy.GetComponent<Pathfinding.AIPath>().canMove = true;
+                enemy.GetComponent<Entity>().isBeingAttacked = false;
+                Destroy(gameObject);
+            }
+        }
     }
 
-    protected virtual IEnumerator AttackMissed() {
+    protected virtual IEnumerator AttackMissed()
+    {
 
         // Disable collider at the end of animation
         yield return new WaitForSeconds(animationDuration);
