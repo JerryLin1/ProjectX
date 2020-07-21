@@ -31,6 +31,7 @@ public abstract class Enemy : Entity
         } 
     }
     public virtual void createMeleeAttackAnimation() {
+        audioManager.Play("MeleeAttack");
         GameObject attackAnimation = Instantiate(attackPrefabs[attackAnimationIndex], transform.position, transform.localRotation);
         attackAnimation.transform.up = attackDirection;
         attackAnimation.GetComponent<MeleeAttack>().setAttack(gameObject, 2, 10f, 0.2f);

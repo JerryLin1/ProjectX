@@ -29,7 +29,7 @@ public abstract class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         shaderGUItext = Shader.Find("GUI/Text Shader");
         shaderSpritesDefault = transform.Find("Sprites/Body").GetComponent<SpriteRenderer>().material.shader;
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = transform.Find("Audio").GetComponent<AudioManager>();
     }
     protected virtual void Update()
     {

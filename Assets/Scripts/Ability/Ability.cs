@@ -13,7 +13,7 @@ public abstract class Ability : MonoBehaviour
     {
         parent = transform.root.GetComponent<Transform>();
         animator = transform.parent.Find("Sprites/Body").GetComponent<Animator>();
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = parent.Find("Audio").GetComponent<AudioManager>();
     }
 
     public virtual void onEquip() { 
