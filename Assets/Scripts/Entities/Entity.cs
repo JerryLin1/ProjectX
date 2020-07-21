@@ -50,8 +50,6 @@ public abstract class Entity : MonoBehaviour
     public virtual void takeDamage(float damage, Entity source)
     {
         audioManager.Play("Hit");
-        source.triggerOnHitEffects(this);
-        triggerOnDamagedEffects(source);
         currentHP -= damage;
         if (currentHP <= 0)
         {
@@ -61,6 +59,8 @@ public abstract class Entity : MonoBehaviour
         }
         spriteRenderer.material.shader = shaderGUItext;
         flashTimer = 0.1f;
+        source.triggerOnHitEffects(this);
+        triggerOnDamagedEffects(source);
     }
     public virtual void heal(float heal)
     {

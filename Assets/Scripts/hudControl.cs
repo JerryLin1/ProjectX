@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,12 +12,25 @@ public class hudControl : MonoBehaviour
     Vector2 screenDimension;
     public GameObject slotPrefab;
     public Player pc;
+    float hpEmphasizeTime = 0.1f;
+    float hpEmphasizeTimer;
+    int hpEmphasizeAmount = 5;
+    TextMeshProUGUI healthBarText;
     void Start()
     {
         inventoryUI = transform.GetChild(0).gameObject;
         bottomUI = transform.GetChild(1).gameObject;
         abilitySlots = bottomUI.transform.GetChild(0).gameObject;
         screenDimension = GetComponent<CanvasScaler>().referenceResolution;
+        healthBarText = transform.Find("Health Bar").Find("Health text").GetComponent<TextMeshProUGUI>();
+    }
+    void Update()
+    {
+        if (hpEmphasizeTimer > 0)
+        {
+            hpEmphasizeTimer-=Time.deltaTime;
+            if (hpEmphasizeTimer <= 0) healthBarText.fontSize -= hpEmphasizeAmount;
+        }
     }
     public void pickupPassiveItem(GameObject item)
     {
@@ -41,10 +55,13 @@ public class hudControl : MonoBehaviour
     {
         float percentage = currentHP / maxHP;
         transform.GetChild(3).GetComponent<Slider>().value = percentage;
+        healthBarText.text = currentHP + "/" + maxHP;
+        healthBarText.fontSize += hpEmphasizeAmount;
+        hpEmphasizeTimer = hpEmphasizeTime;
     }
     public void updateAbilityCooldown(int slot, float timer, float cooldown)
     {
-        float fillAmount = timer/cooldown;
+        float fillAmount = timer / cooldown;
         abilitySlots.transform.GetChild(slot).GetChild(1).GetComponent<Image>().fillAmount = fillAmount;
     }
     public void openInventory() { inventoryUI.SetActive(true); }

@@ -21,7 +21,7 @@ public class Player : Entity
     protected override void customStart()
     {
         movementSpeed = 6f;
-        maxHP = 100f;
+        maxHP = 20f;
         playerAbilities = transform.GetChild(1).GetComponent<PlayerAbilities>();
         cameraControl = Camera.main.GetComponent<CameraControl>();
         cameraControl.setTarget(gameObject.transform);
