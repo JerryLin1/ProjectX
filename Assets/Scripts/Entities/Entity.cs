@@ -16,6 +16,7 @@ public abstract class Entity : MonoBehaviour
     public bool isBeingAttacked;
     protected Shader shaderGUItext;
     protected Shader shaderSpritesDefault;
+    public AudioManager audioManager;
     float flashTimer = 0;
     public List<StatusEffect> statuses = new List<StatusEffect>();
 
@@ -28,6 +29,7 @@ public abstract class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         shaderGUItext = Shader.Find("GUI/Text Shader");
         shaderSpritesDefault = transform.Find("Sprites/Body").GetComponent<SpriteRenderer>().material.shader;
+        audioManager = FindObjectOfType<AudioManager>();
     }
     protected virtual void Update()
     {
@@ -47,6 +49,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void takeDamage(float damage, Entity source)
     {
+        audioManager.Play("Hit");
         source.triggerOnHitEffects(this);
         triggerOnDamagedEffects(source);
         currentHP -= damage;

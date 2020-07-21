@@ -8,10 +8,12 @@ public abstract class Ability : MonoBehaviour
     protected float currentCooldown = 0f;
     protected Transform parent;
     protected Animator animator;
+    protected AudioManager audioManager;
     void Start()
     {
         parent = transform.root.GetComponent<Transform>();
         animator = transform.parent.Find("Sprites/Body").GetComponent<Animator>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     public virtual void onEquip() { 

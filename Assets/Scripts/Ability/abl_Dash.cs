@@ -7,7 +7,7 @@ public class abl_Dash : Ability
     protected override float cooldown { get { return 1f; } }
     float dashTime = 0.1f;
     float dashTimer = 0f;
-    float dashSpeed = 100f;
+    float dashSpeed = 3500f;
     Vector2 dashDirection;
     public GameObject ghostTrail;
 
@@ -18,7 +18,7 @@ public class abl_Dash : Ability
         {
             if (dashTimer > 0f)
             {
-                parent.GetComponent<Rigidbody2D>().AddForce(dashDirection * dashSpeed * 5f);
+                parent.GetComponent<Rigidbody2D>().AddForce(dashDirection * dashSpeed);
                 parent.GetComponent<Transform>().localRotation = (dashDirection.x >= 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
                 dashTimer -= Time.deltaTime;
                 GameObject ghostInstance = Instantiate(ghostTrail, parent.position, parent.localRotation);
@@ -29,6 +29,7 @@ public class abl_Dash : Ability
     }
     public override void Cast(Vector3 mousePos, Vector2 direction)
     {
+        audioManager.Play("Dash");
         dashDirection = direction;
         dashTimer = dashTime;
 

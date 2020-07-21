@@ -21,6 +21,7 @@ public class abl_Slash : Ability
 
     public void createCrescent(float crescentScale) {
         // Create crescent in direction of mouse click
+        audioManager.Play("DaggerSlash");
         parent.GetComponent<Transform>().localRotation = (mousePos.x >= parent.transform.position.x) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         GameObject crescent = Instantiate(crescentPrefab, parent.GetComponent<Transform>().position, parent.GetComponent<Transform>().localRotation);
         crescent.transform.localScale = new Vector3(crescentScale, crescentScale, 0);
