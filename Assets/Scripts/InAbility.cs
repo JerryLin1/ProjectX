@@ -18,15 +18,20 @@ public class InAbility : MonoBehaviour
     // Specific methods for rogue players
 
     public bool rogue_animationCancel;
+    int rogue_attackIndex = 1;
     public void rogue_attack() {
         
         if (rogue_animationCancel == true) {
-            GameObject.Find("Player/Abilities").GetComponent<abl_Slash>().createCrescent(1f);
+            if (rogue_attackIndex == 1) {
+                GameObject.Find("Player/Abilities").GetComponent<abl_Slash>().createCrescent(1f);
+            }
             transform.root.GetComponent<Player>().isAttacking = false;
             rogue_animationCancel = false;
             transform.GetComponent<Animator>().Rebind();
+            rogue_attackIndex = 1;
         } else {
             GameObject.Find("Player/Abilities").GetComponent<abl_Slash>().createCrescent(1f);
+            rogue_attackIndex ++;
         }
     }
 
