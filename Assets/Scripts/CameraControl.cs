@@ -9,7 +9,7 @@ public class CameraControl : MonoBehaviour
     float xMaxDist = 1f;
     float yMaxDist = 1f;
     float interpolation = 4f;
-    void Update()
+    void FixedUpdate()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 leaderPos = leader.position;
@@ -20,12 +20,12 @@ public class CameraControl : MonoBehaviour
         if (y > leaderPos.y + yMaxDist) y = leaderPos.y + yMaxDist;
         else if (y < leaderPos.y - yMaxDist) y = leaderPos.y - yMaxDist;
         Vector3 center = new Vector3(x, y, transform.position.z);
-
         if (leader != null)
         {
             transform.position = Vector3.Lerp(transform.position, center, Time.deltaTime * interpolation);
         }
     }
+    
     public void setTarget(Transform target)
     {
         leader = target;
@@ -37,9 +37,9 @@ public class CameraControl : MonoBehaviour
         {
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
-            
+
             transform.position = new Vector3(transform.position.x + x, transform.position.y + y, transform.position.z);
-        
+
             timeElapsed += Time.deltaTime;
             yield return null;
         }
