@@ -46,7 +46,9 @@ public class RoomSpawner : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
 
-        
+        if (other.CompareTag("Spawnpoint")) {
+            Destroy(gameObject);
+        }
     }
 
 }
