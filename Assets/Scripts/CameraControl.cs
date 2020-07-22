@@ -23,7 +23,6 @@ public class CameraControl : MonoBehaviour
 
         if (leader != null)
         {
-            Vector3 t = new Vector3(leaderPos.x, leaderPos.y, transform.position.z);
             transform.position = Vector3.Lerp(transform.position, center, Time.deltaTime * interpolation);
         }
     }
