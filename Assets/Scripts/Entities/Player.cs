@@ -100,6 +100,7 @@ public class Player : Entity
         Item itemScript = item.GetComponent<Item>();
         if (itemScript.itemType == "passive")
         {
+            audioManager.Play("ItemPickup");
             itemScript.onPickUpEffect(this);
             items.Add(item);
             hudControl.pickupPassiveItem(item);
@@ -108,6 +109,7 @@ public class Player : Entity
         }
         else if (itemScript.itemType == "active")
         {
+            audioManager.Play("ItemPickup");
             if (activeItem != null)
             {
                 activeItem.transform.position = transform.position;

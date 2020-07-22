@@ -62,6 +62,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: ItemPickup
+    clip: {fileID: 8300000, guid: 8a643222ad9ba86468a805477e9d6efb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &783656874
 GameObject:
   m_ObjectHideFlags: 0
