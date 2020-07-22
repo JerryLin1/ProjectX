@@ -6,13 +6,18 @@ public class CameraControl : MonoBehaviour
 {
     // Update is called once per frame
     public Transform leader;
+    Vector3 leaderVelocity;
+    Vector3 mousePos;
+    Vector3 leaderPos;
     float xMaxDist = 1f;
     float yMaxDist = 1f;
-    float interpolation = 4f;
+    float cameraTime = 0.1f;
+    float maxCameraSpeed = 100f;
     void FixedUpdate()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 leaderPos = leader.position;
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        leaderPos = leader.position;
+        leaderVelocity = leader.GetComponent<Rigidbody2D>().velocity;
         float x = (leaderPos.x + mousePos.x) / 2;
         if (x > leaderPos.x + xMaxDist) x = leaderPos.x + xMaxDist;
         else if (x < leaderPos.x - xMaxDist) x = leaderPos.x - xMaxDist;
@@ -22,10 +27,10 @@ public class CameraControl : MonoBehaviour
         Vector3 center = new Vector3(x, y, transform.position.z);
         if (leader != null)
         {
-            transform.position = Vector3.Lerp(transform.position, center, Time.deltaTime * interpolation);
+            transform.position = Vector3.SmoothDamp(transform.position, center, ref leaderVelocity, cameraTime, maxCameraSpeed);
         }
     }
-    
+
     public void setTarget(Transform target)
     {
         leader = target;
