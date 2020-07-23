@@ -16,30 +16,46 @@ public class RoomSpawner : MonoBehaviour
     private bool spawned = false;
     private GameObject newRoom;
 
+    private List<GameObject> topRooms, downRooms, leftRooms, rightRooms;
+
     // Start is called before the first frame update
     void Start()
     {
         templates = GameObject.Find("RoomTemplates").GetComponent<RoomTemplates>();
-        Invoke("Spawn", 2f);
+        Invoke("Spawn", 0.1f);
     }
 
     void Spawn()
     {
 
+        if (templates.rooms.Count < 15) {
+            topRooms = templates.topRooms.FindAll(room => room.transform.childCount >= 4);
+            downRooms = templates.downRooms.FindAll(room => room.transform.childCount >= 4);
+            leftRooms = templates.leftRooms.FindAll(room => room.transform.childCount >= 4);
+            rightRooms = templates.rightRooms.FindAll(room => room.transform.childCount >= 4);
+        } else {
+            topRooms = templates.topRooms.FindAll(room => room.transform.childCount == 3);
+            downRooms = templates.downRooms.FindAll(room => room.transform.childCount == 3);
+            leftRooms = templates.leftRooms.FindAll(room => room.transform.childCount == 3);
+            rightRooms = templates.rightRooms.FindAll(room => room.transform.childCount == 3);
+        }
+        
+
+
         if (!spawned) {
             spawned = true;
             if (openingDirection == 1) {
-                rand = Random.Range(0, templates.topRooms.Length);
-                newRoom = Instantiate(templates.topRooms[rand], transform.position, Quaternion.identity);
+                rand = Random.Range(0, topRooms.Count);
+                newRoom = Instantiate(topRooms[rand], transform.position, Quaternion.identity);
             } else if (openingDirection == 2) {
-                rand = Random.Range(0, templates.rightRooms.Length);
-                newRoom = Instantiate(templates.rightRooms[rand], transform.position, Quaternion.identity);
+                rand = Random.Range(0, rightRooms.Count);
+                newRoom = Instantiate(rightRooms[rand], transform.position, Quaternion.identity);
             } else if (openingDirection == 3) {
-                rand = Random.Range(0, templates.downRooms.Length);
-                newRoom = Instantiate(templates.downRooms[rand], transform.position, Quaternion.identity);
+                rand = Random.Range(0, downRooms.Count);
+                newRoom = Instantiate(downRooms[rand], transform.position, Quaternion.identity);
             } else if (openingDirection == 4) {
-                rand = Random.Range(0, templates.leftRooms.Length);
-                newRoom = Instantiate(templates.leftRooms[rand], transform.position, Quaternion.identity);
+                rand = Random.Range(0, leftRooms.Count);
+                newRoom = Instantiate(leftRooms[rand], transform.position, Quaternion.identity);
             }
             newRoom.transform.SetParent(GameObject.Find("Grid").transform);
         }
