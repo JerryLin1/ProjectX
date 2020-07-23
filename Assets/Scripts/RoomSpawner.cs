@@ -14,18 +14,19 @@ public class RoomSpawner : MonoBehaviour
     private RoomTemplates templates;
     private int rand;
     private bool spawned = false;
+    private GameObject newRoom;
 
     // Start is called before the first frame update
     void Start()
     {
         templates = GameObject.Find("RoomTemplates").GetComponent<RoomTemplates>();
-        Invoke("Spawn", 0.1f);
+        Invoke("Spawn", 2f);
     }
 
     void Spawn()
     {
+
         if (!spawned) {
-            GameObject newRoom;
             spawned = true;
             if (openingDirection == 1) {
                 rand = Random.Range(0, templates.topRooms.Length);
@@ -36,7 +37,7 @@ public class RoomSpawner : MonoBehaviour
             } else if (openingDirection == 3) {
                 rand = Random.Range(0, templates.downRooms.Length);
                 newRoom = Instantiate(templates.downRooms[rand], transform.position, Quaternion.identity);
-            } else {
+            } else if (openingDirection == 4) {
                 rand = Random.Range(0, templates.leftRooms.Length);
                 newRoom = Instantiate(templates.leftRooms[rand], transform.position, Quaternion.identity);
             }
@@ -45,8 +46,8 @@ public class RoomSpawner : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-
-        if (other.CompareTag("Spawnpoint")) {
+        
+        if (other.CompareTag("Spawnpoint") || other.CompareTag("Room")) {
             Destroy(gameObject);
         }
     }

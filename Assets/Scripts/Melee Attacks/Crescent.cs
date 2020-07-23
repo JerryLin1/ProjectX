@@ -17,7 +17,6 @@ public class Crescent : MeleeAttack
                 difference = difference.normalized * knockbackPower;
                 enemy.GetComponent<Entity>().knockback(difference);
                 StartCoroutine(KnockCoroutine(enemy.GetComponent<Rigidbody2D>()));
-                
             } 
 
             if (enemy.gameObject.layer == LayerMask.NameToLayer("Players") && attacker.layer == LayerMask.NameToLayer("Enemies") && enemy.isTrigger) {
