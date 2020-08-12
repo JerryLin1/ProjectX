@@ -13,7 +13,7 @@ public class hudControl : MonoBehaviour
     public GameObject slotPrefab;
     public Player pc;
     float hpEmphasizeTime = 0.1f;
-    float hpEmphasizeTimer;
+    float hpEmphasizeTimer = 0;
     int hpEmphasizeAmount = 5;
     TextMeshProUGUI healthBarText;
     void Start()

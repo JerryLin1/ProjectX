@@ -43,6 +43,7 @@ public class Player : Entity
     {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
+        
 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);

@@ -13,12 +13,11 @@ public class RoomSpawner : MonoBehaviour
 
     private RoomTemplates templates;
     private int rand;
-    private bool spawned = false;
+    public bool spawned = false;
     private GameObject newRoom;
 
     private List<GameObject> topRooms, downRooms, leftRooms, rightRooms;
 
-    // Start is called before the first frame update
     void Start()
     {
         templates = GameObject.Find("RoomTemplates").GetComponent<RoomTemplates>();
@@ -39,6 +38,8 @@ public class RoomSpawner : MonoBehaviour
             leftRooms = templates.leftRooms.FindAll(room => room.transform.childCount == 3);
             rightRooms = templates.rightRooms.FindAll(room => room.transform.childCount == 3);
         }
+
+        
         
 
 
@@ -64,6 +65,10 @@ public class RoomSpawner : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         
         if (other.CompareTag("Spawnpoint") || other.CompareTag("Room")) {
+
+            // if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false) {
+            // }
+
             Destroy(gameObject);
         }
     }
